@@ -16,7 +16,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 	wndClass.cbWndExtra = 0;
 	wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+	wndClass.hIcon = LoadCursor(NULL, IDI_APPLICATION);
 	wndClass.hInstance = hInstance;
 	wndClass.lpfnWndProc = (WNDPROC)WndProc;
 	wndClass.lpszClassName = _lpszClass;
@@ -44,7 +44,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 
 	MSG message;
 
-	while(GetMessage(&message, 0, 0, 0))
+	while (GetMessage(&message, 0, 0, 0))
 	{
 		TranslateMessage(&message);
 		DispatchMessage(&message);
@@ -57,9 +57,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
 	switch (iMessage)
 	{
-	case WM_CREATE:
+		case WM_CREATE:
 		break;
-	case WM_DESTROY:
+		case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
 	}
