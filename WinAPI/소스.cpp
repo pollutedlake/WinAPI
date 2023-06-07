@@ -1,4 +1,4 @@
-#include <Windows.h>
+#include<Windows.h>
 #include<tchar.h>
 
 HINSTANCE _hInstance;
@@ -12,7 +12,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 	_hInstance = hInstance;
 
 	WNDCLASS wndClass;
-
 	wndClass.cbClsExtra = 0;
 	wndClass.cbWndExtra = 0;
 	wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
@@ -23,7 +22,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 	wndClass.lpszClassName = _lpszClass;
 	wndClass.lpszMenuName = NULL;
 	wndClass.style = CS_HREDRAW | CS_VREDRAW;
-	
+
 	RegisterClass(&wndClass);
 
 	_hWnd = CreateWindow
@@ -45,7 +44,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 
 	MSG message;
 
-	while (GetMessage(&message, 0, 0, 0))
+	while(GetMessage(&message, 0, 0, 0))
 	{
 		TranslateMessage(&message);
 		DispatchMessage(&message);
