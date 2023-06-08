@@ -147,6 +147,21 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     // ZeroMemory(&message, sizeof(message));      UpdateWindoe 사용시 세트로 써야한다. 
 
     /*
+    while (true)
+    {
+        if (PeekMessage(&message, NULL, 0, 0, PM_REMOVE))
+        {
+            if (message.message == WM_QUIT)
+            {
+                break;
+            }
+            TranslateMessage(&message);
+            DispatchMessage(&message);
+        }
+    }
+    */
+
+    /*
     ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
     ▶ 메세지 루프 종류
     1. GetMessage
@@ -200,10 +215,83 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     ※ 위 내용은 반드시 기억할 것
     */
 
+    HDC hdc;                // 핸들 DC
+    PAINTSTRUCT ps;         // 페인트 구조체
+
+    char str[] = "그래";
+
+    /*
+    char[]: 수정 가능
+    char*: 수정 불가
+    */
+
     switch (iMessage)
     {
     case WM_CREATE:                 // 생성자
         break;
+
+    case WM_PAINT:                  // 출력에 관한 모든 것을 담당한다. (문자, 그림, 도형 등등 화면에 보이는 모든것)
+        hdc = BeginPaint(hWnd, &ps);
+
+        /*
+        strcpy(x, y) : y를 x에 복사
+        strcat(x, y) : x 문자열 + y 문자열
+        strlen(x) : 문자열 길이
+        strcmp(x, y) : 두 문자열이 같은지 확인
+        ㄴ x, y 동일       =>      0 리턴
+        ㄴ x < y           =>      -1 리턴
+        ㄴ x > y           =>       1 리턴
+
+        strcpy      ->      wcscpy      ->      _tcscpy
+        strcat      ->      wcscat      ->      _tcscat
+        strlen      ->      wcslen      ->      _tcslen
+        strcmp      ->      wcslen      ->      _tcscmp
+        strtok                                  문자열 자르기
+        strchr                                  문자 찾기
+        strstr                                  문자열 찾기
+        */
+
+        // 데카르트 좌표(실생활 좌표계) != 윈도우 좌표계
+
+        // TextOut(): 문자 출력(hdc, x, y, 문자열, 문자열 길이)
+        TextOut(hdc, 300, 300, "과제가 너무 재밌다^^", strlen("과제가 너무 재밌다^^"));
+        // ㄴ strlen는 할당받은 메모리에 바인딩 된 문자열에서 NULL값을 제외한 문자열 길이
+
+        // 문자열 글자색 변경
+        SetTextColor(hdc, RGB(255, 0, 0));
+        TextOut(hdc, 300, 400, "과제 좀 더 내주세요.", strlen("과제 좀 더 내주세요."));
+        
+        MoveToEx(hdc, 400, 400, NULL);
+        LineTo(hdc, 200, 400);
+
+        MoveToEx(hdc, 400, 400, NULL);
+        LineTo(hdc, 200, 200);
+
+        EndPaint(hWnd, &ps);
+        break;
+
+    case WM_LBUTTONDOWN:        // 마우스 왼쪽 버튼이 눌렸을 때 메세지가 발생한다.
+        hdc = GetDC(hWnd);
+
+        SetTextColor(hdc, RGB(0, 0, 255));
+        TextOut(hdc, 350, 500, str, strlen(str));
+
+        ReleaseDC(hWnd, hdc);
+
+        break;
+
+    case WM_KEYDOWN:
+        switch (wParam)
+        {
+        case VK_LEFT:
+            break;
+        case VK_RIGHT:
+            break;
+        case VK_ESCAPE:
+            PostMessage(hWnd, WM_DESTROY, 0, 0);
+            break;
+        }
+
     case WM_DESTROY:                // 소멸자
         // PostQuitMessage() : 이 함수는 메세지 큐에 Quit 메세지를 보내는 역할을 한다.
         // 즉, Quit 메세지를 수신하는 순간 GetMessage 함수가 FALSE를 반환함으로 메세지 루프가 종료된다.
