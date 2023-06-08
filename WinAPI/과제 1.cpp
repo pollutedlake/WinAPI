@@ -71,8 +71,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
     HDC hdc;                // 핸들 DC
     PAINTSTRUCT ps;         // 페인트 구조체
-    RECT rt = { 100, 100, 700, 700 };
-    char str[] = " X =  ";
+    RECT rt ;
+    char str[128];
     static int num = 2;
 
     switch (iMessage)
@@ -86,10 +86,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         {
             for (int j = 1; j < 10; j++)
             {
-                str[0] = i + 48;
-                str[2] = j + 48;
-                str[4] = (i * j) / 10 + 48;
-                str[5] = (i * j) % 10 + 48;
+                wsprintf(str, TEXT("%d X %d = %d"), i, j, i * j);
                 TextOut(hdc, 100 + 100 * ((i - 2) % 3), 100 + 20 * (j - 1) + 180 * ((i - 2) / 3), str, strlen(str));
             }
         }
@@ -100,7 +97,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         if (num < 9)
         {
             num += 1;
-            InvalidateRect(hWnd, &rt, true);
+            InvalidateRect(hWnd, NULL, true);
         }
         break;
 
@@ -108,7 +105,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         if (num > 2)
         {
             num--;
-            InvalidateRect(hWnd, &rt, true);
+            InvalidateRect(hWnd, NULL, true);
         }
         break;
 

@@ -182,7 +182,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             MoveToEx(hdc, 275, 140, NULL);
             LineTo(hdc, 275, 210);
             DrawCircle(hdc, 260, 160, 20, -180, -40);
-           // MoveToEx(hdc, 260, 190);
             DrawCircle(hdc, 260, 190, 20, -320, -40);
         }
 
@@ -194,32 +193,48 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
         if (letterN >= 10)       // e
         {
-
+			MoveToEx(hdc, 10, 260, NULL);
+			LineTo(hdc, 50, 260);
+			DrawCircle(hdc, 30, 260, 20, -315, 0);
         }
 
         if (letterN >= 11)       // n
         {
-
+			MoveToEx(hdc, 70, 240, NULL);
+			LineTo(hdc, 70, 310);
+			DrawCircle(hdc, 90, 260, 20, -180, 0);
+			LineTo(hdc, 110, 310);
         }
 
         if (letterN >= 12)       // g
         {
-
+            DrawCircle(hdc, 150, 260, 20, 0, 360);
+            MoveToEx(hdc, 170, 240, NULL);
+            LineTo(hdc, 170, 310);
+            DrawCircle(hdc, 170, 295, 15, -270, 0);
         }
 
         if (letterN >= 13)       // i
         {
-
+            MoveToEx(hdc, 200, 240, NULL);
+            LineTo(hdc, 200, 250);
+            MoveToEx(hdc, 200, 255, NULL);
+            LineTo(hdc, 200, 310);
         }
 
         if (letterN >= 14)       // n
         {
-
+			MoveToEx(hdc, 220, 240, NULL);
+			LineTo(hdc, 220, 310);
+			DrawCircle(hdc, 240, 260, 20, -180, 0);
+			LineTo(hdc, 260, 310);
         }
 
         if (letterN >= 15)      // e
         {
-
+			MoveToEx(hdc, 280, 260, NULL);
+			LineTo(hdc, 320, 260);
+			DrawCircle(hdc, 300, 260, 20, -315, 0);
         }
         EndPaint(hWnd, &ps);
         break;
@@ -267,11 +282,8 @@ void DrawCircle(HDC hdc, int x, int y, int radius, double startAngle, double end
     startX = x + radius * cos(angle / 180 * PI);
     startY = y + radius * sin(angle / 180 * PI);
     MoveToEx(hdc, startX, startY, NULL);
-    while (angle <= endAngle)
+    for (double angle = startAngle; angle <= endAngle; angle += 0.1)
     {
-        angle += 0.1;
-        endX = x + radius * cos(angle / 180 * PI);
-        endY = y + radius * sin(angle / 180 * PI);
-        LineTo(hdc, endX, endY);
+        LineTo(hdc, x + radius * cos(angle / 180 * PI), y + radius * sin(angle / 180 * PI));
     }
 }
