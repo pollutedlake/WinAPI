@@ -66,7 +66,15 @@ LPCTSTR     -> Long Pointer Constant t_string   = const tchar*
 
 
 // 콜백
+// 사각형 중심점에 만들기
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+
+RECT RectMakeCenter(int x, int y, int width, int height)
+{
+    RECT tc = { x - width / 2, y - height / 2, x + width / 2, y + height / 2 };
+
+    return rc;
+}
 
 /*
 hInstance : 프로그램 인스턴스 핸들
@@ -218,11 +226,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     HDC hdc;                // 핸들 DC
     PAINTSTRUCT ps;         // 페인트 구조체
 
-    char str[] = "그래";
-
     /*
     char[]: 수정 가능
     char*: 수정 불가
+    */
+
+    RECT rc = { 100, 100, 200, 200 };
+
+    /*
+    ◈ RECT : 사각형의 좌표를 저장하기 위한 구조체
+
     */
 
     switch (iMessage)
@@ -230,8 +243,26 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:                 // 생성자
         break;
 
+        /*
+        WM_PAINT
+
+        - 윈도우를 다시 그려야 할 때 사용하는 메세지
+
+        1. 윈도우가 처음 만들어졌을 때
+        2. 윈도우 크기를 조절하고 싶을 때
+        3. 윈도우가 다른 윈도우에 가려졌다가 다시 보일 때
+        4. 특정 함수가 호출이 될때 -> InvalidateRect, Invalidate, UpdataAllviews 등등 ...
+        ㄴ 기본적으로 렌더링 관련된 함수가 나오면 PAINT를 떠올려야 한다.
+        */
     case WM_PAINT:                  // 출력에 관한 모든 것을 담당한다. (문자, 그림, 도형 등등 화면에 보이는 모든것)
         hdc = BeginPaint(hWnd, &ps);
+
+        SetPixel(hdc, 300, 200, RGB(255, 0, 0));
+
+        for (int i = 0; i < 10000; i++)
+        {
+            SetPixel(hdc, rand() % 800, rand() % 800, RGB(rand() % 255, rand() % 255, rand() % 255));
+        }
 
         /*
         strcpy(x, y) : y를 x에 복사
@@ -267,16 +298,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         MoveToEx(hdc, 400, 400, NULL);
         LineTo(hdc, 200, 200);
 
+        Ellipse(hdc, 300, 100, 200, 200);
+
+        Rectangle(hdc, 100, 100, 200, 200);
+        Rectangle(hdc, rc.left, rc.top, rc.right, rc.bottom);
+
         EndPaint(hWnd, &ps);
         break;
 
     case WM_LBUTTONDOWN:        // 마우스 왼쪽 버튼이 눌렸을 때 메세지가 발생한다.
-        hdc = GetDC(hWnd);
-
-        SetTextColor(hdc, RGB(0, 0, 255));
-        TextOut(hdc, 350, 500, str, strlen(str));
-
-        ReleaseDC(hWnd, hdc);
+        
+        // InvalidateRect(hWnd, NULL, t / f);
 
         break;
 
@@ -291,6 +323,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             PostMessage(hWnd, WM_DESTROY, 0, 0);
             break;
         }
+
+    case WM_RBUTTONDOWN:
+        break;
 
     case WM_DESTROY:                // 소멸자
         // PostQuitMessage() : 이 함수는 메세지 큐에 Quit 메세지를 보내는 역할을 한다.
