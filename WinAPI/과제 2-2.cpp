@@ -88,7 +88,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
     HDC hdc;
     PAINTSTRUCT ps;
-    RECT rt = { 0, 0, 256, 128 };
+    RECT rt = { 0, 0, 256, 256 };
     static HBITMAP MyBitmap;
     static bool isDraw = true;
 
