@@ -20,7 +20,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 	wndClass.lpfnWndProc = (WNDPROC)WndProc;
 	wndClass.lpszClassName = _lpszClass;
 	wndClass.lpszMenuName = NULL;
-	wndClass.style = CS_HREDRAW | CS_VREDRAW;
+	wndClass.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS;
 
 	RegisterClass(&wndClass);
 
@@ -50,42 +50,34 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 	}
 }
 
+void CALLBACK TimerProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
+{
+	HDC hdc;
+	int i;
+	hdc = GetDC(hWnd);
+	for (i = 0; i < 1000; i++)
+	{
+		SetPixel(hdc, rand() % 500, rand() % 400, RGB(rand() % 256, rand() % 256, rand() % 256));
+	}
+	ReleaseDC(hWnd, hdc);
+}
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
 	HDC hdc;
-	PAINTSTRUCT ps;
-	static int x = 100;
-	static int y = 100;
+	int i;
 	switch (iMessage)
 	{
 	case WM_CREATE:
-		break;
-	case WM_KEYDOWN:
-		switch (wParam)
-		{
-		case VK_LEFT:
-			x -= 8;
-			break;
-		case VK_RIGHT:
-			x += 8;
-			break;
-		case VK_UP:
-			y -= 8;
-			break;
-		case VK_DOWN:
-			y += 8;
-			break;
-		}
-		InvalidateRect(hWnd, NULL, TRUE);
-	case WM_PAINT:
-		hdc = BeginPaint(hWnd, &ps);
-		TextOut(hdc, x, y, TEXT("A"), 1);
-		EndPaint(hWnd, &ps);
+		SetTimer(hWnd, 1, 50, TimerProc);
 		break;
 	case WM_LBUTTONDOWN:
-		MessageBox(hWnd, TEXT("마우스 왼쪽 버튼 누름"), TEXT("MessageBox"), MB_OK);
+		hdc = GetDC(hWnd);
+		Ellipse(hdc, LOWORD(lParam) - 10, HIWORD(lParam) - 10, LOWORD(lParam) + 10, HIWORD(lParam) + 10);
+		ReleaseDC(hWnd, hdc);
 		break;
 	case WM_DESTROY:
+		KillTimer(hWnd, 1);
 		PostQuitMessage(0);
 		return 0;
 	}
