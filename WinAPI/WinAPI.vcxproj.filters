@@ -13,36 +13,75 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="2D FrameWork">
+      <UniqueIdentifier>{974975f0-b657-44b7-89e0-22f01058eb84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2D FrameWork\Utility">
+      <UniqueIdentifier>{9ffbf6eb-e649-481b-976d-d017567db5f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2D FrameWork\Utility\Math">
+      <UniqueIdentifier>{41a9d83b-a8f7-4e40-972e-75af2b2d309f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2D FrameWork\PCH">
+      <UniqueIdentifier>{f6878413-2726-4220-820b-b0c0004421eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2D FrameWork\과제">
+      <UniqueIdentifier>{68c4303e-0119-4254-ae1a-4805000fb080}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="C3DVector.cpp">
+      <Filter>2D FrameWork\Utility\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="C3DMatrix.cpp">
+      <Filter>2D FrameWork\Utility\Math</Filter>
+    </ClCompile>
     <ClCompile Include="WinMain.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="과제 1.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="과제 2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="과제 2-1.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="과제 2-2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="과제 2-3.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="과제 2-4.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>2D FrameWork</Filter>
     </ClCompile>
     <ClCompile Include="소스.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>2D FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 1.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 2.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 2-1.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 2-2.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 2-3.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 2-4.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
+    <ClCompile Include="Stdafx.cpp">
+      <Filter>2D FrameWork\PCH</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 3-1.cpp">
+      <Filter>2D FrameWork\과제</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Stdafx.h">
+      <Filter>2D FrameWork\PCH</Filter>
+    </ClInclude>
+    <ClInclude Include="C3DMatrix.h">
+      <Filter>2D FrameWork\Utility\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C3DVector.h">
+      <Filter>2D FrameWork\Utility\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonMacroFunction.h">
+      <Filter>2D FrameWork\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

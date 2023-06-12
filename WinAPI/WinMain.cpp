@@ -31,8 +31,9 @@ EX)
 
 #pragma endregion
 
-#include <Windows.h>
-#include <tchar.h>
+#include "Stdafx.h"
+//#include <Windows.h>
+//#include <tchar.h>
 
 // 전역 변수
 /*
@@ -68,13 +69,6 @@ LPCTSTR     -> Long Pointer Constant t_string   = const tchar*
 // 콜백
 // 사각형 중심점에 만들기
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-
-RECT RectMakeCenter(int x, int y, int width, int height)
-{
-    RECT tc = { x - width / 2, y - height / 2, x + width / 2, y + height / 2 };
-
-    return rc;
-}
 
 /*
 hInstance : 프로그램 인스턴스 핸들
@@ -231,7 +225,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     char*: 수정 불가
     */
 
-    RECT rc = { 100, 100, 200, 200 };
+    static RECT rc = { 100, 100, 200, 200 };
 
     /*
     ◈ RECT : 사각형의 좌표를 저장하기 위한 구조체
@@ -241,6 +235,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     switch (iMessage)
     {
     case WM_CREATE:                 // 생성자
+        rc = RectMakeCenter(400, 400, 100, 100);
         break;
 
         /*
@@ -256,6 +251,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         */
     case WM_PAINT:                  // 출력에 관한 모든 것을 담당한다. (문자, 그림, 도형 등등 화면에 보이는 모든것)
         hdc = BeginPaint(hWnd, &ps);
+
+        Rectangle(hdc, rc.left, rc.top, rc.right, rc.bottom);
+        
 
         SetPixel(hdc, 300, 200, RGB(255, 0, 0));
 

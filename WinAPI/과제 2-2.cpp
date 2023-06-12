@@ -65,55 +65,40 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     return message.wParam;
 }
 
-void DrawBitmap(HDC hdc, int x, int y, int width, int height, HBITMAP hBit)
+LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
-    HDC MemDC;
+    HDC hdc, MemDC;
     HBITMAP OldBitmap;
     int bx, by;
     BITMAP bit;
-
-    MemDC = CreateCompatibleDC(hdc);
-    OldBitmap = (HBITMAP)SelectObject(MemDC, hBit);
-
-    GetObject(hBit, sizeof(BITMAP), &bit);
-    bx = bit.bmWidth;
-    by = bit.bmHeight;
-    StretchBlt(hdc, x, y, width, height, MemDC, 0, 0, bx, by,SRCCOPY);
-
-    SelectObject(MemDC, OldBitmap);
-    DeleteDC(MemDC);
-}
-
-LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
-{
-    HDC hdc;
     PAINTSTRUCT ps;
     RECT rt = { 0, 0, 256, 256 };
     static HBITMAP MyBitmap;
-    static bool isDraw = true;
 
     switch (iMessage)
     {
     case WM_CREATE:                 // 생성자
         MyBitmap = LoadBitmap(_hInstance, MAKEINTRESOURCE(IDB_BITMAP1));
         break;
-
     case WM_PAINT:                  // 출력에 관한 모든 것을 담당한다. (문자, 그림, 도형 등등 화면에 보이는 모든것)
-        if (isDraw)
+        hdc = BeginPaint(hWnd, &ps);
+        MemDC = CreateCompatibleDC(hdc);
+        OldBitmap = (HBITMAP)SelectObject(MemDC, MyBitmap);
+        GetObject(MyBitmap, sizeof(BITMAP), &bit);
+        bx = bit.bmWidth;
+        by = bit.bmHeight;
+        rt.right = bx;
+        rt.bottom = by;
+        for (int i = rt.left; i < rt.right; i++)
         {
-            hdc = BeginPaint(hWnd, &ps);
-            DrawBitmap(hdc, rt.left, rt.top, rt.right, rt.bottom, MyBitmap);
-            for (int i = rt.left; i < rt.right; i++)
+            for (int j = rt.top; j < rt.bottom; j++)
             {
-                for (int j = rt.top; j < rt.bottom; j++)
-                {
-                    SetPixel(hdc, i + 300, j, GetPixel(hdc, i, j));
-                }
+                SetPixel(hdc, i + 250, j + 250, GetPixel(MemDC, i, j));
             }
-            isDraw = false;
-            InvalidateRect(hWnd, &rt, TRUE);
-            EndPaint(hWnd, &ps);
         }
+        SelectObject(MemDC, OldBitmap);
+        DeleteDC(MemDC);
+        EndPaint(hWnd, &ps);
         break;
     case WM_DESTROY:                // 소멸자
         DeleteObject(MyBitmap);
