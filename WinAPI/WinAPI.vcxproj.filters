@@ -66,6 +66,15 @@
     <ClCompile Include="과제 3-1.cpp">
       <Filter>2D FrameWork\과제</Filter>
     </ClCompile>
+    <ClCompile Include="과제 4-1.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 4-2.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 4-3.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">

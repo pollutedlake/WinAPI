@@ -47,8 +47,10 @@ HINSTANCE _hInstance;
 // 윈도우 핸들 (윈도우 창)
 HWND _hWnd;
 // 윈도우 타이틀
-LPTSTR _lpszClass = TEXT("Windows API");
+// LPTSTR _lpszClass = TEXT("Windows API");
 //TCHAR* pszString = _T("Windwos API");
+
+POINT _ptMouse = { 0, 0 };
 
 /*
 ▶ TCHAR
@@ -69,6 +71,7 @@ LPCTSTR     -> Long Pointer Constant t_string   = const tchar*
 // 콜백
 // 사각형 중심점에 만들기
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+void setWindowSize(int x, int y, int width, int height);
 
 /*
 hInstance : 프로그램 인스턴스 핸들
@@ -84,6 +87,8 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     TCHAR*    lpszCmdParam,
     int       nCmdShow)
 */
+
+RECT _rc1, _rc2;
 
 int APIENTRY WinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
@@ -113,7 +118,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);                           // 아이콘
     wndClass.hInstance = hInstance;                                             // 윈도우를 소요한 프로그램의 식별자 정보
     wndClass.lpfnWndProc = (WNDPROC)WndProc;                                    // 윈도우 프로시저
-    wndClass.lpszClassName = _lpszClass;                                        // 클래스 이름 (식별자 정보)
+    wndClass.lpszClassName = WINNAME;                                        // 클래스 이름 (식별자 정보)
     wndClass.lpszMenuName = NULL;                                               // 메뉴 이름
     wndClass.style = CS_HREDRAW | CS_VREDRAW;                                   // 윈도우 스타일 (다시 그리기 정보)
 
@@ -123,19 +128,22 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     // 1-3. 화면에 보여줄 윈도우 창 생성
     _hWnd = CreateWindow
     (
-        _lpszClass,                     // 윈도우 클래스 식별자
-        _lpszClass,                     // 윈도우 타이틀 바 이름
-        WS_OVERLAPPEDWINDOW,            // 윈도우 스타일
-        400,                            // 윈도우 화면 X 좌표
-        100,                            // 윈도우 화면 Y 좌표
-        800,                            // 윈도우 화면 가로 크기
-        800,                            // 윈도우 화면 세로 크기
+        WINNAME,                     // 윈도우 클래스 식별자
+        WINNAME,                     // 윈도우 타이틀 바 이름
+        WINSTYLE,            // 윈도우 스타일
+        WINSTART_X,                            // 윈도우 화면 X 좌표
+        WINSTART_Y,                            // 윈도우 화면 Y 좌표
+        WINSIZE_X,                            // 윈도우 화면 가로 크기
+        WINSIZE_Y,                            // 윈도우 화면 세로 크기
         NULL,                           // 부모 윈도우 -> GetDsktopWindow
         (HMENU)NULL,                    // 메뉴 핸들
         hInstance,                      // 인스턴스 지정
         NULL                            // 윈도우의 자식 윈도우를 생성하면 지정하고 그렇지 않다면 NULL
                                         // ㄴ 필요에 의해서 사용하기도 하지만 지금은 NULL
     );
+
+    // 클라이언트 영역의 사이즈를 정확히 잡아주기 위해
+    setWindowSize(WINSTART_X, WINSTART_Y, WINSIZE_X, WINSIZE_Y);
 
     // 1-4. 화면에 윈도우창 보여주기
     ShowWindow(_hWnd, nCmdShow);
@@ -220,6 +228,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     HDC hdc;                // 핸들 DC
     PAINTSTRUCT ps;         // 페인트 구조체
 
+    static POINT pt = { 0, 0 };
+    char strPT[128];
+
     /*
     char[]: 수정 가능
     char*: 수정 불가
@@ -229,13 +240,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
     /*
     ◈ RECT : 사각형의 좌표를 저장하기 위한 구조체
-
     */
 
     switch (iMessage)
     {
     case WM_CREATE:                 // 생성자
         rc = RectMakeCenter(400, 400, 100, 100);
+        _rc1 = RectMakeCenter(WINSIZE_X / 2, WINSIZE_Y / 2, 100, 100);
+        _rc2 = RectMakeCenter(WINSIZE_X / 2 + 200, 400, 100, 100);
         break;
 
         /*
@@ -252,16 +264,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     case WM_PAINT:                  // 출력에 관한 모든 것을 담당한다. (문자, 그림, 도형 등등 화면에 보이는 모든것)
         hdc = BeginPaint(hWnd, &ps);
 
-        Rectangle(hdc, rc.left, rc.top, rc.right, rc.bottom);
-        
+        // wsprintf() : 숫자 -> 문자열 출력
+        wsprintf(strPT, "X : %d     Y : %d", pt.x, pt.y);
+        TextOut(hdc, 10, 10, strPT, strlen(strPT));
 
-        SetPixel(hdc, 300, 200, RGB(255, 0, 0));
+        Rectangle(hdc, _rc1.left, _rc1.top, _rc1.right, _rc1.bottom);
+        DrawRectMake(hdc, _rc2);
 
-        for (int i = 0; i < 10000; i++)
-        {
-            SetPixel(hdc, rand() % 800, rand() % 800, RGB(rand() % 255, rand() % 255, rand() % 255));
-        }
-
+        EllipseMakeCenter(hdc, WINSIZE_X / 2, WINSIZE_Y / 2, 100, 100);
         /*
         strcpy(x, y) : y를 x에 복사
         strcat(x, y) : x 문자열 + y 문자열
@@ -279,7 +289,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         strchr                                  문자 찾기
         strstr                                  문자열 찾기
         */
-
+        /*
         // 데카르트 좌표(실생활 좌표계) != 윈도우 좌표계
 
         // TextOut(): 문자 출력(hdc, x, y, 문자열, 문자열 길이)
@@ -300,7 +310,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
         Rectangle(hdc, 100, 100, 200, 200);
         Rectangle(hdc, rc.left, rc.top, rc.right, rc.bottom);
-
+        */
         EndPaint(hWnd, &ps);
         break;
 
@@ -325,6 +335,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     case WM_RBUTTONDOWN:
         break;
 
+    case WM_MOUSEMOVE:
+        pt.x = LOWORD(lParam);
+        pt.y = HIWORD(lParam);
+
+        InvalidateRect(hWnd, NULL, true);
+        break;
+
     case WM_DESTROY:                // 소멸자
         // PostQuitMessage() : 이 함수는 메세지 큐에 Quit 메세지를 보내는 역할을 한다.
         // 즉, Quit 메세지를 수신하는 순간 GetMessage 함수가 FALSE를 반환함으로 메세지 루프가 종료된다.
@@ -336,15 +353,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     return DefWindowProc(hWnd, iMessage, wParam, lParam);
 }
 
-/*
-과제1. 윈도우 창 만들기
+void setWindowSize(int x, int y, int width, int height)
+{
+    RECT rc = { 0, 0, width, height };
 
-- 시간은 10분
+    // 실제 윈도우 크기 조정
+    // AdjustWindowRect() : RECT 구조체, 윈도우 스타일, 메뉴 여부?
+    AdjustWindowRect(&rc, WINSTYLE, false);
 
-- 실패시 깜지 7번
-
-한줄 조사. 노트에 열심히 적는다.
-
-- Callback Function, DC, GetDC / Release DC, BeginPaint / EndPaint
-  WM_Paint, PAINTSTRUCT
-*/
+    // 언어온 RECT의 정보로 윈도우 사이즈 세팅
+    SetWindowPos(_hWnd, NULL, x, y, (rc.right - rc.left), (rc.bottom - rc.top), SWP_NOZORDER | SWP_NOMOVE);
+}

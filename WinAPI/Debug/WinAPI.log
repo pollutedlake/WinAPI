@@ -1,3 +1,1 @@
-﻿  소스.cpp
-C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\소스.cpp(68,6): warning C4101: 'i' :참조되지 않은 지역 변수입니다.
-  WinAPI.vcxproj -> C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\Debug\WinAPI.exe
+﻿  WinAPI.vcxproj -> C:\Users\언리얼\Desktop\박상현\WinAPI\WinAPI\Debug\WinAPI.exe
