@@ -129,6 +129,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             rt.bottom = pt.y;
             InvalidateRect(hWnd, NULL, true);
         }
+		if ((pt.x <= 0) || (pt.x >= 783))
+		{
+            bRectLeftResize = FALSE;
+            bRectRightResize = FALSE;
+            bRectTopResize = FALSE;
+            bRectBottomResize = FALSE;
+		}
+		if ((pt.y <= 0) || (pt.y >= 760))
+		{
+			bRectLeftResize = FALSE;
+			bRectRightResize = FALSE;
+			bRectTopResize = FALSE;
+			bRectBottomResize = FALSE;
+		}
         break;
     case WM_LBUTTONUP:
         bRectLeftResize = FALSE;

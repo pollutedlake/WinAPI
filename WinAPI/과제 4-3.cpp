@@ -89,33 +89,73 @@ BOOL checkRectSelect(POINT pt, RECT rt)
     return FALSE;
 }
 
-BOOL checkCollision(RECT moveRT, RECT stopRT)
+BOOL checkCollision(LPRECT moveRT, LPRECT stopRT)
 {
-    if ((moveRT.left >= stopRT.left) && (moveRT.left <= stopRT.right))
+    if ((moveRT->left > stopRT->left) && (moveRT->left < stopRT->right))
     {
-        if ((moveRT.top >= stopRT.top) && (moveRT.top <= stopRT.bottom))
+        if ((moveRT->top > stopRT->top) && (moveRT->top < stopRT->bottom))
         {
+           if ((stopRT->right - moveRT->left) >= (stopRT->bottom - moveRT->top))
+            {
+			   stopRT->top = moveRT->top - stopRT->bottom + stopRT->top;
+			   stopRT->bottom = moveRT->top;
+            }
+			if ((stopRT->right - moveRT->left) <= (stopRT->bottom - moveRT->top))
+			{
+				stopRT->left = moveRT->left - stopRT->right + stopRT->left;
+				stopRT->right = moveRT->left;
+			}
             return TRUE;
         }
     }
-    if ((moveRT.right >= stopRT.left) && (moveRT.right <= stopRT.right))
+    if ((moveRT->right > stopRT->left) && (moveRT->right < stopRT->right))
     {
-        if ((moveRT.top >= stopRT.top) && (moveRT.top <= stopRT.bottom))
+        if ((moveRT->top > stopRT->top) && (moveRT->top < stopRT->bottom))
         {
+			if ((moveRT->right - stopRT->left) >= (stopRT->bottom - moveRT->top))
+			{
+				stopRT->top = moveRT->top - stopRT->bottom + stopRT->top;
+				stopRT->bottom = moveRT->top;
+			}
+			if ((moveRT->right - stopRT->left) <= (stopRT->bottom - moveRT->top))
+			{
+				stopRT->right = moveRT->right + stopRT->right - stopRT->left;
+				stopRT->left = moveRT->right;
+			}
             return TRUE;
         }
     }
-    if ((moveRT.left >= stopRT.left) && (moveRT.left <= stopRT.right))
+    if ((moveRT->left > stopRT->left) && (moveRT->left < stopRT->right))
     {
-        if ((moveRT.bottom >= stopRT.top) && (moveRT.bottom <= stopRT.bottom))
+        if ((moveRT->bottom > stopRT->top) && (moveRT->bottom < stopRT->bottom))
         {
+			if ((stopRT->right - moveRT->left) >= (moveRT->bottom - stopRT->top))
+			{
+				stopRT->bottom = moveRT->bottom + stopRT->bottom - stopRT->top;
+				stopRT->top = moveRT->bottom;
+			}
+			if ((stopRT->right - moveRT->left) <= (moveRT->bottom - stopRT->top))
+			{
+				stopRT->left = moveRT->left - stopRT->right + stopRT->left;
+				stopRT->right = moveRT->left;
+			}
             return TRUE;
         }
     }
-    if ((moveRT.right >= stopRT.left) && (moveRT.right <= stopRT.right))
+    if ((moveRT->right > stopRT->left) && (moveRT->right < stopRT->right))
     {
-        if ((moveRT.bottom >= stopRT.top) && (moveRT.bottom <= stopRT.bottom))
+        if ((moveRT->bottom > stopRT->top) && (moveRT->bottom < stopRT->bottom))
         {
+			if ((moveRT->right - stopRT->left) >= (moveRT->bottom - stopRT->top))
+			{
+				stopRT->bottom = moveRT->bottom + stopRT->bottom - stopRT->top;
+				stopRT->top = moveRT->bottom;
+			}
+			if ((moveRT->right - stopRT->left) <= (moveRT->bottom - stopRT->top))
+			{
+				stopRT->right = moveRT->right + stopRT->right - stopRT->left;
+				stopRT->left = moveRT->right;
+			}
             return TRUE;
         }
     }
@@ -126,6 +166,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
     HDC hdc;
     PAINTSTRUCT ps;
+    int rtWidth = 50;
+    int rtHeight = 50;
     static POINT pt;
     static POINT exPT;
     static BOOL bRT1Move = FALSE;
@@ -133,13 +175,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     static BOOL bRT3Move = FALSE;
     static BOOL bRT4Move = FALSE;
     static pair<BOOL, RECT> rt[4];
-    static RECT rt1 = { 50, 50, 150, 150 };
-    static RECT rt2 = { 600, 50, 700, 150 };
-    static RECT rt3 = { 600, 600, 700, 700 };
-    static RECT rt4 = { 50, 600, 150, 700 };
+    static RECT rt1 = { 50, 50, 50 + rtWidth, 50 + rtHeight };
+    static RECT rt2 = { 600, 50, 600 + rtWidth, 50 + rtHeight };
+    static RECT rt3 = { 600, 600, 600 + rtWidth, 600 + rtHeight };
+    static RECT rt4 = { 50, 600, 50 + rtWidth, 600 + rtHeight };
     static int moveRT;
-    static BOOL collRect[4] = { FALSE, FALSE, FALSE, FALSE };
     static char str[128];
+    static POINT dir[4];
+    int count = 0;
 
     switch (iMessage)
     {
@@ -148,11 +191,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         rt[1] = make_pair(bRT2Move, rt2);
         rt[2] = make_pair(bRT3Move, rt3);
         rt[3] = make_pair(bRT4Move, rt4);
-        break;
+        for (int i = 0; i < 4; i++)
+        {
+            dir[i].x = 0;
+            dir[i].y = 0;
+        }
+		SetTimer(hWnd, 1, 50, NULL);
+		break;
     case WM_PAINT:                  // 출력에 관한 모든 것을 담당한다. (문자, 그림, 도형 등등 화면에 보이는 모든것)
         hdc = BeginPaint(hWnd, &ps);
-        wsprintf(str, "%d %d %d %d", collRect[0], collRect[1], collRect[2], collRect[3]);
-        TextOut(hdc, 10, 10, str, 7);
         for (int i = 0; i < 4; i++)
         {
             Rectangle(hdc, rt[i].second.left, rt[i].second.top, rt[i].second.right, rt[i].second.bottom);
@@ -173,7 +220,89 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         }
         break;
     case WM_TIMER:
-
+        for (int i = 0; i < 4; i++)
+        {   
+            if ((i == moveRT) && (rt[moveRT].first == TRUE))
+            {
+                continue;
+            }
+            if (dir[i].x > 150)
+            {
+                dir[i].x = 150;
+            }
+            if (dir[i].x < -150)
+            {
+                dir[i].x = -150;
+            }
+            if (dir[i].y > 150)
+            {
+                dir[i].y = 150;
+            }
+            if (dir[i].y < -150)
+            {
+                dir[i].y = -150;
+            }
+            if (dir[i].x != 0)
+            {
+                rt[i].second.left += dir[i].x;
+                rt[i].second.right += dir[i].x;
+                if (rt[i].second.left < 0)
+                {
+                    rt[i].second.left = -rt[i].second.left;
+                    rt[i].second.right = rt[i].second.left + rtWidth;
+                    dir[i].x = -dir[i].x;
+                }
+                if (rt[i].second.right > 783)
+                {
+                    rt[i].second.right = 1566 - rt[i].second.right;
+                    rt[i].second.left = rt[i].second.right - rtWidth;
+                    dir[i].x = -dir[i].x;
+                }
+                dir[i].x *= 0.9;
+            }
+            if (dir[i].y != 0)
+            {
+                rt[i].second.top += dir[i].y;
+                rt[i].second.bottom += dir[i].y;
+				if (rt[i].second.top < 0)
+				{
+					rt[i].second.top = -rt[i].second.top;
+					rt[i].second.bottom = rt[i].second.top + rtHeight;
+					dir[i].y = -dir[i].y;
+				}
+				if (rt[i].second.bottom > 760)
+				{
+					rt[i].second.bottom = 1520 - rt[i].second.bottom;
+					rt[i].second.top = rt[i].second.bottom - rtHeight;
+					dir[i].y = -dir[i].y;
+				}
+                dir[i].y *= 0.9;
+			}
+            for(int j = 0; j < 4; j++)
+            {
+                if (i == j)
+                {
+                    continue;
+                }
+                if ((j == moveRT) && (rt[moveRT].first == TRUE))
+                {
+                    if (checkCollision(&rt[j].second, &rt[i].second))
+                    {
+                        dir[i].x = 0;
+                        dir[i].y = 0;
+                        continue;
+                    }
+                }
+			    if (checkCollision(&rt[i].second, &rt[j].second) == TRUE)
+			    {
+				    dir[j].x += dir[i].x;
+				    dir[j].y += dir[i].y;
+                    dir[i].x = 0;
+                    dir[i].y = 0;
+			    }
+            }
+        }
+		InvalidateRect(hWnd, NULL, true);
         break;
     case WM_MOUSEMOVE:
         exPT = pt;
@@ -185,30 +314,57 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             rt[moveRT].second.right += pt.x - exPT.x;
             rt[moveRT].second.top += pt.y - exPT.y;
             rt[moveRT].second.bottom += pt.y - exPT.y;
+            if (rt[moveRT].second.left < 0)
+            {
+                rt[moveRT].second.left = 0;
+                rt[moveRT].second.right = rtWidth;
+            }
+            if (rt[moveRT].second.right > 783)
+            {
+				rt[moveRT].second.right = 783;
+				rt[moveRT].second.left = 783 - rtWidth;
+            }
+            if (rt[moveRT].second.top < 0)
+            {
+				rt[moveRT].second.top = 0;
+				rt[moveRT].second.bottom = rtHeight;
+            }
+            if (rt[moveRT].second.bottom > 760)
+            {
+                rt[moveRT].second.bottom = 760;
+                rt[moveRT].second.top = 760 - rtHeight;
+            }
+			for (int i = 0; i < 4; i++)
+			{
+				if (i == moveRT)
+				{
+					continue;
+				}
+				if (checkCollision(&rt[moveRT].second, &rt[i].second) == TRUE)
+				{
+					dir[i].x += pt.x - exPT.x;
+					dir[i].y += pt.y - exPT.y;
+				}
+			}
             InvalidateRect(hWnd, NULL, true);
-        }
-        for (int i = 0; i < 4; i++)
-        {
-            if (i == moveRT)
-            {
-                continue;
-            }
-            if (checkCollision(rt[moveRT].second, rt[i].second) == TRUE)
-            {
-                SetTimer(hWnd, 1, 1000, NULL);
-                rt[i].second.left += pt.x - exPT.x;
-                rt[i].second.right += pt.x - exPT.x;
-                rt[i].second.top += pt.y - exPT.y;
-                rt[i].second.bottom += pt.y - exPT.y;
-                collRect[i] = TRUE;
-                InvalidateRect(hWnd, NULL, true);
-            }
+			if ((pt.x <= 0) || (pt.x >= 783))
+			{
+				rt[moveRT].first = FALSE;
+                moveRT = NULL;
+			}
+			if ((pt.y <= 0) || (pt.y >= 760))
+			{
+                rt[moveRT].first = FALSE;
+				moveRT = NULL;
+			}
         }
         break;
     case WM_LBUTTONUP:
         rt[moveRT].first = FALSE;
+        moveRT = NULL;
         break;
     case WM_DESTROY:                // 소멸자
+        KillTimer(hWnd, 1);
         PostQuitMessage(0);
         return 0;
     }

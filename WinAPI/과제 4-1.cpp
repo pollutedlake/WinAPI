@@ -79,6 +79,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     switch (iMessage)
     {
     case WM_CREATE:                 // 생성자
+        
         break;
     case WM_PAINT:                  // 출력에 관한 모든 것을 담당한다. (문자, 그림, 도형 등등 화면에 보이는 모든것)
         hdc = BeginPaint(hWnd, &ps);
@@ -109,6 +110,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             rt.top += pt.y - exPT.y;
             rt.bottom += pt.y - exPT.y;
             InvalidateRect(hWnd, NULL, TRUE);
+            if ((pt.x <= 0) || (pt.x >= 783))
+            {
+                bRectMove = FALSE;
+            }
+            if ((pt.y <= 0) || (pt.y >= 760))
+            {
+                bRectMove = FALSE;
+            }
         }
         break;
     case WM_LBUTTONUP:
