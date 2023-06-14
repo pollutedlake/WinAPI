@@ -28,6 +28,12 @@
     <Filter Include="2D FrameWork\과제">
       <UniqueIdentifier>{68c4303e-0119-4254-ae1a-4805000fb080}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DesignPattern">
+      <UniqueIdentifier>{1c318ec5-0a6c-4c90-bf55-29b46a15fba8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DesignPattern\Singleton">
+      <UniqueIdentifier>{5b653dba-f98c-44d2-9894-cbf17b8f0119}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -75,6 +81,18 @@
     <ClCompile Include="과제 4-3.cpp">
       <Filter>2D FrameWork\과제</Filter>
     </ClCompile>
+    <ClCompile Include="MainTemplate.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 5-1.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 5-2.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
+    <ClCompile Include="과제 5-3.cpp">
+      <Filter>2D FrameWork\과제</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -90,6 +108,12 @@
       <Filter>2D FrameWork\Utility\Math</Filter>
     </ClInclude>
     <ClInclude Include="CommonMacroFunction.h">
+      <Filter>2D FrameWork\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="SingletonBase.h">
+      <Filter>DesignPattern\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomFunction.h">
       <Filter>2D FrameWork\Utility</Filter>
     </ClInclude>
   </ItemGroup>

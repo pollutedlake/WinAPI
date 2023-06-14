@@ -69,6 +69,7 @@ WBCS(와이드 바이트 캐릭터 셋)
 #include <tchar.h>
 // stdio : 표준 입출력 헤더 파일
 #include <stdio.h>
+#include <time.h>
 
 //! C++ 런타임 헤더 파일
 #include <iostream>
@@ -81,7 +82,7 @@ WBCS(와이드 바이트 캐릭터 셋)
 
 */
 #include <chrono>
-#include<random>
+#include <random>
 #include <vector>
 #include<map>
 // unordered_map : Hash 자료구조
@@ -114,6 +115,10 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 
 // # 사용자 정의 헤더 파일 #
 #include "CommonMacroFunction.h"
+#include "RandomFunction.h"
+
+// # 싱글톤 #
+#define RND RandomFunction::getSingleton()
 
 // # 매크로 # (윈도우창 초기화)
 #define WINNAME					(LPTSTR)(TEXT("WindowsAPI"))

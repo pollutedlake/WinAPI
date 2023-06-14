@@ -89,6 +89,8 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 */
 
 RECT _rc1, _rc2;
+int centerX;
+int centerY;
 
 int APIENTRY WinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
@@ -245,9 +247,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     switch (iMessage)
     {
     case WM_CREATE:                 // 생성자
-        rc = RectMakeCenter(400, 400, 100, 100);
-        _rc1 = RectMakeCenter(WINSIZE_X / 2, WINSIZE_Y / 2, 100, 100);
-        _rc2 = RectMakeCenter(WINSIZE_X / 2 + 200, 400, 100, 100);
+        //rc = RectMakeCenter(400, 400, 100, 100);
+        //_rc1 = RectMakeCenter(WINSIZE_X / 2, WINSIZE_Y / 2, 100, 100);
+       // _rc2 = RectMakeCenter(WINSIZE_X / 2 + 200, 400, 100, 100);
+        centerX = WINSIZE_X / 2;
+        centerY = WINSIZE_Y / 2;
         break;
 
         /*
@@ -268,10 +272,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         wsprintf(strPT, "X : %d     Y : %d", pt.x, pt.y);
         TextOut(hdc, 10, 10, strPT, strlen(strPT));
 
-        Rectangle(hdc, _rc1.left, _rc1.top, _rc1.right, _rc1.bottom);
-        DrawRectMake(hdc, _rc2);
+        //Rectangle(hdc, _rc1.left, _rc1.top, _rc1.right, _rc1.bottom);
+        //DrawRectMake(hdc, _rc2);
 
-        EllipseMakeCenter(hdc, WINSIZE_X / 2, WINSIZE_Y / 2, 100, 100);
+        //EllipseMakeCenter(hdc, WINSIZE_X / 2, WINSIZE_Y / 2, 100, 100);
+        Rectangle(hdc, centerX, centerY, 100, 100);
         /*
         strcpy(x, y) : y를 x에 복사
         strcat(x, y) : x 문자열 + y 문자열
@@ -333,14 +338,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         }
 
     case WM_RBUTTONDOWN:
+        centerX = RND->getInt(WINSIZE_X);
+        centerY = RND->getInt(WINSIZE_Y);
+        InvalidateRect(hWnd, NULL, true);
         break;
 
-    case WM_MOUSEMOVE:
+ /*   case WM_MOUSEMOVE:
         pt.x = LOWORD(lParam);
         pt.y = HIWORD(lParam);
 
         InvalidateRect(hWnd, NULL, true);
-        break;
+        break;*/
 
     case WM_DESTROY:                // 소멸자
         // PostQuitMessage() : 이 함수는 메세지 큐에 Quit 메세지를 보내는 역할을 한다.
