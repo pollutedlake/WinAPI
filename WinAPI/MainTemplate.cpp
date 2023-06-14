@@ -4,7 +4,7 @@ HINSTANCE _hInstance;
 HWND _hWnd;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-
+void setWindowSize(int, int, int, int);
 
 int APIENTRY WinMain(HINSTANCE hInstance,
     HINSTANCE hPrevInstance,

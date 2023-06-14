@@ -97,7 +97,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         circleRT.right += dirX * speed;
         circleRT.top += dirY * speed;
         circleRT.bottom += dirY * speed;
-        if (circleRT.left< rt.left)
+        if (circleRT.left < rt.left)
         {
             dirX *= -1;
             circleRT.left = rt.left;

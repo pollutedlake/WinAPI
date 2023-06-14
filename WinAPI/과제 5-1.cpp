@@ -80,7 +80,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     static POINT pt;
     int type;
     static BOOL bDraw = FALSE;
-    POINT apt[99];
+    POINT apt[256];
 
     switch (iMessage)
     {
@@ -99,12 +99,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
                 break;
             case 1:
                 int num = RND->getFromIntTo(3, 8);
+                int xSum = 0;
+                int ySum = 0;
                 float lastAngle;
                 float firstAngle = RND->getFromFloatTo(0.f, 360.f);
                 lastAngle = firstAngle;
                 float r = RND->getFromFloatTo(1, 400);
                 apt[0].x = pt.x + r * cos(firstAngle / (float)180 * PI);
                 apt[0].y = pt.y + r * sin(firstAngle / (float)180 * PI);
+                xSum += apt[0].x;
+                ySum += apt[0].y;
                 for (int i = 1; i < num; i++)
                 {
                     r = RND->getFromFloatTo(1, 400);
@@ -112,6 +116,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
                     lastAngle = angle;
                     apt[i].x = pt.x + r * cos(angle / (float)180 * PI);
                     apt[i].y = pt.y + r * sin(angle / (float)180 * PI);
+                    xSum += apt[i].x;
+                    ySum += apt[i].y;
+                }
+                for (int i = 0; i < num; i++)
+                {
+                    apt[i].x += pt.x - xSum / num;
+                    apt[i].y += pt.y - ySum / num;
                 }
                 for (int i = 0; i < num - 1; i++)
                 {
@@ -125,7 +136,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
                         }
                         else if (apt[i].y == apt[j].y)
                         {
-                            if (apt[i].x > apt[j].x)
+                            if (apt[i].x < apt[j].x)
                             {
                                 POINT temp = apt[i];
                                 apt[i] = apt[j];
@@ -138,11 +149,31 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
                 {
                     for (int j = i + 1; j < num; j++)
                     {
-                        if (((double)(apt[i].y - apt[0].y) / (double)(apt[i].x - apt[0].x)) < ((double)(apt[j].y - apt[0].y) / (double)(apt[j].x - apt[0].x)))
+                        double inclinationI = ((double)(apt[i].y - apt[0].y) / (double)(apt[i].x - apt[0].x));
+                        double inclinationJ = ((double)(apt[j].y - apt[0].y) / (double)(apt[j].x - apt[0].x));
+                        if (inclinationI > 0 && inclinationJ > 0)
                         {
-                            POINT temp = apt[i];
-                            apt[i] = apt[j];
-                            apt[j] = temp;
+                            if (inclinationI > inclinationJ)
+                            {
+								POINT temp = apt[i];
+								apt[i] = apt[j];
+								apt[j] = temp;
+                            }
+                        }
+                        else if (inclinationI < 0 && inclinationJ > 0)
+                        {
+							POINT temp = apt[i];
+							apt[i] = apt[j];
+							apt[j] = temp;
+                        }
+                        else if (inclinationI < 0 && inclinationJ < 0)
+                        {
+                            if (inclinationI > inclinationJ)
+                            {
+								POINT temp = apt[i];
+								apt[i] = apt[j];
+								apt[j] = temp;
+                            }
                         }
                     }
                 }

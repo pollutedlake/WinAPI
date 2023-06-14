@@ -6,11 +6,13 @@
 */
 
 #include "Stdafx.h"
+#include "resource1.h"
 
 HINSTANCE _hInstance;
 HWND _hWnd;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+void setWindowSize(int, int, int, int);
 
 
 int APIENTRY WinMain(HINSTANCE hInstance,
@@ -69,36 +71,40 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
-    HDC hdc;                // 핸들 DC
+    HDC hdc, memDC;                // 핸들 DC
     PAINTSTRUCT ps;         // 페인트 구조체
+    static HBITMAP myBitMap;
+    HBITMAP oldBitMap;
 
-    static POINT pt = { 0, 0 };
-    char strPT[128];
+    //POINT hair[] = {{337, 94}, {356, 91}, {376, 81}, {414, 81}, {452, 84}, {486, 96}, {516, 108}, {542, 126}, {562, 151}, {584, 174},
+    //{597, 194}, {609, 215}, {622, 239}, };
 
     static RECT rc = { 100, 100, 200, 200 };
 
     switch (iMessage)
     {
     case WM_CREATE:                 // 생성자
+        myBitMap = LoadBitmap(_hInstance, MAKEINTRESOURCE(IDB_BITMAP3));
         break;
-
     case WM_PAINT:                  // 출력에 관한 모든 것을 담당한다. (문자, 그림, 도형 등등 화면에 보이는 모든것)
         hdc = BeginPaint(hWnd, &ps);
+        memDC = CreateCompatibleDC(hdc);
+        oldBitMap = (HBITMAP)SelectObject(memDC, myBitMap);
+        for (int i = 0; i < 800; i++)
+        {
+            for (int j = 0; j < 800; j++)
+            {
+                if (GetPixel(memDC, i, j) == RGB(238, 238, 20))
+                {
+                    SetPixel(hdc, i, j, RGB(0, 0, 0));
+                }
+            }
+        }
+        SelectObject(memDC, oldBitMap);
+        DeleteObject(myBitMap);
+        DeleteDC(memDC);
         EndPaint(hWnd, &ps);
         break;
-
-    case WM_LBUTTONDOWN:        // 마우스 왼쪽 버튼이 눌렸을 때 메세지가 발생한다.
-        break;
-
-    case WM_KEYDOWN:
-        break;
-
-    case WM_RBUTTONDOWN:
-        break;
-
-    case WM_MOUSEMOVE:
-        break;
-
     case WM_DESTROY:                // 소멸자
         PostQuitMessage(0);
         return 0;
