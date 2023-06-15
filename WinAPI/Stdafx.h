@@ -142,6 +142,6 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 // static은 실행 중에 static 속성을 변경할 수 있지만 extern은 한번 설정하면 바꿀 수 없다.
 extern HINSTANCE				_hInstance;
 extern HWND						_hWnd;
-// X 좌표롸  Y 좌표를 평면의 좌표에 정의할 때 사용을 한다.
+// X 좌표와  Y 좌표를 평면의 좌표에 정의할 때 사용을 한다.
 extern POINT					_ptMouse;
 // extern ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;  클래스 참조의 경우 nullptr이 아니라 객체로 정확히 명시해줘야 extern화된다.

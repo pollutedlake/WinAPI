@@ -50,8 +50,6 @@ HWND _hWnd;
 // LPTSTR _lpszClass = TEXT("Windows API");
 //TCHAR* pszString = _T("Windwos API");
 
-POINT _ptMouse = { 0, 0 };
-
 /*
 ¢º TCHAR
 
