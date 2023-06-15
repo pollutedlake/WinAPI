@@ -4,7 +4,7 @@
 HRESULT GameNode::init(void)
 {
 	// 타이머 초기화
-	SetTimer(_hWnd, 1, 1, NULL);
+	SetTimer(_hWnd, 1, 100, NULL);
 
 	// 함수가 성공적으로 실행 되었음을 알린다.
 	return S_OK;
@@ -31,7 +31,6 @@ LRESULT GameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
 {
     HDC hdc;               
     PAINTSTRUCT ps;
-    _hWNd = hWnd;
     switch (iMessage)
     {
     case WM_TIMER:
@@ -43,8 +42,6 @@ LRESULT GameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
         EndPaint(hWnd, &ps);
         break;
     case WM_LBUTTONDOWN:
-        pt.x = LOWORD(lParam);
-        pt.y = HIWORD(lParam);
         break;
     case WM_KEYDOWN:
         switch (wParam)

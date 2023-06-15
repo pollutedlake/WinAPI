@@ -10,18 +10,26 @@ class MainGame : public GameNode
 private:
 	Card* cards[20];
 	BOOL bCardPairCheck = FALSE;
+	BOOL bMouseClick = FALSE;
 	int count = 0;
 	HBRUSH oldCardColor;
-	int reverseTime  = 2000;
+	int reverseTime  = 20;
 	int deltaTime = 0;
+
 	Card* selectCard[2];
+	std::vector<Card*> openCards;
 
-
+	POINT pt;
 public:
 	virtual HRESULT init(void);
 	virtual void release(void);
 	virtual void update(void);
 	virtual void render(HDC hdc);
+
+	void cheat1();
+	void cheat2();
+
+	virtual LRESULT MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
 
 	MainGame() {}
 	~MainGame() {}

@@ -28,4 +28,13 @@ Card::Card(int _centerX, int _centerY, int _width, int _height, HBRUSH _cardColo
 
 Card::~Card()
 {
+	
+}
+
+void Card::setRect(RECT _rt)
+{
+	width = _rt.right - _rt.left;
+	height = _rt.bottom - _rt.top;
+	centerX = _rt.left + width / 2;
+	centerY = _rt.top + height / 2;
 }

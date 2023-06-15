@@ -11,6 +11,7 @@ private:
 
 public:
 	RECT getRect() { return RectMakeCenter(centerX, centerY, width, height); }
+	void setRect(RECT _rt);
 	void openCard() { open = true; }
 	void reverseCard() { open = false; }
 	void setOpen(BOOL _open) { open = _open; }
