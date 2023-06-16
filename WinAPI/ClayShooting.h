@@ -10,14 +10,18 @@ class ClayShooting : public GameNode
 private:
 	POINT pt;
 	vector<Clay*> clays;
-	int point;
+	int score;
 	int deltaTime;
 	int nextClayTime;
+	int gameTime;
+
 public:
 	virtual HRESULT init(void);
 	virtual void release(void);
 	virtual void update(void);
 	virtual void render(HDC hdc);
+
+	void Shoot(POINT _pt);
 
 	virtual LRESULT MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
 
