@@ -147,6 +147,8 @@
     <ClCompile Include="C3DMatrix.cpp" />
     <ClCompile Include="C3DVector.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="Clay.cpp" />
+    <ClCompile Include="ClayShooting.cpp" />
     <ClCompile Include="FindCardPair.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="IWindowsMessageHandler.cpp" />
@@ -155,6 +157,7 @@
     <ClCompile Include="MainTemplate.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="MoleGame.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
@@ -209,12 +212,15 @@
     <ClInclude Include="C3DMatrix.h" />
     <ClInclude Include="C3DVector.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="Clay.h" />
+    <ClInclude Include="ClayShooting.h" />
     <ClInclude Include="CommonMacroFunction.h" />
     <ClInclude Include="FindCardPair.h" />
     <ClInclude Include="GameNode.h" />
     <ClInclude Include="IWindowsMessageHandler.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="MoleGame.h" />
     <ClInclude Include="RandomFunction.h" />
     <ClInclude Include="resource1.h" />
     <ClInclude Include="SingletonBase.h" />

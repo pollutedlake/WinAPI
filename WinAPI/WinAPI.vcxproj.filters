@@ -46,6 +46,12 @@
     <Filter Include="과제\카드 짝 맞추기">
       <UniqueIdentifier>{56056ade-4035-42ca-93f1-b329d2ff7789}</UniqueIdentifier>
     </Filter>
+    <Filter Include="과제\두더지 게임">
+      <UniqueIdentifier>{60835c76-e4da-43af-9a56-29696d08af4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="과제\클레이 사격">
+      <UniqueIdentifier>{6b31adb3-9f7d-40f9-a44b-b8e0a77932e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -126,6 +132,15 @@
     <ClCompile Include="KeyManager.cpp">
       <Filter>ManagerClass</Filter>
     </ClCompile>
+    <ClCompile Include="MoleGame.cpp">
+      <Filter>과제\두더지 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="ClayShooting.cpp">
+      <Filter>과제\클레이 사격</Filter>
+    </ClCompile>
+    <ClCompile Include="Clay.cpp">
+      <Filter>과제\클레이 사격</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -166,6 +181,15 @@
     </ClInclude>
     <ClInclude Include="KeyManager.h">
       <Filter>ManagerClass</Filter>
+    </ClInclude>
+    <ClInclude Include="MoleGame.h">
+      <Filter>과제\두더지 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="ClayShooting.h">
+      <Filter>과제\클레이 사격</Filter>
+    </ClInclude>
+    <ClInclude Include="Clay.h">
+      <Filter>과제\클레이 사격</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

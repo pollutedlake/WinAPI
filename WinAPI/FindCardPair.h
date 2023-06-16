@@ -1,4 +1,5 @@
 #pragma once
+#include "Stdafx.h"
 #include "GameNode.h"
 #include "Card.h"
 
@@ -16,7 +17,7 @@ private:
 	int deltaTime = 0;
 
 	Card* selectCard[2];
-	std::vector<Card*> openCards;
+	vector<Card*> openCards;
 
 	POINT pt;
 public:

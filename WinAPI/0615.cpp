@@ -1,19 +1,48 @@
 #include "Stdafx.h"
-#include "MainGame.h"
+
+#define MOLEGAME        1
+#define CLAYSHOOTING    2
+#define FINDCARDPAIR    3
+
+#define ASSIGNMENT      CLAYSHOOTING
+
+#if ASSIGNMENT == MOLEGAME
+
+#include "MoleGame.h"
+MoleGame* _mg;
+
+#elif ASSIGNMENT == CLAYSHOOTING
+
+#include "ClayShooting.h"
+ClayShooting* _mg;
+
+#elif ASSIGNMENT == FINDCARDPAIR
+
+#include "FindCardPair.h"
+FindCardPair* _mg;
+
+#endif
+
 HINSTANCE _hInstance;
 HWND _hWnd;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void setWindowSize(int, int, int, int);
 
-MainGame* _mg;
-
 int APIENTRY WinMain(HINSTANCE hInstance,
     HINSTANCE hPrevInstance,
     LPSTR     lpszCmdParam,
     int       nCmdShow)
 {
-    _mg = new MainGame();
+
+#if ASSINGMENT == MOLEGAME
+    _mg = new MoleGame();
+#elif ASSIGNMENT == CLAYSHOOTING
+    _mg = new ClayShooting();
+#elif ASSIGNMENT == FINDCARDPAIR
+    _mg = new FindCardPair();
+#endif
+
     _hInstance = hInstance;
 
     WNDCLASS wndClass;
