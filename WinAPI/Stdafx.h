@@ -92,6 +92,11 @@ WBCS(와이드 바이트 캐릭터 셋)
 #include <unordered_map>
 // cassert : C++ 프로그래머의 희망 -> 잘 쓰면
 #include<cassert>
+// bitset : 비트 연산을 좀더 쉽게 관리해 주는 함수를 지원하는 STL
+// ㄴ reset(), set, flip(), all(), any(), size() 등등....
+#include<bitset>
+using std::vector;
+using std::bitset;
 
 /*
 //! D2D/D3D 헤더파일
@@ -116,9 +121,11 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 // # 사용자 정의 헤더 파일 #
 #include "CommonMacroFunction.h"
 #include "RandomFunction.h"
+#include "KeyManager.h"
 
 // # 싱글톤 #
 #define RND RandomFunction::getSingleton()
+#define KEYMANAGER KeyManager::getSingleton()
 
 // # 매크로 # (윈도우창 초기화)
 #define WINNAME					(LPTSTR)(TEXT("WindowsAPI"))

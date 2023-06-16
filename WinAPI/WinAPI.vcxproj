@@ -142,13 +142,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="0615.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="C3DMatrix.cpp" />
     <ClCompile Include="C3DVector.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="FindCardPair.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="IWindowsMessageHandler.cpp" />
+    <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MainTemplate.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -208,8 +210,10 @@
     <ClInclude Include="C3DVector.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CommonMacroFunction.h" />
+    <ClInclude Include="FindCardPair.h" />
     <ClInclude Include="GameNode.h" />
     <ClInclude Include="IWindowsMessageHandler.h" />
+    <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="RandomFunction.h" />
     <ClInclude Include="resource1.h" />

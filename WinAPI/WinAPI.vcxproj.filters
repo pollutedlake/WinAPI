@@ -105,9 +105,6 @@
     <ClCompile Include="과제 5-3.cpp">
       <Filter>과제</Filter>
     </ClCompile>
-    <ClCompile Include="0615.cpp">
-      <Filter>2D FrameWork</Filter>
-    </ClCompile>
     <ClCompile Include="GameNode.cpp">
       <Filter>2D FrameWork\GameCore</Filter>
     </ClCompile>
@@ -119,6 +116,15 @@
     </ClCompile>
     <ClCompile Include="Card.cpp">
       <Filter>과제\카드 짝 맞추기</Filter>
+    </ClCompile>
+    <ClCompile Include="0615.cpp">
+      <Filter>과제\카드 짝 맞추기</Filter>
+    </ClCompile>
+    <ClCompile Include="FindCardPair.cpp">
+      <Filter>과제\카드 짝 맞추기</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyManager.cpp">
+      <Filter>ManagerClass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +160,12 @@
     </ClInclude>
     <ClInclude Include="Card.h">
       <Filter>과제\카드 짝 맞추기</Filter>
+    </ClInclude>
+    <ClInclude Include="FindCardPair.h">
+      <Filter>과제\카드 짝 맞추기</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyManager.h">
+      <Filter>ManagerClass</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

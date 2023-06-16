@@ -6,6 +6,9 @@ HRESULT GameNode::init(void)
 	// 타이머 초기화
 	SetTimer(_hWnd, 1, 100, NULL);
 
+    RND->init();
+    KEYMANAGER->init();
+
 	// 함수가 성공적으로 실행 되었음을 알린다.
 	return S_OK;
 }
@@ -14,6 +17,9 @@ void GameNode::release(void)
 {
 	// 동적할당과 같이 삭제하지 않고 종료하면 메모리 줄줄줄...
 	KillTimer(_hWnd, 1);
+
+    RND->releaseSingleton();
+    KEYMANAGER->releaseSingleton();
 }
 
 void GameNode::update(void)

@@ -17,7 +17,7 @@ public:
 	{
 		return rand() % num;
 	}
-
+	HRESULT init(void) { return S_OK; }
 	// 0을 조심하자
 	inline int getFromIntTo(int fromNum, int toNum)
 	{
