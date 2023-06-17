@@ -14,6 +14,7 @@ private:
 	int deltaTime;
 	int nextClayTime;
 	int gameTime;
+	BOOL playGame;
 
 public:
 	virtual HRESULT init(void);

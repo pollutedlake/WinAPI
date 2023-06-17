@@ -28,7 +28,8 @@ HRESULT ClayShooting::init(void)
 	score = 0;
 	deltaTime = 0;
 	nextClayTime = 20;
-	gameTime = 600;
+	gameTime = 620;
+	playGame = TRUE;
 	return S_OK;
 }
 
@@ -45,23 +46,39 @@ void ClayShooting::release(void)
 void ClayShooting::update(void)
 {
 	GameNode::update();
-	deltaTime++;
-	if (nextClayTime < deltaTime)
+	gameTime--;
+	if (!gameTime || score > 5000)
 	{
-		deltaTime = 0;
-		nextClayTime = RND->getFromIntTo(10, 20);
-		int startPosX = (RND->getFromIntTo(0, 1)) * 800;
-		float angle;
-		angle = RND->getFromFloatTo(20.0f, 70.0f);
-		angle = (startPosX == 0) ? -angle : (-180 + angle);
-		POINT startDir;
-		startDir.x = 40 * cos(angle / 180 * PI);
-		startDir.y = (WINSIZE_X / 2) / startDir.x;
-		startDir.y = -abs(startDir.y);
-		clays.push_back(new Clay(RND->getFromIntTo(0, 1), {startPosX, RND->getFromIntTo(200, 400)}, startDir, FALSE));
+		playGame = FALSE;
+	}
+	if (playGame == TRUE)
+	{
+		nextClayTime--;
+		if (!nextClayTime)
+		{
+			nextClayTime = RND->getFromIntTo(10, 20);
+			int startPosX = (RND->getFromIntTo(0, 1)) * 800;
+			float angle;
+			angle = RND->getFromFloatTo(20.0f, 70.0f);
+			angle = (startPosX == 0) ? -angle : (-180 + angle);
+			POINT startDir;
+			startDir.x = 40 * cos(angle / 180 * PI);
+			startDir.y = (WINSIZE_X / 2) / startDir.x;
+			startDir.y = -abs(startDir.y);
+			clays.push_back(new Clay(RND->getFromIntTo(0, 2), { startPosX, RND->getFromIntTo(200, 400) }, startDir, FALSE));
+		}
 	}
 	for (auto it = clays.begin(); it != clays.end();)
 	{
+		if ((*it)->getType() == 2)
+		{
+			if ((*it)->getVertexes()[0].y > 600)
+			{
+				delete (*it);
+				it = clays.erase(it);
+				continue;
+			}
+		}
 		if ((*it)->getPosition().y > 575)
 		{
 			delete (*it);
@@ -95,7 +112,7 @@ void ClayShooting::render(HDC hdc)
 				EllipseMakeCenter(hdc, (*it)->getPosition().x, (*it)->getPosition().y, 50, 50);
 			break;
 			case 2:
-
+				Polygon(hdc, (*it)->getVertexes(), (*it)->getVertexN());
 			break;
 		}
 	}
@@ -103,6 +120,33 @@ void ClayShooting::render(HDC hdc)
 	wsprintf(str, "Your Score : %d", score);
 	SetTextAlign(hdc, TA_CENTER);
 	TextOut(hdc, WINSIZE_X / 2, 700, str, lstrlen(str));
+	if (playGame == TRUE)
+	{
+		if (gameTime <= 600 && gameTime > 0)
+		{
+			wsprintf(str, "Time : %d", gameTime / 10);
+		}
+		else
+		{
+			wsprintf(str, "Time : 0");
+		}
+		TextOut(hdc, WINSIZE_X / 2, 650, str, lstrlen(str));
+	}
+	else
+	{
+		if (score > 5000)
+		{
+			wsprintf(str, "YOU WIN");
+
+		}
+		else
+		{
+			wsprintf(str, "YOU LOSE");
+
+		}
+		TextOut(hdc, WINSIZE_X / 2, 750, str, lstrlen(str));
+
+	}
 }
 
 void ClayShooting::Shoot(POINT _pt)
@@ -113,24 +157,20 @@ void ClayShooting::Shoot(POINT _pt)
 		{
 			continue;
 		}
-		switch ((*it)->getType())
+		if ((*it)->isHitted(_pt))
 		{
+			switch ((*it)->getType())
+			{
 			case 0:
-				if ((*it)->getPosition().x - 25 < _pt.x && (*it)->getPosition().x + 25 > _pt.x)
-				{
-					if ((*it)->getPosition().y - 25 < _pt.y && (*it)->getPosition().y + 25 > _pt.y)
-					{
-						(*it)->setIsHit(TRUE);
-						score += 50;
-					}
-				}
-			break;
+				score += 50;
+				break;
 			case 1:
-				if ((pow(_pt.x - (*it)->getPosition().x, 2) + pow(_pt.y - (*it)->getPosition().y, 2)) < 2500)
-				{
-					(*it)->setIsHit(TRUE);
-					score -= 100;
-				}
+				score -= 100;
+				break;
+			case 2:
+				score += 100;
+				break;
+			}
 			break;
 		}
 	}
@@ -153,7 +193,10 @@ LRESULT ClayShooting::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM l
 	case WM_LBUTTONDOWN:
 		pt.x = LOWORD(lParam);
 		pt.y = HIWORD(lParam);
-		Shoot(pt);
+		if (playGame == TRUE)
+		{
+			Shoot(pt);
+		}
 		break;
 	case WM_KEYDOWN:
 		switch (wParam)
