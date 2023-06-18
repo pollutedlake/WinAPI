@@ -141,6 +141,9 @@
     <ClCompile Include="Clay.cpp">
       <Filter>과제\클레이 사격</Filter>
     </ClCompile>
+    <ClCompile Include="Mole.cpp">
+      <Filter>과제\두더지 게임</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -191,6 +194,9 @@
     <ClInclude Include="Clay.h">
       <Filter>과제\클레이 사격</Filter>
     </ClInclude>
+    <ClInclude Include="Mole.h">
+      <Filter>과제\두더지 게임</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WinAPI1.rc">
@@ -205,6 +211,15 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="bitmap3.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="bitmap4.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="mole.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="bitmap5.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

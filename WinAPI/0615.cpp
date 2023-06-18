@@ -35,7 +35,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     int       nCmdShow)
 {
 
-#if ASSINGMENT == MOLEGAME
+#if ASSIGNMENT == MOLEGAME
     _mg = new MoleGame();
 #elif ASSIGNMENT == CLAYSHOOTING
     _mg = new ClayShooting();

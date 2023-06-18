@@ -55,7 +55,6 @@
 
 class GameNode
 {
-
 public:
 
 	virtual HRESULT init(void);

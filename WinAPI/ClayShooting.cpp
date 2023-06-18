@@ -22,6 +22,8 @@
 - 실패시 : 깜지 5번
 */
 
+POINT _ptMouse;
+
 HRESULT ClayShooting::init(void)
 {
 	GameNode::init();
@@ -45,7 +47,6 @@ void ClayShooting::release(void)
 
 void ClayShooting::update(void)
 {
-	GameNode::update();
 	gameTime--;
 	if (!gameTime || score > 5000)
 	{
@@ -56,7 +57,7 @@ void ClayShooting::update(void)
 		nextClayTime--;
 		if (!nextClayTime)
 		{
-			nextClayTime = RND->getFromIntTo(10, 20);
+			nextClayTime = RND->getFromIntTo(3, 6);
 			int startPosX = (RND->getFromIntTo(0, 1)) * 800;
 			float angle;
 			angle = RND->getFromFloatTo(20.0f, 70.0f);
@@ -95,6 +96,7 @@ void ClayShooting::update(void)
 		(*it)->setDir({ (*it)->getDir().x, (*it)->getDir().y + 1 });
 		++it;
 	}
+	GameNode::update();
 }
 
 void ClayShooting::render(HDC hdc)

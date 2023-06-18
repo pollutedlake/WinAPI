@@ -1,10 +1,12 @@
 #include "Stdafx.h"
 #include "GameNode.h"
 
+POINT _ptMouse;
+
 HRESULT GameNode::init(void)
 {
 	// 타이머 초기화
-	SetTimer(_hWnd, 1, 100, NULL);
+	SetTimer(_hWnd, 1, 50, NULL);
 
     RND->init();
     KEYMANAGER->init();
@@ -48,6 +50,8 @@ LRESULT GameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
         EndPaint(hWnd, &ps);
         break;
     case WM_LBUTTONDOWN:
+        _ptMouse.x = LOWORD(lParam);
+        _ptMouse.y = HIWORD(lParam);
         break;
     case WM_KEYDOWN:
         switch (wParam)

@@ -132,7 +132,7 @@ BOOL Clay::isHitted(POINT pt)
 		}
 		break;
 	case 1:
-		if ((pow(pt.x - position.x, 2) + pow(pt.y - position.y, 2)) < 2500)
+		if ((pow(pt.x - position.x, 2) + pow(pt.y - position.y, 2)) < 625)
 		{
 			isHit = TRUE;
 			return TRUE;

@@ -157,6 +157,7 @@
     <ClCompile Include="MainTemplate.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Mole.cpp" />
     <ClCompile Include="MoleGame.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -220,6 +221,7 @@
     <ClInclude Include="IWindowsMessageHandler.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Mole.h" />
     <ClInclude Include="MoleGame.h" />
     <ClInclude Include="RandomFunction.h" />
     <ClInclude Include="resource1.h" />
@@ -232,6 +234,9 @@
   <ItemGroup>
     <Image Include="apple logo.bmp" />
     <Image Include="bitmap3.bmp" />
+    <Image Include="bitmap4.bmp" />
+    <Image Include="bitmap5.bmp" />
+    <Image Include="mole.bmp" />
     <Image Include="MyFace.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
