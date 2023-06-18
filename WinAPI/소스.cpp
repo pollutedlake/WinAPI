@@ -1,86 +1,85 @@
 #include "Stdafx.h"
+#include "MainGame.h"
 
 HINSTANCE _hInstance;
 HWND _hWnd;
-LPTSTR _lpszClass = TEXT("test");
+MainGame* _mg;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+void setWindowSize(int, int, int, int);
 
-int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow)
+int APIENTRY WinMain(HINSTANCE hInstance,
+	HINSTANCE hPrevInstance,
+	LPSTR     lpszCmdParam,
+	int       nCmdShow)
 {
-	_hInstance = hInstance;
 
+	_hInstance = hInstance;
+	_mg = new MainGame();
 	WNDCLASS wndClass;
-	wndClass.cbClsExtra = 0;
-	wndClass.cbWndExtra = 0;
-	wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
-	wndClass.hCursor = LoadCursor(hInstance, IDC_ARROW);
-	wndClass.hIcon = LoadIcon(hInstance, IDI_APPLICATION);
-	wndClass.hInstance = hInstance;
-	wndClass.lpfnWndProc = (WNDPROC)WndProc;
-	wndClass.lpszClassName = _lpszClass;
-	wndClass.lpszMenuName = NULL;
-	wndClass.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS;
+
+	wndClass.cbClsExtra = 0;                                                    // 클래스 여분 메모리
+	wndClass.cbWndExtra = 0;                                                    // 윈도우 여분 메모리
+	wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);               // 백그라운드
+	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);                             // 마우스 커서
+	wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);                           // 아이콘
+	wndClass.hInstance = hInstance;                                             // 윈도우를 소요한 프로그램의 식별자 정보
+	wndClass.lpfnWndProc = (WNDPROC)WndProc;                                    // 윈도우 프로시저
+	wndClass.lpszClassName = WINNAME;                                        // 클래스 이름 (식별자 정보)
+	wndClass.lpszMenuName = NULL;                                               // 메뉴 이름
+	wndClass.style = CS_HREDRAW | CS_VREDRAW;                                   // 윈도우 스타일 (다시 그리기 정보)
 
 	RegisterClass(&wndClass);
 
 	_hWnd = CreateWindow
 	(
-		_lpszClass,
-		TEXT("My First Program"),
-		WS_OVERLAPPEDWINDOW,
-		400,
-		100,
-		800,
-		800,
-		NULL,
-		(HMENU)NULL,
-		hInstance,
-		NULL
+		WINNAME,                     // 윈도우 클래스 식별자
+		WINNAME,                     // 윈도우 타이틀 바 이름
+		WINSTYLE,            // 윈도우 스타일
+		WINSTART_X,                            // 윈도우 화면 X 좌표
+		WINSTART_Y,                            // 윈도우 화면 Y 좌표
+		WINSIZE_X,                            // 윈도우 화면 가로 크기
+		WINSIZE_Y,                            // 윈도우 화면 세로 크기
+		NULL,                           // 부모 윈도우 -> GetDsktopWindow
+		(HMENU)NULL,                    // 메뉴 핸들
+		hInstance,                      // 인스턴스 지정
+		NULL                            // 윈도우의 자식 윈도우를 생성하면 지정하고 그렇지 않다면 NULL
+										// ㄴ 필요에 의해서 사용하기도 하지만 지금은 NULL
 	);
 
+	setWindowSize(WINSTART_X, WINSTART_Y, WINSIZE_X, WINSIZE_Y);
+
 	ShowWindow(_hWnd, nCmdShow);
+	if (FAILED(_mg->init()))
+	{
+		return 0;
+	}
 
 	MSG message;
 
 	while (GetMessage(&message, 0, 0, 0))
 	{
+
 		TranslateMessage(&message);
 		DispatchMessage(&message);
 	}
-}
 
-void CALLBACK TimerProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
-{
-	HDC hdc;
-	int i;
-	hdc = GetDC(hWnd);
-	for (i = 0; i < 1000; i++)
-	{
-		SetPixel(hdc, rand() % 500, rand() % 400, RGB(rand() % 256, rand() % 256, rand() % 256));
-	}
-	ReleaseDC(hWnd, hdc);
+	_mg->release();
+	UnregisterClass(WINNAME, hInstance);
+
+	return message.wParam;
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
-	HDC hdc;
-	int i;
-	switch (iMessage)
-	{
-	case WM_CREATE:
-		SetTimer(hWnd, 1, 50, TimerProc);
-		break;
-	case WM_LBUTTONDOWN:
-		hdc = GetDC(hWnd);
-		Ellipse(hdc, LOWORD(lParam) - 10, HIWORD(lParam) - 10, LOWORD(lParam) + 10, HIWORD(lParam) + 10);
-		ReleaseDC(hWnd, hdc);
-		break;
-	case WM_DESTROY:
-		KillTimer(hWnd, 1);
-		PostQuitMessage(0);
-		return 0;
-	}
-	
-	return DefWindowProc(hWnd, iMessage, wParam, lParam);
+	return _mg->MainProc(hWnd, iMessage, wParam, lParam);
+}
+
+void setWindowSize(int x, int y, int width, int height)
+{
+	RECT rc = { 0, 0, width, height };
+
+	AdjustWindowRect(&rc, WINSTYLE, false);
+
+	SetWindowPos(_hWnd, NULL, x, y, (rc.right - rc.left), (rc.bottom - rc.top), SWP_NOZORDER | SWP_NOMOVE);
 }

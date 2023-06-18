@@ -22,7 +22,6 @@
 - 실패시 : 깜지 5번
 */
 
-POINT _ptMouse;
 
 HRESULT ClayShooting::init(void)
 {

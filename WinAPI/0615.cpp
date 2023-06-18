@@ -4,7 +4,7 @@
 #define CLAYSHOOTING    2
 #define FINDCARDPAIR    3
 
-#define ASSIGNMENT      CLAYSHOOTING
+#define ASSIGNMENT      MOLEGAME
 
 #if ASSIGNMENT == MOLEGAME
 

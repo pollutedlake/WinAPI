@@ -46,7 +46,7 @@ bool KeyManager::isOnceKeyDown(int key)
 	return false;
 }
 
-bool KeyManager::inOnceKeyUp(int key)
+bool KeyManager::isOnceKeyUp(int key)
 {
 	/*
 	▶GetAsyncKeyState(int key)
@@ -55,11 +55,11 @@ bool KeyManager::inOnceKeyUp(int key)
 
 	 - 기본적으로 메세지 큐에 있는 키 정보를 확인한다
 
-	 - 키가 눌린 시점을 체크하기 위하 &(AND) 연산을 사용해 확인한다.
+	 - 키가 눌린 시점을 체크하기 위해 &(AND) 연산을 사용해 확인한다.
 
 	 0X0000 키안눌림
-	 0X0001 키눌림
-	 0X8000 키가 눌렸었는데 지금은 안눌림
+	 0X0001 키가 눌렸었는데 지금은 안눌림
+	 0X8000 키가 안눌렸었는데 지금은 눌려있음
 	 0X8001 키가 눌렸었고 지금도 눌려있음
 	*/
 	
