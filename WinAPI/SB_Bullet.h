@@ -16,7 +16,7 @@ public:
 
 	bool getIsActive() { return isActive; }
 
-	SB_Bullet();
-	virtual ~SB_Bullet() {};
+	SB_Bullet() {}
+	virtual ~SB_Bullet() {}
 };
 

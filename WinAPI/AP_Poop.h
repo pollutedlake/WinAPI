@@ -15,6 +15,7 @@ public:
 	virtual void release(void);
 
 	bool getIsActive() { return isActive; }
+	POINT getPosition() {return position;}
 
 	AP_Poop() { }
 	virtual ~AP_Poop() { }

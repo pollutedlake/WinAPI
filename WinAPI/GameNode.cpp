@@ -3,7 +3,7 @@
 
 // 객체지향 프로그래밍 -> 설계의 기반한 효율적인 방법론과 관리 쳬계
 
-POINT _ptMouse;
+//POINT _ptMouse;
 
 HRESULT GameNode::init(void)
 {
@@ -64,6 +64,8 @@ LRESULT GameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
         }
         break;
     case WM_MOUSEMOVE:
+		_ptMouse.x = LOWORD(lParam);
+		_ptMouse.y = HIWORD(lParam);
         break;
     case WM_DESTROY:                // 소멸자
         PostQuitMessage(0);

@@ -7,6 +7,7 @@ HRESULT AP_Player::init(void)
 	position.y = WINSIZE_Y;
 	dirX = 0;
 	speed = 3;
+	die = false;
 	return S_OK;
 }
 

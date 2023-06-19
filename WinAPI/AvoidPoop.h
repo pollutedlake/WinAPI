@@ -10,7 +10,9 @@ private:
 	vector<AP_Poop*> poops;
 	int deltaTime;
 	int dropTime;
-	bool isStart;
+	int scene;
+	int score;
+	int scoreTime;
 
 public:
 	virtual HRESULT init(void);

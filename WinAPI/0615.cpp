@@ -8,7 +8,7 @@
 #define AVOIDPOOP       6
 #define CROCODILETEETH  7
 
-#define ASSIGNMENT      CROCODILETEETH
+#define ASSIGNMENT      AVOIDPOOP
 
 #if ASSIGNMENT == MOLEGAME
 
@@ -45,6 +45,7 @@ CrocodileTeeth* _mg;
 
 HINSTANCE _hInstance;
 HWND _hWnd;
+POINT _ptMouse;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void setWindowSize(int, int, int, int);

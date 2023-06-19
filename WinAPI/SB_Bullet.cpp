@@ -35,8 +35,3 @@ void SB_Bullet::render(HDC hdc)
 {
     EllipseMakeCenter(hdc, position.x, position.y, 20, 20);
 }
-
-SB_Bullet::SB_Bullet(int playerPosX)
-{
-    position.x = playerPosX;
-}

@@ -14,7 +14,10 @@
 class CrocodileTeeth : public GameNode
 {
 private:
-	CT_Teeth* teeth[8];
+	CT_Teeth* teeth[16];
+	int prize;
+	bool gameOver;
+
 public:
 	virtual HRESULT init(void);
 	virtual void update(void);
