@@ -52,6 +52,15 @@
     <Filter Include="과제\클레이 사격">
       <UniqueIdentifier>{6b31adb3-9f7d-40f9-a44b-b8e0a77932e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="과제\똥피하기">
+      <UniqueIdentifier>{04b8f920-2b58-48e8-a60a-1a8b8135a870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="과제\악어이빨 게임">
+      <UniqueIdentifier>{649133dc-f0e8-481a-99f7-130f5bc650a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="과제\총알 발사">
+      <UniqueIdentifier>{cdd11772-d980-47c9-8162-da37b1230857}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -123,9 +132,6 @@
     <ClCompile Include="Card.cpp">
       <Filter>과제\카드 짝 맞추기</Filter>
     </ClCompile>
-    <ClCompile Include="0615.cpp">
-      <Filter>과제\카드 짝 맞추기</Filter>
-    </ClCompile>
     <ClCompile Include="FindCardPair.cpp">
       <Filter>과제\카드 짝 맞추기</Filter>
     </ClCompile>
@@ -143,6 +149,36 @@
     </ClCompile>
     <ClCompile Include="Mole.cpp">
       <Filter>과제\두더지 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="Example_Mole.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ShootBullet.cpp">
+      <Filter>과제\총알 발사</Filter>
+    </ClCompile>
+    <ClCompile Include="SB_Player.cpp">
+      <Filter>과제\총알 발사</Filter>
+    </ClCompile>
+    <ClCompile Include="SB_Bullet.cpp">
+      <Filter>과제\총알 발사</Filter>
+    </ClCompile>
+    <ClCompile Include="AvoidPoop.cpp">
+      <Filter>과제\똥피하기</Filter>
+    </ClCompile>
+    <ClCompile Include="AP_Player.cpp">
+      <Filter>과제\똥피하기</Filter>
+    </ClCompile>
+    <ClCompile Include="CrocodileTeeth.cpp">
+      <Filter>과제\악어이빨 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="0615.cpp">
+      <Filter>과제</Filter>
+    </ClCompile>
+    <ClCompile Include="AP_Poop.cpp">
+      <Filter>과제\똥피하기</Filter>
+    </ClCompile>
+    <ClCompile Include="CT_Teeth.cpp">
+      <Filter>과제\악어이빨 게임</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,9 +212,6 @@
     <ClInclude Include="MainGame.h">
       <Filter>ManagerClass</Filter>
     </ClInclude>
-    <ClInclude Include="Card.h">
-      <Filter>과제\카드 짝 맞추기</Filter>
-    </ClInclude>
     <ClInclude Include="FindCardPair.h">
       <Filter>과제\카드 짝 맞추기</Filter>
     </ClInclude>
@@ -196,6 +229,36 @@
     </ClInclude>
     <ClInclude Include="Mole.h">
       <Filter>과제\두더지 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="Example_Mole.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ShootBullet.h">
+      <Filter>과제\총알 발사</Filter>
+    </ClInclude>
+    <ClInclude Include="SB_Player.h">
+      <Filter>과제\총알 발사</Filter>
+    </ClInclude>
+    <ClInclude Include="SB_Bullet.h">
+      <Filter>과제\총알 발사</Filter>
+    </ClInclude>
+    <ClInclude Include="AvoidPoop.h">
+      <Filter>과제\똥피하기</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.h">
+      <Filter>과제\카드 짝 맞추기</Filter>
+    </ClInclude>
+    <ClInclude Include="AP_Player.h">
+      <Filter>과제\똥피하기</Filter>
+    </ClInclude>
+    <ClInclude Include="CrocodileTeeth.h">
+      <Filter>과제\악어이빨 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="AP_Poop.h">
+      <Filter>과제\똥피하기</Filter>
+    </ClInclude>
+    <ClInclude Include="CT_Teeth.h">
+      <Filter>과제\악어이빨 게임</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

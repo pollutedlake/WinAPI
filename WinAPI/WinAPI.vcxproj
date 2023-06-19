@@ -144,11 +144,17 @@
     <ClCompile Include="0615.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="AP_Player.cpp" />
+    <ClCompile Include="AP_Poop.cpp" />
+    <ClCompile Include="AvoidPoop.cpp" />
     <ClCompile Include="C3DMatrix.cpp" />
     <ClCompile Include="C3DVector.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Clay.cpp" />
     <ClCompile Include="ClayShooting.cpp" />
+    <ClCompile Include="CrocodileTeeth.cpp" />
+    <ClCompile Include="CT_Teeth.cpp" />
+    <ClCompile Include="Example_Mole.cpp" />
     <ClCompile Include="FindCardPair.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="IWindowsMessageHandler.cpp" />
@@ -159,6 +165,9 @@
     </ClCompile>
     <ClCompile Include="Mole.cpp" />
     <ClCompile Include="MoleGame.cpp" />
+    <ClCompile Include="SB_Bullet.cpp" />
+    <ClCompile Include="SB_Player.cpp" />
+    <ClCompile Include="ShootBullet.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
@@ -210,12 +219,18 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AP_Player.h" />
+    <ClInclude Include="AP_Poop.h" />
+    <ClInclude Include="AvoidPoop.h" />
     <ClInclude Include="C3DMatrix.h" />
     <ClInclude Include="C3DVector.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Clay.h" />
     <ClInclude Include="ClayShooting.h" />
     <ClInclude Include="CommonMacroFunction.h" />
+    <ClInclude Include="CrocodileTeeth.h" />
+    <ClInclude Include="CT_Teeth.h" />
+    <ClInclude Include="Example_Mole.h" />
     <ClInclude Include="FindCardPair.h" />
     <ClInclude Include="GameNode.h" />
     <ClInclude Include="IWindowsMessageHandler.h" />
@@ -223,8 +238,11 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Mole.h" />
     <ClInclude Include="MoleGame.h" />
+    <ClInclude Include="SB_Bullet.h" />
+    <ClInclude Include="SB_Player.h" />
     <ClInclude Include="RandomFunction.h" />
     <ClInclude Include="resource1.h" />
+    <ClInclude Include="ShootBullet.h" />
     <ClInclude Include="SingletonBase.h" />
     <ClInclude Include="Stdafx.h" />
   </ItemGroup>

@@ -3,8 +3,12 @@
 #define MOLEGAME        1
 #define CLAYSHOOTING    2
 #define FINDCARDPAIR    3
+#define MAINGAME        4
+#define SHOOTBULLET     5
+#define AVOIDPOOP       6
+#define CROCODILETEETH  7
 
-#define ASSIGNMENT      MOLEGAME
+#define ASSIGNMENT      CROCODILETEETH
 
 #if ASSIGNMENT == MOLEGAME
 
@@ -20,6 +24,22 @@ ClayShooting* _mg;
 
 #include "FindCardPair.h"
 FindCardPair* _mg;
+
+#elif ASSIGNMENT == MAINGAME
+#include "MainGame.h"
+MainGame* _mg;
+
+#elif ASSIGNMENT == SHOOTBULLET
+#include "ShootBullet.h"
+ShootBullet* _mg;
+
+#elif ASSIGNMENT == AVOIDPOOP
+#include "AvoidPoop.h"
+AvoidPoop* _mg;
+
+#elif ASSIGNMENT == CROCODILETEETH
+#include "CrocodileTeeth.h"
+CrocodileTeeth* _mg;
 
 #endif
 
@@ -41,6 +61,14 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     _mg = new ClayShooting();
 #elif ASSIGNMENT == FINDCARDPAIR
     _mg = new FindCardPair();
+#elif ASSIGNMENT == MAINGAME
+    _mg = new MainGame();
+#elif ASSIGNMENT == SHOOTBULLET
+    _mg = new ShootBullet();
+#elif ASSIGNMENT == AVOIDPOOP
+    _mg = new AvoidPoop();
+#elif ASSIGNMENT == CROCODILETEETH
+    _mg = new CrocodileTeeth();
 #endif
 
     _hInstance = hInstance;

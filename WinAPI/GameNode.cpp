@@ -1,12 +1,14 @@
 #include "Stdafx.h"
 #include "GameNode.h"
 
+// 객체지향 프로그래밍 -> 설계의 기반한 효율적인 방법론과 관리 쳬계
+
 POINT _ptMouse;
 
 HRESULT GameNode::init(void)
 {
 	// 타이머 초기화
-	SetTimer(_hWnd, 1, 50, NULL);
+	SetTimer(_hWnd, 1, 1, NULL);
 
     RND->init();
     KEYMANAGER->init();
