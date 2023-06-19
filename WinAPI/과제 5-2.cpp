@@ -10,6 +10,7 @@
 
 HINSTANCE _hInstance;
 HWND _hWnd;
+POINT _ptMouse;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void setWindowSize(int, int, int, int);

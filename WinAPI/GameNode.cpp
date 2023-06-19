@@ -8,7 +8,7 @@
 HRESULT GameNode::init(void)
 {
 	// 타이머 초기화
-	SetTimer(_hWnd, 1, 1, NULL);
+	SetTimer(_hWnd, 1, 50, NULL);
 
     RND->init();
     KEYMANAGER->init();

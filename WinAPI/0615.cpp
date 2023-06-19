@@ -8,7 +8,7 @@
 #define AVOIDPOOP       6
 #define CROCODILETEETH  7
 
-#define ASSIGNMENT      AVOIDPOOP
+#define ASSIGNMENT      MOLEGAME
 
 #if ASSIGNMENT == MOLEGAME
 
