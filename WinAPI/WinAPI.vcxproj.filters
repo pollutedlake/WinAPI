@@ -195,13 +195,16 @@
     <ClCompile Include="HorizontalShooting.cpp">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="HS_Bullet.cpp">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClCompile>
-    <ClCompile Include="Player1.cpp">
+    <ClCompile Include="HS_Player.cpp">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClCompile>
-    <ClCompile Include="Player2.cpp">
+    <ClCompile Include="HS_Player1.cpp">
+      <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="HS_Player2.cpp">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClCompile>
   </ItemGroup>
@@ -293,13 +296,16 @@
     <ClInclude Include="HorizontalShooting.h">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="HS_Bullet.h">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClInclude>
-    <ClInclude Include="Player1.h">
+    <ClInclude Include="HS_Player.h">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClInclude>
-    <ClInclude Include="Player2.h">
+    <ClInclude Include="HS_Player1.h">
+      <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="HS_Player2.h">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClInclude>
   </ItemGroup>
