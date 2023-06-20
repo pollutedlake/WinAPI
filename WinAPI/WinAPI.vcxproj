@@ -155,8 +155,10 @@
     <ClCompile Include="CrocodileTeeth.cpp" />
     <ClCompile Include="CT_Teeth.cpp" />
     <ClCompile Include="Example_Mole.cpp" />
+    <ClCompile Include="Example_MoleMainGame.cpp" />
     <ClCompile Include="FindCardPair.cpp" />
     <ClCompile Include="GameNode.cpp" />
+    <ClCompile Include="HorizontalShooting.cpp" />
     <ClCompile Include="IWindowsMessageHandler.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="MainGame.cpp" />
@@ -165,12 +167,16 @@
     </ClCompile>
     <ClCompile Include="Mole.cpp" />
     <ClCompile Include="MoleGame.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Player1.cpp" />
+    <ClCompile Include="Player2.cpp" />
     <ClCompile Include="SB_Bullet.cpp" />
     <ClCompile Include="SB_Player.cpp" />
     <ClCompile Include="ShootBullet.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="VerticalShooting.cpp" />
     <ClCompile Include="WinMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -231,13 +237,18 @@
     <ClInclude Include="CrocodileTeeth.h" />
     <ClInclude Include="CT_Teeth.h" />
     <ClInclude Include="Example_Mole.h" />
+    <ClInclude Include="Example_MoleMainGame.h" />
     <ClInclude Include="FindCardPair.h" />
     <ClInclude Include="GameNode.h" />
+    <ClInclude Include="HorizontalShooting.h" />
     <ClInclude Include="IWindowsMessageHandler.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Mole.h" />
     <ClInclude Include="MoleGame.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Player1.h" />
+    <ClInclude Include="Player2.h" />
     <ClInclude Include="SB_Bullet.h" />
     <ClInclude Include="SB_Player.h" />
     <ClInclude Include="RandomFunction.h" />
@@ -245,6 +256,7 @@
     <ClInclude Include="ShootBullet.h" />
     <ClInclude Include="SingletonBase.h" />
     <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="VerticalShooting.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WinAPI1.rc" />

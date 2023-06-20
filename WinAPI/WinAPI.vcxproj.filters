@@ -61,6 +61,12 @@
     <Filter Include="과제\총알 발사">
       <UniqueIdentifier>{cdd11772-d980-47c9-8162-da37b1230857}</UniqueIdentifier>
     </Filter>
+    <Filter Include="과제\종스크롤 슈팅 게임">
+      <UniqueIdentifier>{5aefe665-f885-4278-9fbc-ee75c1df7481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="과제\1 vs 1 횡스크롤 슈팅 게임">
+      <UniqueIdentifier>{f3e1d352-7ec5-4def-ac33-925938fcf164}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -180,6 +186,24 @@
     <ClCompile Include="CT_Teeth.cpp">
       <Filter>과제\악어이빨 게임</Filter>
     </ClCompile>
+    <ClCompile Include="Example_MoleMainGame.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="VerticalShooting.cpp">
+      <Filter>과제\종스크롤 슈팅 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="HorizontalShooting.cpp">
+      <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="Player1.cpp">
+      <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="Player2.cpp">
+      <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -259,6 +283,24 @@
     </ClInclude>
     <ClInclude Include="CT_Teeth.h">
       <Filter>과제\악어이빨 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="Example_MoleMainGame.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="VerticalShooting.h">
+      <Filter>과제\종스크롤 슈팅 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="HorizontalShooting.h">
+      <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="Player1.h">
+      <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="Player2.h">
+      <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

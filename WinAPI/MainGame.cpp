@@ -14,32 +14,22 @@
 
 #include "Stdafx.h"
 #include "MainGame.h"
-//#include "Example_Mole.h"
 
 HRESULT MainGame::init(void)
 {
 	GameNode::init();
 
-	_currentRect = CURRENTRECT_NULL;
+	_rc = RectMakeCenter(WINSIZE_X / 2, WINSIZE_Y / 2 + 200, 40, 40);
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < ENEMY_MAX; i++)
 	{
-		for (int j = 0; j < 4; j++)
-		{
-			_rc[i * 4 + j] = RectMakeCenter(100 + j * 200, 200 + i * 200, 100, 100);
-		}
+		_enemy[i].rc = RectMakeCenter(
+			RND->getFromIntTo(20, WINSIZE_X - 20),
+			RND->getFromIntTo(80, WINSIZE_Y * 2),
+			20, 20);
+		_enemy[i].speed = RND->getFromIntTo(2, 8);
+		_enemy[i].die = false;
 	}
-
-	_index = 0;
-	_count = 0;
-	_score = 0;
-	_time = RND->getFromIntTo(30, 60);
-
-	_bIsSelected = false;
-	_bIsOnceCheck = false;
-
-	_mole = new Example_Mole;
-	_mole->init();
 
 	return S_OK;
 }
@@ -47,72 +37,94 @@ HRESULT MainGame::init(void)
 void MainGame::release(void)
 {
 	GameNode::release();
-	_mole->release();
-	SAFE_DELETE(_mole);
 }
 
 void MainGame::update(void)
 {
 	GameNode::update();
-	if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
+	if (KEYMANAGER->isStayKeyDown(VK_RIGHT) && WINSIZE_X > _rc.right)
 	{
-		// PtInRect() : Rect 안에 POINT(x, y가 있는지 검사하여 포인트가 사각형 안에 있으면 true를 반환하는 API 함수
-		// 사각형이랑 마우스가 충돌 됐는지?
-		if (PtInRect(&_rc[_index], _ptMouse) && !_bIsOnceCheck)
-		{
-			_score += 100;
-			_bIsOnceCheck = true;
-		}
+		_rc.left += PLAYER_SPEED;
+		_rc.right += PLAYER_SPEED;
+	}
+	if (KEYMANAGER->isStayKeyDown(VK_LEFT) && 0 < _rc.left)
+	{
+		_rc.left -= PLAYER_SPEED;
+		_rc.right -= PLAYER_SPEED;
 	}
 
-	if (!_bIsSelected)
+	if (KEYMANAGER->isStayKeyDown(VK_UP) && 0 < _rc.top)
 	{
-		_count++;
-		if (_count % _time == 0)
-		{
-			_count = 0;
-			_index = RND->getInt(8);
-			_currentRect = (CURRENT_RECT)_index;
-			_bIsSelected = true;
-		}
+		_rc.top -= PLAYER_SPEED;
+		_rc.bottom -= PLAYER_SPEED;
 	}
-	else
+	if (KEYMANAGER->isStayKeyDown(VK_DOWN) && WINSIZE_Y > _rc.bottom)
 	{
-		_count++;
-
-		if (_count % _time == 0)
-		{
-			_bIsOnceCheck = false;
-			_bIsSelected = false;
-			_currentRect = CURRENTRECT_NULL;
-			_time = RND->getFromIntTo(30, 60);
-			_index = 100;
-		}
+		_rc.top += PLAYER_SPEED;
+		_rc.bottom += PLAYER_SPEED;
+	}
+	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
+	{
+		fireBullet();
 	}
 
-	_mole->update();
+	for (int i = 0; i < BULLET_MAX; i++)
+	{
+		if (!_bullet[i].fire) continue;
+		_bullet[i].rc.top -= 14;
+		_bullet[i].rc.bottom -= 14;
+
+		if (_bullet[i].rc.bottom < 0) _bullet[i].fire = false;
+	}
+
+	for (int i = 0; i < ENEMY_MAX; i++)
+	{
+		if (_enemy[i].die) continue;
+		_enemy[i].rc.top += _enemy[i].speed;
+		_enemy[i].rc.bottom += _enemy[i].speed;
+
+		if (_enemy[i].rc.top > WINSIZE_Y)
+		{
+			_enemy[i].rc = RectMakeCenter(
+				RND->getFromIntTo(20, WINSIZE_X - 20),
+				-(RND->getFromIntTo(80, WINSIZE_Y * 2)),
+				20, 20);
+		}
+	}
 }
 
 void MainGame::render(HDC hdc)
 {
-	for (int i = 0; i < 8; i++)
+	DrawRectMake(hdc, _rc);
+
+	for (int i = 0; i < ENEMY_MAX; i++)
 	{
-		Rectangle(hdc, _rc[i].left, _rc[i].top, _rc[i].right, _rc[i].bottom);
+		if (_enemy[i].die) continue;
+		Rectangle(hdc,
+			_enemy[i].rc.left, _enemy[i].rc.top,
+			_enemy[i].rc.right, _enemy[i].rc.bottom);
 	}
-	char strScore[128];
-
-	wsprintf(strScore, "Score : %d", _score);
-	TextOut(hdc, 50, 100, strScore, strlen(strScore));
-
-	if (_bIsSelected)
+	for (int i = 0; i < BULLET_MAX; i++)
 	{
-		int r = RND->getInt(256);
-		int g = RND->getInt(256);
-		int b = RND->getInt(256);
-		HBRUSH brush = CreateSolidBrush(RGB(r, g, b));
-		FillRect(hdc, &_rc[_index], brush);
-		DeleteObject(brush);
+		if (!_bullet[i].fire) continue;
+		Ellipse(hdc,
+			_bullet[i].rc.left, _bullet[i].rc.top,
+			_bullet[i].rc.right, _bullet[i].rc.bottom);
 	}
+}
 
-	_mole->render(hdc);
+void MainGame::fireBullet(void)
+{
+	for (int i = 0; i < BULLET_MAX; i++)
+	{
+		if (_bullet[i].fire) continue;
+		_bullet[i].fire = true;
+
+		_bullet[i].rc = RectMakeCenter(
+			_rc.left + (_rc.right - _rc.left) / 2,
+			_rc.top + (_rc.bottom - _rc.top) / 2 - 24,
+			50, 50
+		);
+		break;
+	}
 }

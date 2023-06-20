@@ -7,8 +7,10 @@
 #define SHOOTBULLET     5
 #define AVOIDPOOP       6
 #define CROCODILETEETH  7
+#define VERTICALSHOOTING    8
+#define HORIZONTALSHOOTING  9
 
-#define ASSIGNMENT      MOLEGAME
+#define ASSIGNMENT      HORIZONTALSHOOTING
 
 #if ASSIGNMENT == MOLEGAME
 
@@ -41,6 +43,14 @@ AvoidPoop* _mg;
 #include "CrocodileTeeth.h"
 CrocodileTeeth* _mg;
 
+#elif ASSIGNMENT == VERTICALSHOOTING
+#include "VerticalShooting.h"
+VerticalShooting* _mg;
+
+#elif ASSIGNMENT == HORIZONTALSHOOTING
+#include "HorizontalShooting.h"
+HorizontalShooting* _mg;
+
 #endif
 
 HINSTANCE _hInstance;
@@ -70,6 +80,10 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     _mg = new AvoidPoop();
 #elif ASSIGNMENT == CROCODILETEETH
     _mg = new CrocodileTeeth();
+#elif ASSIGNMENT == VERTICALSHOOTING
+    _mg = new VerticalShooting();
+#elif ASSIGNMENT == HORIZONTALSHOOTING
+    _mg = new HorizontalShooting();
 #endif
 
     _hInstance = hInstance;
