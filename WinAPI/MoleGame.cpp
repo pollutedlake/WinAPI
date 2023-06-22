@@ -26,16 +26,27 @@ HRESULT MoleGame::init(void)
 {
 	GameNode::init();
 	score = 0;
-	moleApperTime = RND->getFromIntTo(20, 40);
+	moleApperTime = RND->getFromIntTo(100, 200);
 	for (int i = 0; i < 9; i++)
 	{
 		moles[i] = new Mole();
 	}
-	_moleImage = new GImage;
-	_moleImage->init("Resources/Images/Object/mole.bmp", 100, 75, true, RGB(255, 0, 255));//262, 390, true, RGB(255, 0, 255));
+	_moleImage[0] = new GImage;
+	_moleImage[1] = new GImage;
+	_moleImage[0]->init("Resources/Images/Object/mole.bmp", 100, 75, true, RGB(255, 0, 255));
+	_moleImage[1]->init("Resources/Images/Object/HittedMole.bmp", 100, 75, true, RGB(255, 0, 255));
+	_moleIndex = 0;
+	_moleReturnTime = 0;
 
-	_hammerImage = new GImage;
-	_hammerImage->init("Resources/Images/Object/hammer.bmp", 100, 100, true, RGB(255, 0, 255));
+	_hammerImage[0] = new GImage;
+	_hammerImage[1] = new GImage;
+	_hammerImage[0]->init("Resources/Images/Object/Hammer.bmp", 50, 100, true, RGB(255, 0, 255));
+	_hammerImage[1]->init("Resources/Images/Object/HitHammer.bmp", 100, 50, true, RGB(255, 0, 255));
+	_hammerIndex = 0;
+	_hammerReturnTime = 0;
+
+	_moleScreen = new GImage;
+	_moleScreen->init("Resources/Images/BackGround/MoleScreen.bmp", 100, 100, true, RGB(255, 0, 255));
 	ShowCursor(false);
 	return S_OK;
 }
@@ -45,9 +56,12 @@ void MoleGame::release(void)
 	GameNode::release();
 	for (int i = 0; i < 9; i++)
 	{
-		delete moles[i];
+		SAFE_DELETE(moles[i]);
 	}
-	DeleteObject(moleBitmap);
+	SAFE_DELETE(_moleImage[0]);
+	SAFE_DELETE(_moleImage[1]);
+	SAFE_DELETE(_hammerImage[0]);
+	SAFE_DELETE(_hammerImage[1]);
 }
 
 void MoleGame::update(void)
@@ -56,7 +70,7 @@ void MoleGame::update(void)
 	moleApperTime--;
 	if (!moleApperTime)
 	{
-		moleApperTime = RND->getFromIntTo(20, 40);
+		moleApperTime = RND->getFromIntTo(100, 200);
 		int activeN = 0;
 		for (int i = 0; i < 9; i++)
 		{
@@ -74,8 +88,15 @@ void MoleGame::update(void)
 	{
 		moles[i]->update();
 	}
+	_hammerReturnTime += 10;
+	if (_hammerReturnTime > 20)
+	{
+		_hammerIndex = 0;
+	}
 	if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
 	{
+		_hammerIndex = 1;
+		_hammerReturnTime = 0;
 		for (int i = 0; i < 9; i++)
 		{
 			if (moles[i]->checkHit(_ptMouse, i) == TRUE)
@@ -84,6 +105,7 @@ void MoleGame::update(void)
 			}
 		}
 	}
+	
 }
 
 void MoleGame::render(HDC hdc)
@@ -96,8 +118,16 @@ void MoleGame::render(HDC hdc)
 	for (int i = 0; i < 9; i++)
 	{
 		EllipseMakeCenter(memDC, 150 + 250 * (i % 3), 150 + 150 * (i / 3), 100, 50);
-		_moleImage->render(memDC, 100 + 250 * (i % 3), 175 + 150 * (i / 3) - moles[i]->getHeight());
-		_hammerImage->render(memDC, _ptMouse.x - 50, _ptMouse.y - 50);
+		_moleImage[moles[i]->getIsRed()]->render(memDC, 100 + 250 * (i % 3), 175 + 150 * (i / 3) - moles[i]->getHeight());
+		_moleScreen->render(memDC, 100 + 250 * (i % 3), 150 + 150 * (i / 3));
+		if(_hammerIndex == 0)
+		{
+			_hammerImage[0]->render(memDC, _ptMouse.x - 25, _ptMouse.y - 100);
+		}
+		else
+		{
+			_hammerImage[1]->render(memDC, _ptMouse.x - 100, _ptMouse.y - 25);
+		}
 	}
 	MoveToEx(memDC, 0, 600, NULL);
 	LineTo(memDC, 800, 600);

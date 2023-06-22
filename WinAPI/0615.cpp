@@ -9,8 +9,9 @@
 #define CROCODILETEETH  7
 #define VERTICALSHOOTING    8
 #define HORIZONTALSHOOTING  9
+#define FINDWRONGPAINT      10
 
-#define ASSIGNMENT      MOLEGAME
+#define ASSIGNMENT      FINDWRONGPAINT
 
 #if ASSIGNMENT == MOLEGAME
 
@@ -51,6 +52,10 @@ VerticalShooting* _mg;
 #include "HorizontalShooting.h"
 HorizontalShooting* _mg;
 
+#elif ASSIGNMENT == FINDWRONGPAINT
+#include "FindWrongPaint.h"
+FindWrongPaint* _mg;
+
 #endif
 
 HINSTANCE _hInstance;
@@ -84,6 +89,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     _mg = new VerticalShooting();
 #elif ASSIGNMENT == HORIZONTALSHOOTING
     _mg = new HorizontalShooting();
+#elif ASSIGNMENT == FINDWRONGPAINT
+	_mg = new FindWrongPaint();
 #endif
 
     _hInstance = hInstance;

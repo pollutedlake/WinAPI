@@ -157,6 +157,8 @@
     <ClCompile Include="Example_Mole.cpp" />
     <ClCompile Include="Example_MoleMainGame.cpp" />
     <ClCompile Include="FindCardPair.cpp" />
+    <ClCompile Include="FindWrongPaint.cpp" />
+    <ClCompile Include="FWP_Paint.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="GImage.cpp" />
     <ClCompile Include="HorizontalShooting.cpp" />
@@ -241,6 +243,8 @@
     <ClInclude Include="Example_Mole.h" />
     <ClInclude Include="Example_MoleMainGame.h" />
     <ClInclude Include="FindCardPair.h" />
+    <ClInclude Include="FindWrongPaint.h" />
+    <ClInclude Include="FWP_Paint.h" />
     <ClInclude Include="GameNode.h" />
     <ClInclude Include="GImage.h" />
     <ClInclude Include="HorizontalShooting.h" />
@@ -269,7 +273,6 @@
     <Image Include="apple logo.bmp" />
     <Image Include="bitmap3.bmp" />
     <Image Include="bitmap4.bmp" />
-    <Image Include="bitmap5.bmp" />
     <Image Include="mole.bmp" />
     <Image Include="MyFace.bmp" />
   </ItemGroup>

@@ -67,6 +67,9 @@
     <Filter Include="과제\1 vs 1 횡스크롤 슈팅 게임">
       <UniqueIdentifier>{f3e1d352-7ec5-4def-ac33-925938fcf164}</UniqueIdentifier>
     </Filter>
+    <Filter Include="과제\틀린그림찾기">
+      <UniqueIdentifier>{55f40460-6f08-44a8-ba6a-ffdef4432568}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -210,6 +213,12 @@
     <ClCompile Include="GImage.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="FindWrongPaint.cpp">
+      <Filter>과제\틀린그림찾기</Filter>
+    </ClCompile>
+    <ClCompile Include="FWP_Paint.cpp">
+      <Filter>과제\틀린그림찾기</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -314,6 +323,12 @@
     <ClInclude Include="GImage.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="FindWrongPaint.h">
+      <Filter>과제\틀린그림찾기</Filter>
+    </ClInclude>
+    <ClInclude Include="FWP_Paint.h">
+      <Filter>과제\틀린그림찾기</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WinAPI1.rc">
@@ -334,9 +349,6 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="mole.bmp">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="bitmap5.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

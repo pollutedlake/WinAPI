@@ -5,7 +5,9 @@ Mole::Mole()
 {
 	active = FALSE;
 	height = 0;
-	waitTime = RND->getFromIntTo(0, 40);
+	waitTime = RND->getFromIntTo(0, 150);
+	isRed = 0;
+	twinkleTime = 50;
 	up = TRUE;
 }
 
@@ -20,7 +22,7 @@ void Mole::update()
 	{
 		if (height > 0)
 		{
-			height -= 5;
+			height -= 1;
 		}
 		else
 		{
@@ -39,7 +41,7 @@ void Mole::update()
 			else
 			{
 				height -= 5;
-				waitTime = RND->getFromIntTo(0, 40);
+				waitTime = RND->getFromIntTo(0, 150);
 				up = FALSE;
 			}
 		}
@@ -60,17 +62,31 @@ void Mole::update()
 			}
 		}
 	}
+	if (active == FALSE && up == FALSE)
+	{
+		twinkleTime -= 10;
+		if (twinkleTime <= 0)
+		{
+			twinkleTime = 50;
+			isRed = !isRed;
+		}
+	}
+	else
+	{
+		isRed = 0;
+	}
 }
 
 BOOL Mole::checkHit(POINT pt, int i)
 {
 	if(active == TRUE)
 	{
-		if (pt.x > 100 + 250 * (i % 3) && pt.x < 200 + 250 * (i % 3))
+		if (pt.x - 100 > 100 + 250 * (i % 3) && pt.x - 100 < 200 + 250 * (i % 3))
 		{
-			if (pt.y > 175 + 150 * (i / 3) - height && pt.y < 175 + 150 * (i / 3))
+			if (pt.y > 150 + 150 * (i / 3) - height && pt.y < 150 + 150 * (i / 3))
 			{
 				active = FALSE;
+				up = FALSE;
 				return TRUE;
 			}
 		}

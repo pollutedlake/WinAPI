@@ -199,3 +199,30 @@ void GImage::render(HDC hdc, int destX, int destY)
 		BitBlt(hdc, destX, destY, _imageInfo->width, _imageInfo->height, _imageInfo->hMemDC, 0, 0, SRCCOPY);
 	}
 }
+
+void GImage::render(HDC hdc, int destX, int destY, int destWidth, int destHeight, int sourX, int sourY, int sourWidth, int sourHeight)
+{
+	if (_isTrans)
+	{
+		// GdiTransparentBlt() : 비트맵을 불러올 때 특정 색상을 제외하고 복사한다.
+		GdiTransparentBlt
+		(
+			hdc,						// 복사할 장소의 DC(화면 DC)
+			destX,						// 복사될 좌표 시작 X
+			destY,						// 복사될 좌표 시작 Y
+			destWidth,			// 복사될 이미지 가로 크기
+			destHeight,			// 복사될 이미지 세로 크기
+			_imageInfo->hMemDC,			// 복사될 대상 메모리DC
+			sourX, sourY,				// 복사 시작 지점
+			sourWidth,			// 복사 영역 가로 크기
+			sourHeight,			// 복사 영역 세로 크기
+			_transColor					// 복사할때 제외할 색상 (마젠타)
+		);
+	}
+	else
+	{
+		// ◈ BitBlt() : DC간의 영역끼리 서로 고속 복사를 해준다.
+		// ㄴ SRCCOPY : 소스 영역을 영여게 복사한다.
+		StretchBlt(hdc, destX, destY, destWidth, destHeight, _imageInfo->hMemDC, sourX, sourY, sourWidth, sourHeight, SRCCOPY);
+	}
+}

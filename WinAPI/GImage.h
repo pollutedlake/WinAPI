@@ -58,6 +58,7 @@ public:
 
 	void render(HDC hdc);
 	void render(HDC hdc, int destX, int destY);
+	void render(HDC hdc, int destX, int destY, int destWidth, int destHeight, int sourX, int sourY, int sourWidth, int sourHeight);
 
 	// = 인라인 함수 =
 	inline HDC getMemDC(void) { return _imageInfo->hMemDC; }

@@ -11,13 +11,14 @@ class MoleGame : public GameNode
 private:
 	int score;
 	int moleApperTime;
-	GImage* _moleImage;
-	GImage* _hammerImage;
+	GImage* _moleImage[2];
+	GImage* _hammerImage[2];
+	int _hammerIndex;
+	int _hammerReturnTime;
+	int _moleIndex;
+	int _moleReturnTime;
+	GImage* _moleScreen;
 	Mole* moles[9];
-	HBITMAP moleBitmap, oldBitmap, blindBitmap, backBit, oldBackBit;
-	HDC memDC, tempDC, backDC;
-	RECT bufferRT;
-	BITMAP bit;
 
 public:
 	virtual HRESULT init(void);
