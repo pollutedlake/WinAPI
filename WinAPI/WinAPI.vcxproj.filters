@@ -207,6 +207,9 @@
     <ClCompile Include="HS_Player2.cpp">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClCompile>
+    <ClCompile Include="GImage.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -307,6 +310,9 @@
     </ClInclude>
     <ClInclude Include="HS_Player2.h">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="GImage.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

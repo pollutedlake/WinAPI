@@ -7,31 +7,13 @@
 
 // 설계 연습
 
-#define BULLET_MAX 10
-#define PLAYER_SPEED 5
-// X -> X -> O
-#define ENEMY_MAX 80
-
-struct tagBullet
-{
-	RECT rc;
-	bool fire;
-};
-
-struct tagEnemy
-{
-	RECT rc;
-	int speed;
-	bool die;
-};
-
 class MainGame : public GameNode
 {
 private:
-	tagBullet _bullet[BULLET_MAX];
-	tagEnemy _enemy[ENEMY_MAX];
-
+	GImage* _bgImage;
+	GImage* _plImage;
 	RECT _rc;
+
 public:
 	virtual HRESULT init(void);
 	virtual void release(void);

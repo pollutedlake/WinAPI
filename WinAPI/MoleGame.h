@@ -1,6 +1,7 @@
 #pragma once
 #include "GameNode.h"
 #include "Mole.h"
+#include "GImage.h"
 
 // 0. 상속을 받은 클래스
 // 1. 최상위 관리자 클래스
@@ -10,6 +11,8 @@ class MoleGame : public GameNode
 private:
 	int score;
 	int moleApperTime;
+	GImage* _moleImage;
+	GImage* _hammerImage;
 	Mole* moles[9];
 	HBITMAP moleBitmap, oldBitmap, blindBitmap, backBit, oldBackBit;
 	HDC memDC, tempDC, backDC;
