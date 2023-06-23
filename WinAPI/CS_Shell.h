@@ -8,6 +8,8 @@ private:
 	float speedX, speedY;
 	bool active;
 	bool gravity;
+	float gravitySpeed;
+	float angle;
 
 public:
 	virtual HRESULT init(void);
@@ -21,10 +23,13 @@ public:
 	POINT getPosition() { return position; }
 	float getSpeedX() { return speedX; }
 	float getSpeedY() { return speedY; }
+	float getAngle() {return angle;}
 	void setSpeedX(float _speedX) { speedX = _speedX; }
 	void setSpeedY(float _speedY) { speedY = _speedY; }
+	void setAngle(float _angle) {angle = _angle;}
 
-	void fire(LONG _positionX, LONG _positionY, float _speedX, float _speedY);
+	void fire(LONG _positionX, LONG _positionY, float _angle);
+	void move(float _moveX, float _moveY);
 	bool collisionCheck(POINT _otherPos);
 
 	CS_Shell() {}

@@ -10,6 +10,7 @@ class CannonShoot : public GameNode
 private:
 	CS_Cannon* cannon;
 	CS_Shell* shells[100];
+	bool gravity;
 
 public:
 	virtual HRESULT init(void);

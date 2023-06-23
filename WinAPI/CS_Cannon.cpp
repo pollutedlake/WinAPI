@@ -43,7 +43,7 @@ void CS_Cannon::update(void)
     }
     if (KEYMANAGER->isOnceKeyDown('A'))
     {
-        autoMove = true;
+        autoMove = !autoMove;
     }
     barrel.x = WINSIZE_X / 2 + 150 * cos(angle / 180.0f * PI);
     barrel.y = WINSIZE_Y + 150 * sin(angle / 180.0f * PI);
