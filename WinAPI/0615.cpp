@@ -10,8 +10,10 @@
 #define VERTICALSHOOTING    8
 #define HORIZONTALSHOOTING  9
 #define FINDWRONGPAINT      10
+#define ANALOGCLOCK         11
+#define CANNONSHOOT         12
 
-#define ASSIGNMENT      FINDWRONGPAINT
+#define ASSIGNMENT      CANNONSHOOT
 
 #if ASSIGNMENT == MOLEGAME
 
@@ -56,6 +58,14 @@ HorizontalShooting* _mg;
 #include "FindWrongPaint.h"
 FindWrongPaint* _mg;
 
+#elif ASSIGNMENT == ANALOGCLOCK
+#include "AnalogClock.h"
+AnalogClock* _mg;
+
+#elif ASSIGNMENT == CANNONSHOOT
+#include "CannonShoot.h"
+CannonShoot* _mg;
+
 #endif
 
 HINSTANCE _hInstance;
@@ -91,6 +101,10 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     _mg = new HorizontalShooting();
 #elif ASSIGNMENT == FINDWRONGPAINT
 	_mg = new FindWrongPaint();
+#elif ASSIGNMENT == ANALOGCLOCK
+    _mg = new AnalogClock();
+#elif ASSIGNMENT == CANNONSHOOT
+    _mg = new CannonShoot();
 #endif
 
     _hInstance = hInstance;

@@ -70,6 +70,12 @@
     <Filter Include="과제\틀린그림찾기">
       <UniqueIdentifier>{55f40460-6f08-44a8-ba6a-ffdef4432568}</UniqueIdentifier>
     </Filter>
+    <Filter Include="과제\아날로그시계">
+      <UniqueIdentifier>{a8fa2dc8-c3ad-43c1-b153-9929c7912393}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="과제\대포알 발사">
+      <UniqueIdentifier>{af93a6f4-8f22-4d4e-91f0-f52cadea9862}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -219,6 +225,18 @@
     <ClCompile Include="FWP_Paint.cpp">
       <Filter>과제\틀린그림찾기</Filter>
     </ClCompile>
+    <ClCompile Include="AnalogClock.cpp">
+      <Filter>과제\아날로그시계</Filter>
+    </ClCompile>
+    <ClCompile Include="CannonShoot.cpp">
+      <Filter>과제\대포알 발사</Filter>
+    </ClCompile>
+    <ClCompile Include="CS_Shell.cpp">
+      <Filter>과제\대포알 발사</Filter>
+    </ClCompile>
+    <ClCompile Include="CS_Cannon.cpp">
+      <Filter>과제\대포알 발사</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -328,6 +346,18 @@
     </ClInclude>
     <ClInclude Include="FWP_Paint.h">
       <Filter>과제\틀린그림찾기</Filter>
+    </ClInclude>
+    <ClInclude Include="AnalogClock.h">
+      <Filter>과제\아날로그시계</Filter>
+    </ClInclude>
+    <ClInclude Include="CannonShoot.h">
+      <Filter>과제\대포알 발사</Filter>
+    </ClInclude>
+    <ClInclude Include="CS_Shell.h">
+      <Filter>과제\대포알 발사</Filter>
+    </ClInclude>
+    <ClInclude Include="CS_Cannon.h">
+      <Filter>과제\대포알 발사</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

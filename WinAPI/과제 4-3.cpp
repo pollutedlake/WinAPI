@@ -22,6 +22,7 @@ using namespace std;
 HINSTANCE _hInstance;
 HWND _hWnd;
 LPTSTR _lpszClass = TEXT("Windows API");
+POINT _ptMouse;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 

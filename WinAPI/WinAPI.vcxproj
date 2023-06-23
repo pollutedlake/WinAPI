@@ -144,15 +144,19 @@
     <ClCompile Include="0615.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="AnalogClock.cpp" />
     <ClCompile Include="AP_Player.cpp" />
     <ClCompile Include="AP_Poop.cpp" />
     <ClCompile Include="AvoidPoop.cpp" />
     <ClCompile Include="C3DMatrix.cpp" />
     <ClCompile Include="C3DVector.cpp" />
+    <ClCompile Include="CannonShoot.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CS_Shell.cpp" />
     <ClCompile Include="Clay.cpp" />
     <ClCompile Include="ClayShooting.cpp" />
     <ClCompile Include="CrocodileTeeth.cpp" />
+    <ClCompile Include="CS_Cannon.cpp" />
     <ClCompile Include="CT_Teeth.cpp" />
     <ClCompile Include="Example_Mole.cpp" />
     <ClCompile Include="Example_MoleMainGame.cpp" />
@@ -229,16 +233,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnalogClock.h" />
     <ClInclude Include="AP_Player.h" />
     <ClInclude Include="AP_Poop.h" />
     <ClInclude Include="AvoidPoop.h" />
     <ClInclude Include="C3DMatrix.h" />
     <ClInclude Include="C3DVector.h" />
+    <ClInclude Include="CannonShoot.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CS_Shell.h" />
     <ClInclude Include="Clay.h" />
     <ClInclude Include="ClayShooting.h" />
     <ClInclude Include="CommonMacroFunction.h" />
     <ClInclude Include="CrocodileTeeth.h" />
+    <ClInclude Include="CS_Cannon.h" />
     <ClInclude Include="CT_Teeth.h" />
     <ClInclude Include="Example_Mole.h" />
     <ClInclude Include="Example_MoleMainGame.h" />
