@@ -37,7 +37,7 @@ void GameNode::release(void)
 
 void GameNode::update(void)
 {
-	InvalidateRect(_hWnd, NULL, false);
+	InvalidateRect(_hWnd, NULL, true);
 }
 
 void GameNode::render(HDC hdc)

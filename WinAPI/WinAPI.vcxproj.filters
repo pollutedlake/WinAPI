@@ -76,6 +76,9 @@
     <Filter Include="과제\대포알 발사">
       <UniqueIdentifier>{af93a6f4-8f22-4d4e-91f0-f52cadea9862}</UniqueIdentifier>
     </Filter>
+    <Filter Include="과제\도형 회전">
+      <UniqueIdentifier>{e42ea68f-3562-43c7-9bd2-e98d79750d27}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -237,6 +240,9 @@
     <ClCompile Include="CS_Cannon.cpp">
       <Filter>과제\대포알 발사</Filter>
     </ClCompile>
+    <ClCompile Include="RotateFigure.cpp">
+      <Filter>과제\도형 회전</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -358,6 +364,9 @@
     </ClInclude>
     <ClInclude Include="CS_Cannon.h">
       <Filter>과제\대포알 발사</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateFigure.h">
+      <Filter>과제\도형 회전</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

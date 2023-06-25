@@ -12,8 +12,9 @@
 #define FINDWRONGPAINT      10
 #define ANALOGCLOCK         11
 #define CANNONSHOOT         12
+#define ROTATEFIGURE         13
 
-#define ASSIGNMENT      CANNONSHOOT
+#define ASSIGNMENT      ROTATEFIGURE
 
 #if ASSIGNMENT == MOLEGAME
 
@@ -66,6 +67,10 @@ AnalogClock* _mg;
 #include "CannonShoot.h"
 CannonShoot* _mg;
 
+#elif ASSIGNMENT == ROTATEFIGURE
+#include "RotateFigure.h"
+RotateFigure* _mg;
+
 #endif
 
 HINSTANCE _hInstance;
@@ -105,6 +110,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     _mg = new AnalogClock();
 #elif ASSIGNMENT == CANNONSHOOT
     _mg = new CannonShoot();
+#elif ASSIGNMENT == ROTATEFIGURE
+	_mg = new RotateFigure();
 #endif
 
     _hInstance = hInstance;

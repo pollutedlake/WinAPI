@@ -178,6 +178,7 @@
     <ClCompile Include="HS_Player.cpp" />
     <ClCompile Include="HS_Player1.cpp" />
     <ClCompile Include="HS_Player2.cpp" />
+    <ClCompile Include="RotateFigure.cpp" />
     <ClCompile Include="SB_Bullet.cpp" />
     <ClCompile Include="SB_Player.cpp" />
     <ClCompile Include="ShootBullet.cpp" />
@@ -265,6 +266,7 @@
     <ClInclude Include="HS_Player.h" />
     <ClInclude Include="HS_Player1.h" />
     <ClInclude Include="HS_Player2.h" />
+    <ClInclude Include="RotateFigure.h" />
     <ClInclude Include="SB_Bullet.h" />
     <ClInclude Include="SB_Player.h" />
     <ClInclude Include="RandomFunction.h" />
