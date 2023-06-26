@@ -158,6 +158,8 @@
     <ClCompile Include="CrocodileTeeth.cpp" />
     <ClCompile Include="CS_Cannon.cpp" />
     <ClCompile Include="CT_Teeth.cpp" />
+    <ClCompile Include="EarthWormGame.cpp" />
+    <ClCompile Include="EWG_EarthWorm.cpp" />
     <ClCompile Include="Example_Mole.cpp" />
     <ClCompile Include="Example_MoleMainGame.cpp" />
     <ClCompile Include="FindCardPair.cpp" />
@@ -252,6 +254,8 @@
     <ClInclude Include="CrocodileTeeth.h" />
     <ClInclude Include="CS_Cannon.h" />
     <ClInclude Include="CT_Teeth.h" />
+    <ClInclude Include="EarthWormGame.h" />
+    <ClInclude Include="EWG_EarthWorm.h" />
     <ClInclude Include="Example_Mole.h" />
     <ClInclude Include="Example_MoleMainGame.h" />
     <ClInclude Include="FindCardPair.h" />

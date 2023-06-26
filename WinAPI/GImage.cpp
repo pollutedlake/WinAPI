@@ -413,8 +413,8 @@ void GImage::alphaRender(HDC hdc, int destX, int destY, int sourX, int sourY, in
 		(
 			_blendImage->hMemDC,
 			0, 0,
-			_blendImage->width,
-			_blendImage->height,
+			sourWidth,
+			sourHeight,
 			hdc,
 			destX, destY,
 			SRCCOPY
@@ -425,8 +425,8 @@ void GImage::alphaRender(HDC hdc, int destX, int destY, int sourX, int sourY, in
 		(
 			_blendImage->hMemDC,
 			0, 0,
-			_imageInfo->width,
-			_imageInfo->height,
+			sourWidth,
+			sourHeight,
 			_imageInfo->hMemDC,
 			sourX, sourY,
 			sourWidth,
@@ -439,12 +439,12 @@ void GImage::alphaRender(HDC hdc, int destX, int destY, int sourX, int sourY, in
 		(
 			hdc,
 			destX, destY,
-			_imageInfo->width,
-			_imageInfo->height,
+			sourWidth,
+			sourHeight,
 			_blendImage->hMemDC,
 			0, 0,
-			_imageInfo->width,
-			_imageInfo->height,
+			sourWidth,
+			sourHeight,
 			_blendFunc
 		);
 	}
@@ -467,8 +467,8 @@ void GImage::alphaRender(HDC hdc, int destX, int destY, int destWidth, int destH
 		(
 			_blendImage->hMemDC,
 			0, 0,
-			_blendImage->width,
-			_blendImage->height,
+			destWidth,
+			destHeight,
 			hdc,
 			destX, destY,
 			SRCCOPY
@@ -479,8 +479,8 @@ void GImage::alphaRender(HDC hdc, int destX, int destY, int destWidth, int destH
 		(
 			_blendImage->hMemDC,
 			0, 0,
-			_imageInfo->width,
-			_imageInfo->height,
+			destWidth,
+			destHeight,
 			_imageInfo->hMemDC,
 			sourX, sourY,
 			sourWidth,
@@ -497,13 +497,13 @@ void GImage::alphaRender(HDC hdc, int destX, int destY, int destWidth, int destH
 			destHeight,
 			_blendImage->hMemDC,
 			0, 0,
-			_imageInfo->width,
-			_imageInfo->height,
+			destWidth,
+			destHeight,
 			_blendFunc
 		);
 	}
 	else
 	{
-		AlphaBlend(hdc, destX, destY, _imageInfo->width, _imageInfo->height, _imageInfo->hMemDC, sourX, sourY, sourWidth, sourHeight, _blendFunc);
+		AlphaBlend(hdc, destX, destY, destWidth, destHeight, _imageInfo->hMemDC, sourX, sourY, sourWidth, sourHeight, _blendFunc);
 	}
 }

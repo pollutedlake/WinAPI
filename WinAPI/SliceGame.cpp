@@ -108,7 +108,7 @@ void SliceGame::render(HDC hdc)
     }
     if (isClear())
     {
-        _image->alphaRender(memDC, WINSIZE_X / 4, WINSIZE_Y / 4,_alpha);
+        _image->alphaRender(memDC, 10, 10, WINSIZE_X - 20, WINSIZE_Y - 20, 0, 0, WINSIZE_X / 2, WINSIZE_Y / 2, _alpha);
     }
 
 	this->getDoubleBuffer()->render(hdc, 0, 0);

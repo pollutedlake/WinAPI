@@ -4,6 +4,7 @@ class MakeMinimap : public GameNode
 {
 private:
 	GImage* _map;
+	GImage* _minimapPlayer;
 	POINT _playerPos;
 	POINT _mapPos;
 	bool _isMinimap;

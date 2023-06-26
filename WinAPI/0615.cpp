@@ -1,22 +1,23 @@
 #include "Stdafx.h"
 
-#define MOLEGAME        1
-#define CLAYSHOOTING    2
-#define FINDCARDPAIR    3
-#define MAINGAME        4
-#define SHOOTBULLET     5
-#define AVOIDPOOP       6
-#define CROCODILETEETH  7
-#define VERTICALSHOOTING    8
-#define HORIZONTALSHOOTING  9
-#define FINDWRONGPAINT      10
-#define ANALOGCLOCK         11
-#define CANNONSHOOT         12
+#define MOLEGAME             1
+#define CLAYSHOOTING         2
+#define FINDCARDPAIR         3
+#define MAINGAME             4
+#define SHOOTBULLET          5
+#define AVOIDPOOP            6
+#define CROCODILETEETH       7
+#define VERTICALSHOOTING     8
+#define HORIZONTALSHOOTING   9
+#define FINDWRONGPAINT       10
+#define ANALOGCLOCK          11
+#define CANNONSHOOT          12
 #define ROTATEFIGURE         13
 #define SLICEGAME            14
 #define MINIMAP              15
+#define EARTHWORMGAME        16
 
-#define ASSIGNMENT      MINIMAP
+#define ASSIGNMENT      EARTHWORMGAME
 
 #if ASSIGNMENT == MOLEGAME
 
@@ -81,6 +82,10 @@ SliceGame* _mg;
 #include "MakeMinimap.h"
 MakeMinimap* _mg;
 
+#elif ASSIGNMENT == EARTHWORMGAME
+#include "EarthWormGame.h"
+EarthWormGame* _mg;
+
 #endif
 
 HINSTANCE _hInstance;
@@ -126,6 +131,9 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     _mg = new SliceGame();
 #elif ASSIGNMENT == MINIMAP
     _mg = new MakeMinimap();
+
+#elif ASSIGNMENT == EARTHWORMGAME
+	_mg = new EarthWormGame();
 #endif
 
     _hInstance = hInstance;

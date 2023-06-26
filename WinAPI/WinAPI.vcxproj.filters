@@ -91,6 +91,9 @@
     <Filter Include="과제\미니맵 만들기">
       <UniqueIdentifier>{32990904-caa1-4e1e-a9f0-020517264a7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="과제\지렁이 게임">
+      <UniqueIdentifier>{9fc095d0-15d2-4b0b-8466-5d9caf28cfb8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -264,6 +267,12 @@
     <ClCompile Include="MakeMinimap.cpp">
       <Filter>과제\미니맵 만들기</Filter>
     </ClCompile>
+    <ClCompile Include="EarthWormGame.cpp">
+      <Filter>과제\지렁이 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="EWG_EarthWorm.cpp">
+      <Filter>과제\지렁이 게임</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -397,6 +406,12 @@
     </ClInclude>
     <ClInclude Include="MakeMinimap.h">
       <Filter>과제\미니맵 만들기</Filter>
+    </ClInclude>
+    <ClInclude Include="EarthWormGame.h">
+      <Filter>과제\지렁이 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="EWG_EarthWorm.h">
+      <Filter>과제\지렁이 게임</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
