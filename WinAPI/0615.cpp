@@ -13,8 +13,10 @@
 #define ANALOGCLOCK         11
 #define CANNONSHOOT         12
 #define ROTATEFIGURE         13
+#define SLICEGAME            14
+#define MINIMAP              15
 
-#define ASSIGNMENT      ROTATEFIGURE
+#define ASSIGNMENT      MINIMAP
 
 #if ASSIGNMENT == MOLEGAME
 
@@ -71,6 +73,14 @@ CannonShoot* _mg;
 #include "RotateFigure.h"
 RotateFigure* _mg;
 
+#elif ASSIGNMENT == SLICEGAME
+#include "SliceGame.h"
+SliceGame* _mg;
+
+#elif ASSIGNMENT == MINIMAP
+#include "MakeMinimap.h"
+MakeMinimap* _mg;
+
 #endif
 
 HINSTANCE _hInstance;
@@ -112,6 +122,10 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     _mg = new CannonShoot();
 #elif ASSIGNMENT == ROTATEFIGURE
 	_mg = new RotateFigure();
+#elif ASSIGNMENT == SLICEGAME
+    _mg = new SliceGame();
+#elif ASSIGNMENT == MINIMAP
+    _mg = new MakeMinimap();
 #endif
 
     _hInstance = hInstance;

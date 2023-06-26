@@ -79,6 +79,18 @@
     <Filter Include="과제\도형 회전">
       <UniqueIdentifier>{e42ea68f-3562-43c7-9bd2-e98d79750d27}</UniqueIdentifier>
     </Filter>
+    <Filter Include="2D FrameWork\TrigonoMetric Function">
+      <UniqueIdentifier>{229fbe41-5323-4d1a-964b-312d18882788}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2D FrameWork\GImage">
+      <UniqueIdentifier>{ab24e9d2-7fce-4095-893a-2cc28b2c2434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="과제\슬라이스 게임">
+      <UniqueIdentifier>{e2d30168-e7c6-40b2-a6df-99d909c96de9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="과제\미니맵 만들기">
+      <UniqueIdentifier>{32990904-caa1-4e1e-a9f0-020517264a7b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -219,9 +231,6 @@
     <ClCompile Include="HS_Player2.cpp">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClCompile>
-    <ClCompile Include="GImage.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="FindWrongPaint.cpp">
       <Filter>과제\틀린그림찾기</Filter>
     </ClCompile>
@@ -242,6 +251,18 @@
     </ClCompile>
     <ClCompile Include="RotateFigure.cpp">
       <Filter>과제\도형 회전</Filter>
+    </ClCompile>
+    <ClCompile Include="GImage.cpp">
+      <Filter>2D FrameWork\GImage</Filter>
+    </ClCompile>
+    <ClCompile Include="SliceGame.cpp">
+      <Filter>과제\슬라이스 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="SG_Tile.cpp">
+      <Filter>과제\슬라이스 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="MakeMinimap.cpp">
+      <Filter>과제\미니맵 만들기</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -344,9 +365,6 @@
     <ClInclude Include="HS_Player2.h">
       <Filter>과제\1 vs 1 횡스크롤 슈팅 게임</Filter>
     </ClInclude>
-    <ClInclude Include="GImage.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="FindWrongPaint.h">
       <Filter>과제\틀린그림찾기</Filter>
     </ClInclude>
@@ -367,6 +385,18 @@
     </ClInclude>
     <ClInclude Include="RotateFigure.h">
       <Filter>과제\도형 회전</Filter>
+    </ClInclude>
+    <ClInclude Include="GImage.h">
+      <Filter>2D FrameWork\GImage</Filter>
+    </ClInclude>
+    <ClInclude Include="SliceGame.h">
+      <Filter>과제\슬라이스 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="SG_Tile.h">
+      <Filter>과제\슬라이스 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="MakeMinimap.h">
+      <Filter>과제\미니맵 만들기</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -390,5 +420,10 @@
     <Image Include="mole.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TrigonoMetric Function\TrigonoMetric Function.txt">
+      <Filter>2D FrameWork\TrigonoMetric Function</Filter>
+    </Text>
   </ItemGroup>
 </Project>

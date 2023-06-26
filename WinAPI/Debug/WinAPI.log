@@ -1,7 +1,2 @@
-﻿  RotateFigure.cpp
-C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\RotateFigure.cpp(40,51): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\RotateFigure.cpp(41,51): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\RotateFigure.cpp(47,22): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\RotateFigure.cpp(48,22): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\RotateFigure.cpp(65,7): warning C4101: 'str' :참조되지 않은 지역 변수입니다.
-  WinAPI.vcxproj -> C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\Debug\WinAPI.exe
+﻿  GImage.cpp
+  WinAPI.vcxproj -> C:\Users\언리얼\Desktop\박상현\WinAPI\WinAPI\Debug\WinAPI.exe

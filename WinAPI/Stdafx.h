@@ -26,6 +26,9 @@
 //#include <ole2.h>
 #define WIN32_LEAN_AND_MEAN
 
+// 라이브러리 추가
+#pragma comment (lib, "msimg32.lib")
+
 // Windows 헤더 파일
 #include <windows.h>
 
