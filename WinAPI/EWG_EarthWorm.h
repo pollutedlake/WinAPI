@@ -18,6 +18,8 @@ private:
 	Circle _circles[50];
 	float _speed;
 	float _angle;
+	float _exDirX;
+	float _exDirY;
 
 public:
 	HRESULT init(void);

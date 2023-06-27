@@ -48,6 +48,8 @@ HRESULT EWG_EarthWorm::init(void)
 
 void EWG_EarthWorm::update(void)
 {
+	_exDirX = _circles[0]._dirX;
+	_exDirY = _circles[0]._dirY;
 	if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 	{
 		_angle -= 3.0f;
@@ -91,9 +93,12 @@ void EWG_EarthWorm::update(void)
 	}
 	_circles[0]._dirX = _speed * cos(_angle / 180.0f * PI);
 	_circles[0]._dirY = _speed * sin(_angle / 180.0f * PI);
-	for (int i = 1; i < 50; i++)
+	if (_exDirX != _circles[0]._dirX || _exDirY != _circles[0]._dirY)
 	{
-		_circles[i]._turn.push_back(make_pair(make_pair(_circles[0]._positionX, _circles[0]._positionY), make_pair(_circles[0]._dirX, _circles[0]._dirY)));
+		for (int i = 1; i < 50; i++)
+		{
+			_circles[i]._turn.push_back(make_pair(make_pair(_circles[0]._positionX, _circles[0]._positionY), make_pair(_circles[0]._dirX, _circles[0]._dirY)));
+		}
 	}
 	_circles[0]._positionX += _circles[0]._dirX;
 	_circles[0]._positionY += _circles[0]._dirY;
