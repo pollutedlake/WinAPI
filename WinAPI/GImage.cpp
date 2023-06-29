@@ -696,8 +696,6 @@ void GImage::frameRender(HDC hdc, int destX, int destY, int currentFrameX, int c
 	}
 	else
 	{
-		// ◈ BitBlt() : DC간의 영역끼리 서로 고속 복사를 해준다.
-		// ㄴ SRCCOPY : 소스 영역을 영여게 복사한다.
 		StretchBlt
 		(
 			hdc, 
@@ -713,5 +711,4 @@ void GImage::frameRender(HDC hdc, int destX, int destY, int currentFrameX, int c
 			SRCCOPY
 		);
 	}
-
 }

@@ -94,6 +94,12 @@
     <Filter Include="과제\지렁이 게임">
       <UniqueIdentifier>{9fc095d0-15d2-4b0b-8466-5d9caf28cfb8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="과제\제로 콤보">
+      <UniqueIdentifier>{3481255f-8b1e-4d46-a1f8-9eabc95d13ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="과제\프레임 이미지 처리">
+      <UniqueIdentifier>{f1d52c7b-84cb-41de-8dbe-708b2b935da9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -273,6 +279,12 @@
     <ClCompile Include="EWG_EarthWorm.cpp">
       <Filter>과제\지렁이 게임</Filter>
     </ClCompile>
+    <ClCompile Include="ZeroCombo.cpp">
+      <Filter>과제\제로 콤보</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameImage.cpp">
+      <Filter>과제\프레임 이미지 처리</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -412,6 +424,12 @@
     </ClInclude>
     <ClInclude Include="EWG_EarthWorm.h">
       <Filter>과제\지렁이 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="ZeroCombo.h">
+      <Filter>과제\제로 콤보</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameImage.h">
+      <Filter>과제\프레임 이미지 처리</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

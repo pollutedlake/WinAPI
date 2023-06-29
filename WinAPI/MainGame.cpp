@@ -16,6 +16,8 @@ HRESULT MainGame::init(void)
 	_nine = new GImage;
 	_nine->init("Resources/Images.Object/Nine.bmp", WINSIZE_X / 2 - 200, WINSIZE_Y / 2 - 200, 3315, 2398, 13, 11, true, RGB(255, 0, 255));
 
+	_rc = RectMakeCenter(WINSIZE_X / 2, WINSIZE_Y / 2, 16 * 3, 29 * 3);
+
 	_alphaA = 0;
 	_count = _index = 0;
 
@@ -52,14 +54,6 @@ void MainGame::update(void)
 	{
 		_isLeft = true;
 		_nine->setX(_nine->getX() - 8.0f);
-	}
-	if (KEYMANAGER->isStayKeyDown(VK_UP))
-	{
-		
-	}
-	if (KEYMANAGER->isStayKeyDown(VK_DOWN))
-	{
-		
 	}
 	if (_isLeft)
 	{
@@ -106,7 +100,7 @@ void MainGame::render(HDC hdc)
 	// ========================================================
 	//_bgImage->render(memDC, 0, 0);
 	_bgImage->alphaRender(memDC, _alphaA);
-	_plImage->alphaRender(memDC, _rc.left, _rc.top, _alphaB);
+	_plImage->render(memDC, _rc.left, _rc.top);
 	//_bgImage->render(memDC, _rc.left, _rc.top, 500, 300, 300, 300);
 	// ========================================================
 	this->getDoubleBuffer()->render(hdc, 0, 0);
@@ -116,19 +110,3 @@ void MainGame::fireBullet(void)
 {
 	
 }
-
-/*
-과제 1. 제로 콤보 이미지 완성
-
-- 스페이스 바를 누르면 1타부터 -> 마지막 공격까지 자동으로 재생
-ㄴ 무한 반복
-과제 2. 프레임 이미지 처리
-- 시작 씬 + 게임 씬
-
-- 게임씬에서는 아래의 이미지를 GUI화 시켜서 재생 시킨다. (버튼)
-ㄴ프레임 렌더
-
-- 필수 이미지:
-
-ㄴ 배경, 대기, 이동(좌 + 우), 찌르기(좌 + 우), 대각선 찌르기, 연속 찌르기(좌, 우), 원 돌리기, 승리 포즈(옷 던지기), 스킬 클라이막스 연출, 패배
-*/

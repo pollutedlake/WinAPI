@@ -1,2 +1,18 @@
-﻿  0615.cpp
-  WinAPI.vcxproj -> C:\Users\언리얼\Desktop\박상현\WinAPI\WinAPI\Debug\WinAPI.exe
+﻿  FrameImage.cpp
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(131,14): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(131,14): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(132,14): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(132,14): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(133,18): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(133,18): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(134,18): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(134,18): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(144,14): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(144,14): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(145,14): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(145,14): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(146,18): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(146,18): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(147,18): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\GImage.h(147,18): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  WinAPI.vcxproj -> C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\Debug\WinAPI.exe

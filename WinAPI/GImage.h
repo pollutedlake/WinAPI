@@ -163,7 +163,7 @@ public:
 	inline int getFrameY(void) { return _imageInfo->currentFrameY; }
 	inline void setFrameY(int frameY)
 	{
-		_imageInfo->currentFrameX = frameY;
+		_imageInfo->currentFrameY = frameY;
 
 		if (frameY > _imageInfo->maxFrameY)
 		{

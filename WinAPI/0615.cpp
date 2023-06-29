@@ -16,8 +16,10 @@
 #define SLICEGAME            14
 #define MINIMAP              15
 #define EARTHWORMGAME        16
+#define ZEROCOMBO            17
+#define FRAMEIMAGE           18
 
-#define ASSIGNMENT      EARTHWORMGAME
+#define ASSIGNMENT      FRAMEIMAGE
 
 #if ASSIGNMENT == MOLEGAME
 
@@ -86,6 +88,14 @@ MakeMinimap* _mg;
 #include "EarthWormGame.h"
 EarthWormGame* _mg;
 
+#elif ASSIGNMENT == ZEROCOMBO
+#include "ZeroCombo.h"
+ZeroCombo* _mg;
+
+#elif ASSIGNMENT == FRAMEIMAGE
+#include "FrameImage.h"
+FrameImage* _mg;
+
 #endif
 
 HINSTANCE _hInstance;
@@ -131,9 +141,12 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     _mg = new SliceGame();
 #elif ASSIGNMENT == MINIMAP
     _mg = new MakeMinimap();
-
 #elif ASSIGNMENT == EARTHWORMGAME
 	_mg = new EarthWormGame();
+#elif ASSIGNMENT == ZEROCOMBO
+	_mg = new ZeroCombo();
+#elif ASSIGNMENT == FRAMEIMAGE
+	_mg = new FrameImage();
 #endif
 
     _hInstance = hInstance;
