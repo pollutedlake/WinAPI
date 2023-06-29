@@ -13,13 +13,13 @@ HRESULT MainGame::init(void)
 	_plImage = new GImage;
 	_plImage->init("Resources/Images/Object/Airplane.bmp", 173, 291 , true, RGB(255, 0, 255));
 
-	_rc = RectMakeCenter(WINSIZE_X / 2 - 500, WINSIZE_Y / 2 + 200, 173, 291);
+	_nine = new GImage;
+	_nine->init("Resources/Images.Object/Nine.bmp", WINSIZE_X / 2 - 200, WINSIZE_Y / 2 - 200, 3315, 2398, 13, 11, true, RGB(255, 0, 255));
 
-	_countA = _countB = 0;
-	_alphaA = _alphaB = 0;
+	_alphaA = 0;
+	_count = _index = 0;
 
-	_alphaNum = 1;
-
+	_isLeft = false;
 	_isAlphaIncrease = false;
 
 	return S_OK;
@@ -30,6 +30,7 @@ void MainGame::release(void)
 	GameNode::release();
 	SAFE_DELETE(_bgImage);
 	SAFE_DELETE(_plImage);
+	SAFE_DELETE(_nine);
 }
 
 void MainGame::update(void)
@@ -44,41 +45,54 @@ void MainGame::update(void)
 	}
 	if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
 	{
-		_rc.left += 5.0f;
-		_rc.right += 5.0f;
+		_isLeft = false;
+		_nine->setX(_nine->getX() + 8.0f);
 	}
 	if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 	{
-		_rc.left -= 5.0f;
-		_rc.right -= 5.0f;
+		_isLeft = true;
+		_nine->setX(_nine->getX() - 8.0f);
 	}
 	if (KEYMANAGER->isStayKeyDown(VK_UP))
 	{
-		_rc.top -= 5.0f;
-		_rc.bottom -= 5.0f;
+		
 	}
 	if (KEYMANAGER->isStayKeyDown(VK_DOWN))
 	{
-		_rc.top += 5.0f;
-		_rc.bottom += 5.0f;
+		
 	}
-	_countA++;
-	if (_countA % 3 == 0)
+	if (_isLeft)
 	{
-		_alphaA++;
-		if (_alphaA >= 255)
+		_count++;
+
+		_nine->setFrameY(1);
+
+		if (_count % 3 == 0)
 		{
-			_alphaA = 0;
+			_index--;
+
+			if (_index < 0)
+			{
+				_index = 10;
+			}
+
+			_nine->setFrameX(_index);
 		}
 	}
-
-	_countB++;
-	if (_countB % 6 == 0)
+	else
 	{
-		_alphaB += 5;
-		if (_alphaB >= 255)
+		_count++;
+		_nine->setFrameY(0);
+
+		if (_count % 2 == 0)
 		{
-			_alphaB = 0;
+			_index++;
+
+			if (_index > 10)
+			{
+				_index = 0;
+			}
+			_nine->setFrameX(_index);
 		}
 	}
 
@@ -102,3 +116,19 @@ void MainGame::fireBullet(void)
 {
 	
 }
+
+/*
+과제 1. 제로 콤보 이미지 완성
+
+- 스페이스 바를 누르면 1타부터 -> 마지막 공격까지 자동으로 재생
+ㄴ 무한 반복
+과제 2. 프레임 이미지 처리
+- 시작 씬 + 게임 씬
+
+- 게임씬에서는 아래의 이미지를 GUI화 시켜서 재생 시킨다. (버튼)
+ㄴ프레임 렌더
+
+- 필수 이미지:
+
+ㄴ 배경, 대기, 이동(좌 + 우), 찌르기(좌 + 우), 대각선 찌르기, 연속 찌르기(좌, 우), 원 돌리기, 승리 포즈(옷 던지기), 스킬 클라이막스 연출, 패배
+*/

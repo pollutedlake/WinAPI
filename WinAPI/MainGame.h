@@ -12,14 +12,14 @@ class MainGame : public GameNode
 private:
 	GImage* _bgImage;
 	GImage* _plImage;
+	GImage* _nine;		// 프레임 이미지
 	RECT _rc;
 
-	int _countA, _countB;
-	int _alphaA, _alphaB;
-	int _alphaNum;
-
+	int _count;
+	int _alphaA;
+	int _index;
+	bool _isLeft;
 	bool _isAlphaIncrease;
-
 public:
 	virtual HRESULT init(void);
 	virtual void release(void);
