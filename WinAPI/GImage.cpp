@@ -626,6 +626,46 @@ void GImage::alphaRender(HDC hdc, int destX, int destY, int destWidth, int destH
 	}
 }
 
+void GImage::alphaFrameRender(HDC hdc, int destX, int destY, int currentFrameX, int currentFrameY, BYTE alpha)
+{
+	_imageInfo->currentFrameX = currentFrameX;
+	_imageInfo->currentFrameY = currentFrameY;
+	if (currentFrameX > _imageInfo->maxFrameX)
+	{
+		_imageInfo->currentFrameX = _imageInfo->maxFrameX;
+	}
+	if (currentFrameY > _imageInfo->maxFrameY)
+	{
+		_imageInfo->currentFrameY = _imageInfo->maxFrameY;
+	}
+
+	if (!_blendImage) this->initForAlphaBlend();
+	_blendFunc.SourceConstantAlpha = alpha;
+	if (_isTrans)
+	{
+		BitBlt(_blendImage->hMemDC, 0, 0, _imageInfo->frameWidth, _imageInfo->frameHeight, hdc, destX, destY, SRCCOPY);
+		GdiTransparentBlt(
+			_blendImage->hMemDC,
+			0, 0,
+			_imageInfo->frameWidth,
+			_imageInfo->frameHeight,
+			_imageInfo->hMemDC,
+			_imageInfo->currentFrameX * _imageInfo->frameWidth,
+			_imageInfo->currentFrameY * _imageInfo->frameHeight,
+			_imageInfo->frameWidth,
+			_imageInfo->frameHeight,
+			_transColor);
+
+		GdiAlphaBlend(hdc, destX, destY, _imageInfo->frameWidth, _imageInfo->frameHeight,
+			_blendImage->hMemDC, 0, 0, _imageInfo->frameWidth, _imageInfo->frameHeight, _blendFunc);
+	}
+	else
+	{
+		GdiAlphaBlend(hdc, destX, destY, _imageInfo->frameWidth, _imageInfo->frameHeight,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->frameWidth, _imageInfo->frameHeight, _blendFunc);
+	}
+}
+
 void GImage::frameRender(HDC hdc, int destX, int destY)
 {
 	if (_isTrans)
@@ -708,6 +748,55 @@ void GImage::frameRender(HDC hdc, int destX, int destY, int currentFrameX, int c
 			_imageInfo->currentFrameY * _imageInfo->frameHeight, 
 			_imageInfo->frameWidth, 
 			_imageInfo->frameHeight, 
+			SRCCOPY
+		);
+	}
+}
+
+void GImage::frameRender(HDC hdc, int destX, int destY, int destWidth, int destHeight, int currentFrameX, int currentFrameY)
+{
+	_imageInfo->currentFrameX = currentFrameX;
+	_imageInfo->currentFrameY = currentFrameY;
+	if (currentFrameX > _imageInfo->maxFrameX)
+	{
+		_imageInfo->currentFrameX = _imageInfo->currentFrameX;
+	}
+	if (currentFrameY > _imageInfo->maxFrameY)
+	{
+		_imageInfo->currentFrameY = _imageInfo->currentFrameY;
+	}
+	if (_isTrans)
+	{
+		// GdiTransparentBlt() : 비트맵을 불러올 때 특정 색상을 제외하고 복사한다.
+		GdiTransparentBlt
+		(
+			hdc,                  // 복사할 장소의 DC(화면 DC)
+			destX,                  // 복사될 좌표 시작 X
+			destY,                  // 복사될 좌표 시작 Y
+			destWidth,
+			destHeight,
+			_imageInfo->hMemDC,         // 복사될 대상 메모리DC
+			_imageInfo->currentFrameX * _imageInfo->frameWidth,
+			_imageInfo->currentFrameY * _imageInfo->frameHeight,            // 복사 시작 지점
+			_imageInfo->frameWidth,         // 복사 영역 가로 크기
+			_imageInfo->frameHeight,         // 복사 영역 세로 크기
+			_transColor               // 복사할때 제외할 색상 (마젠타)
+		);
+	}
+	else
+	{
+		StretchBlt
+		(
+			hdc,
+			destX,
+			destY,
+			destWidth,
+			destHeight,
+			_imageInfo->hMemDC,
+			_imageInfo->currentFrameX * _imageInfo->frameWidth,
+			_imageInfo->currentFrameY * _imageInfo->frameHeight,
+			_imageInfo->frameWidth,
+			_imageInfo->frameHeight,
 			SRCCOPY
 		);
 	}

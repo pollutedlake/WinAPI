@@ -5,39 +5,34 @@
 
 HRESULT MainGame::init(void)
 {
-	GameNode::init();
+	GameNode::init(true);
+#if MAIN == CLASS
+	IMAGEMANAGER->addImage("DeadSpace", "Resources/Images/BackGround/DeadSpace.bmp", WINSIZE_X, WINSIZE_Y);
 
-	_bgImage = new GImage;
-	_bgImage->init("Resources/Images/BackGround/DeadSpace.bmp", WINSIZE_X, WINSIZE_Y);
-
-	_plImage = new GImage;
-	_plImage->init("Resources/Images/Object/Airplane.bmp", 173, 291 , true, RGB(255, 0, 255));
-
-	_nine = new GImage;
-	_nine->init("Resources/Images.Object/Nine.bmp", WINSIZE_X / 2 - 200, WINSIZE_Y / 2 - 200, 3315, 2398, 13, 11, true, RGB(255, 0, 255));
-
-	_rc = RectMakeCenter(WINSIZE_X / 2, WINSIZE_Y / 2, 16 * 3, 29 * 3);
-
-	_alphaA = 0;
-	_count = _index = 0;
-
-	_isLeft = false;
-	_isAlphaIncrease = false;
-
+	_alphaA = 255;
+#elif MAIN == CATCHTHEWALL
+	_ctw = new CTW_Scene;
+	_ctw->init(true);
+#elif MAIN == MINIMAP
+#endif
 	return S_OK;
 }
 
 void MainGame::release(void)
 {
 	GameNode::release();
-	SAFE_DELETE(_bgImage);
-	SAFE_DELETE(_plImage);
-	SAFE_DELETE(_nine);
+#if MAIN == CLASS
+#elif MAIN == CATCHTHEWALL
+	_ctw->release();
+	SAFE_DELETE(_ctw);
+#elif MAIN == MINIMAP
+#endif
 }
 
 void MainGame::update(void)
 {
 	GameNode::update();
+#if MAIN == CLASS
 	if (KEYMANAGER->isOnceKeyDown('Q'))
 	{
 		if (MessageBox(_hWnd, "게임을 종료하시겠습니까?", "종료확인", MB_OKCANCEL) == IDOK)
@@ -45,68 +40,45 @@ void MainGame::update(void)
 			PostQuitMessage(0);
 		}
 	}
-	if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
-	{
-		_isLeft = false;
-		_nine->setX(_nine->getX() + 8.0f);
-	}
-	if (KEYMANAGER->isStayKeyDown(VK_LEFT))
-	{
-		_isLeft = true;
-		_nine->setX(_nine->getX() - 8.0f);
-	}
-	if (_isLeft)
-	{
-		_count++;
-
-		_nine->setFrameY(1);
-
-		if (_count % 3 == 0)
-		{
-			_index--;
-
-			if (_index < 0)
-			{
-				_index = 10;
-			}
-
-			_nine->setFrameX(_index);
-		}
-	}
-	else
-	{
-		_count++;
-		_nine->setFrameY(0);
-
-		if (_count % 2 == 0)
-		{
-			_index++;
-
-			if (_index > 10)
-			{
-				_index = 0;
-			}
-			_nine->setFrameX(_index);
-		}
-	}
+#elif MAIN == CATCHTHEWALL
+	_ctw->update();
+#elif MAIN == MINIMAP
+#endif	
 
 }
 
-void MainGame::render(HDC hdc)
+void MainGame::render(void)
 {
-	HDC memDC = this->getDoubleBuffer()->getMemDC();
 	// PatBlt(): 사각형 안에 영역을 브러쉬로 채우는 함수
-	PatBlt(memDC, 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
+	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 	// ========================================================
-	//_bgImage->render(memDC, 0, 0);
-	_bgImage->alphaRender(memDC, _alphaA);
-	_plImage->render(memDC, _rc.left, _rc.top);
-	//_bgImage->render(memDC, _rc.left, _rc.top, 500, 300, 300, 300);
+#if MAIN == CLASS
+	IMAGEMANAGER->findImage("DeadSpace")->alphaRender(getMemDC(), _alphaA);
+#elif MAIN == CATCHTHEWALL
+	_ctw->render();
+#elif MAIN == MINIMAP
+#endif
 	// ========================================================
-	this->getDoubleBuffer()->render(hdc, 0, 0);
+	this->getBackBuffer()->render(getHDC());
 }
 
-void MainGame::fireBullet(void)
-{
-	
-}
+/*
+과제1. 캐릭터 벽잡기
+
+이미지 필수 : 배경, 벽, 캐릭터(대기,이동,점프,벽을 잡고있는 모션)
+
+기본적으로 벽을 잡을때는 가장 위쪽 모서리를 잡으며 벽 중간을 잡았을경우 천천히 지면으로 내려운다
+
+캐릭터가 벽을 잡고 있는 상태에서 위 / 또는 아래방향키를 누르면 올라가거나 내려갈수 있어야한다.
+
+또한 캐릭터가 벽 위로 올라선 다음 다시 아래로 점프하면 캐릭터는 지면에 착지할수있어야한다
+
+캐릭터 점프 높이의 지형이 있고 캐릭터는 지형 밑에서 점프로 지형 위 올라 갈 수있다
+
+캐릭터는 지형에 올라선 상태에서 지면으로 다시 내려올 수 있으면 ok
+
+과제2. 미니맵 연동
+
+플레이어의 움직임을 미니맵에서 그대로 확인해야 한다
+ㄴ 움직임까지 동일하게
+*/

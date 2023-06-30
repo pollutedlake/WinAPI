@@ -19,7 +19,7 @@
 #define ZEROCOMBO            17
 #define FRAMEIMAGE           18
 
-#define ASSIGNMENT      FRAMEIMAGE
+#define ASSIGNMENT      MAINGAME
 
 #if ASSIGNMENT == MOLEGAME
 

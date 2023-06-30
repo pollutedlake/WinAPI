@@ -100,6 +100,9 @@
     <Filter Include="과제\프레임 이미지 처리">
       <UniqueIdentifier>{f1d52c7b-84cb-41de-8dbe-708b2b935da9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="과제\캐릭터 벽잡기">
+      <UniqueIdentifier>{f1ded792-482c-4a14-a514-45db856eabff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -285,6 +288,18 @@
     <ClCompile Include="FrameImage.cpp">
       <Filter>과제\프레임 이미지 처리</Filter>
     </ClCompile>
+    <ClCompile Include="ImageManager.cpp">
+      <Filter>ManagerClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Penitent.cpp">
+      <Filter>과제\캐릭터 벽잡기</Filter>
+    </ClCompile>
+    <ClCompile Include="CTW_BackGround.cpp">
+      <Filter>과제\캐릭터 벽잡기</Filter>
+    </ClCompile>
+    <ClCompile Include="CTW_Scene.cpp">
+      <Filter>과제\캐릭터 벽잡기</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -430,6 +445,18 @@
     </ClInclude>
     <ClInclude Include="FrameImage.h">
       <Filter>과제\프레임 이미지 처리</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageManager.h">
+      <Filter>ManagerClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Penitent.h">
+      <Filter>과제\캐릭터 벽잡기</Filter>
+    </ClInclude>
+    <ClInclude Include="CTW_BackGround.h">
+      <Filter>과제\캐릭터 벽잡기</Filter>
+    </ClInclude>
+    <ClInclude Include="CTW_Scene.h">
+      <Filter>과제\캐릭터 벽잡기</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

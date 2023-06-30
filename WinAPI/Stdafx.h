@@ -25,6 +25,7 @@
 // ㄴGDI+를 사용하려면 헤더파일에서 꺼내와야 한다.
 //#include <ole2.h>
 #define WIN32_LEAN_AND_MEAN
+#pragma comment(linker,"/entry:WinMainCRTStartup /subsystem:console")
 
 // 라이브러리 추가
 #pragma comment (lib, "msimg32.lib")
@@ -88,6 +89,7 @@ WBCS(와이드 바이트 캐릭터 셋)
 #include <random>
 #include <vector>
 #include<map>
+#include<string.h>
 // unordered_map : Hash 자료구조
 // ㄴ 일반적 상황에서 map보다 검색속도가 더 빠르다.
 // ㄴ 검색 속도가 빠른 이유는 중복된 데이터를 허용하지 않기 때문에
@@ -100,10 +102,14 @@ WBCS(와이드 바이트 캐릭터 셋)
 #include<bitset>
 #define _USE_MATH_DEFINES
 #include <math.h>
-using std::vector;
-using std::bitset;
-using std::pair;
-using std::make_pair;
+using namespace std;
+//using std::vector;
+//using std::bitset;
+//using std::pair;
+//using std::map;
+//using std::string;
+//using std::cout;
+//using std::make_pair;
 
 /*
 //! D2D/D3D 헤더파일
@@ -129,10 +135,12 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 #include "CommonMacroFunction.h"
 #include "RandomFunction.h"
 #include "KeyManager.h"
+#include "ImageManager.h"
 
 // # 싱글톤 #
 #define RND RandomFunction::getSingleton()
 #define KEYMANAGER KeyManager::getSingleton()
+#define IMAGEMANAGER ImageManager::getSingleton()
 
 // # 매크로 # (윈도우창 초기화)
 #define WINNAME					(LPTSTR)(TEXT("WindowsAPI"))
