@@ -7,7 +7,7 @@ private:
 	GImage* _backGround;
 	RECT _rc[7];
 public:
-	HRESULT init(bool managerInit);
+	HRESULT init(void);
 	void release(void);
 	void update(void);
 	void render(void);

@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "CTW_Scene.h"
 
-HRESULT CTW_Scene::init(bool managerInit)
+HRESULT CTW_Scene::init()
 {
 	_player = new Penitent;
-	_player->init(true);
+	_player->init();
 	_backGround = new CTW_BackGround;
-	_backGround->init(true);
+	_backGround->init();
 	return S_OK;
 }
 
@@ -37,7 +37,7 @@ void CTW_Scene::collisionCheck(RECT playerRC, RECT* platforms)
 	{
 		if (IntersectRect(&temp, &playerRC, &platforms[i]))
 		{
-			_player->modifyPosition(temp);
+			_player->modifyPosition(temp, platforms[i]);
 		}
 	}
 }

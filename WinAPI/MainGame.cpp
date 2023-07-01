@@ -10,10 +10,9 @@ HRESULT MainGame::init(void)
 	IMAGEMANAGER->addImage("DeadSpace", "Resources/Images/BackGround/DeadSpace.bmp", WINSIZE_X, WINSIZE_Y);
 
 	_alphaA = 255;
-#elif MAIN == CATCHTHEWALL
-	_ctw = new CTW_Scene;
-	_ctw->init(true);
-#elif MAIN == MINIMAP
+#elif MAIN == ASSIGNMENT
+	_assignment = new CTW_Scene;
+	_assignment->init();
 #endif
 	return S_OK;
 }
@@ -22,10 +21,9 @@ void MainGame::release(void)
 {
 	GameNode::release();
 #if MAIN == CLASS
-#elif MAIN == CATCHTHEWALL
-	_ctw->release();
-	SAFE_DELETE(_ctw);
-#elif MAIN == MINIMAP
+#elif MAIN == ASSIGNMENT
+	_assignment->release();
+	SAFE_DELETE(_assignment);
 #endif
 }
 
@@ -40,9 +38,8 @@ void MainGame::update(void)
 			PostQuitMessage(0);
 		}
 	}
-#elif MAIN == CATCHTHEWALL
-	_ctw->update();
-#elif MAIN == MINIMAP
+#elif MAIN == ASSIGNMENT
+	_assignment ->update();
 #endif	
 
 }
@@ -54,9 +51,8 @@ void MainGame::render(void)
 	// ========================================================
 #if MAIN == CLASS
 	IMAGEMANAGER->findImage("DeadSpace")->alphaRender(getMemDC(), _alphaA);
-#elif MAIN == CATCHTHEWALL
-	_ctw->render();
-#elif MAIN == MINIMAP
+#elif MAIN == ASSIGNMENT
+	_assignment->render();
 #endif
 	// ========================================================
 	this->getBackBuffer()->render(getHDC());

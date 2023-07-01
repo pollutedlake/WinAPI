@@ -2,14 +2,12 @@
 #include "GameNode.h"
 
 #define CLASS			0
-#define CATCHTHEWALL	1
-#define MINIMAP			2
-#define MAIN		CATCHTHEWALL
+#define ASSIGNMENT		1
+#define MAIN		ASSIGNMENT
 
 #if MAIN == CLASS
-#elif MAIN == CATCHTHEWALL
+#elif MAIN == ASSIGNMENT
 #include "CTW_Scene.h"
-#elif MAIN == MINIMAP
 #endif
 
 // 0. 상속을 받은 클래스
@@ -21,13 +19,11 @@
 class MainGame : public GameNode
 {
 private:
+	GameNode* _assignment;
 #if MAIN == CLASS
 	GImage* _bgImage;
 
 	int _alphaA;
-#elif MAIN == CATCHTHEWALL
-	CTW_Scene* _ctw;
-#elif MAIN == MINIMAP
 #endif
 public:
 	virtual HRESULT init(void);

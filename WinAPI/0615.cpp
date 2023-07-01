@@ -1,102 +1,6 @@
 #include "Stdafx.h"
-
-#define MOLEGAME             1
-#define CLAYSHOOTING         2
-#define FINDCARDPAIR         3
-#define MAINGAME             4
-#define SHOOTBULLET          5
-#define AVOIDPOOP            6
-#define CROCODILETEETH       7
-#define VERTICALSHOOTING     8
-#define HORIZONTALSHOOTING   9
-#define FINDWRONGPAINT       10
-#define ANALOGCLOCK          11
-#define CANNONSHOOT          12
-#define ROTATEFIGURE         13
-#define SLICEGAME            14
-#define MINIMAP              15
-#define EARTHWORMGAME        16
-#define ZEROCOMBO            17
-#define FRAMEIMAGE           18
-
-#define ASSIGNMENT      MAINGAME
-
-#if ASSIGNMENT == MOLEGAME
-
-#include "MoleGame.h"
-MoleGame* _mg;
-
-#elif ASSIGNMENT == CLAYSHOOTING
-
-#include "ClayShooting.h"
-ClayShooting* _mg;
-
-#elif ASSIGNMENT == FINDCARDPAIR
-
-#include "FindCardPair.h"
-FindCardPair* _mg;
-
-#elif ASSIGNMENT == MAINGAME
 #include "MainGame.h"
 MainGame* _mg;
-
-#elif ASSIGNMENT == SHOOTBULLET
-#include "ShootBullet.h"
-ShootBullet* _mg;
-
-#elif ASSIGNMENT == AVOIDPOOP
-#include "AvoidPoop.h"
-AvoidPoop* _mg;
-
-#elif ASSIGNMENT == CROCODILETEETH
-#include "CrocodileTeeth.h"
-CrocodileTeeth* _mg;
-
-#elif ASSIGNMENT == VERTICALSHOOTING
-#include "VerticalShooting.h"
-VerticalShooting* _mg;
-
-#elif ASSIGNMENT == HORIZONTALSHOOTING
-#include "HorizontalShooting.h"
-HorizontalShooting* _mg;
-
-#elif ASSIGNMENT == FINDWRONGPAINT
-#include "FindWrongPaint.h"
-FindWrongPaint* _mg;
-
-#elif ASSIGNMENT == ANALOGCLOCK
-#include "AnalogClock.h"
-AnalogClock* _mg;
-
-#elif ASSIGNMENT == CANNONSHOOT
-#include "CannonShoot.h"
-CannonShoot* _mg;
-
-#elif ASSIGNMENT == ROTATEFIGURE
-#include "RotateFigure.h"
-RotateFigure* _mg;
-
-#elif ASSIGNMENT == SLICEGAME
-#include "SliceGame.h"
-SliceGame* _mg;
-
-#elif ASSIGNMENT == MINIMAP
-#include "MakeMinimap.h"
-MakeMinimap* _mg;
-
-#elif ASSIGNMENT == EARTHWORMGAME
-#include "EarthWormGame.h"
-EarthWormGame* _mg;
-
-#elif ASSIGNMENT == ZEROCOMBO
-#include "ZeroCombo.h"
-ZeroCombo* _mg;
-
-#elif ASSIGNMENT == FRAMEIMAGE
-#include "FrameImage.h"
-FrameImage* _mg;
-
-#endif
 
 HINSTANCE _hInstance;
 HWND _hWnd;
@@ -110,44 +14,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     LPSTR     lpszCmdParam,
     int       nCmdShow)
 {
-
-#if ASSIGNMENT == MOLEGAME
-    _mg = new MoleGame();
-#elif ASSIGNMENT == CLAYSHOOTING
-    _mg = new ClayShooting();
-#elif ASSIGNMENT == FINDCARDPAIR
-    _mg = new FindCardPair();
-#elif ASSIGNMENT == MAINGAME
     _mg = new MainGame();
-#elif ASSIGNMENT == SHOOTBULLET
-    _mg = new ShootBullet();
-#elif ASSIGNMENT == AVOIDPOOP
-    _mg = new AvoidPoop();
-#elif ASSIGNMENT == CROCODILETEETH
-    _mg = new CrocodileTeeth();
-#elif ASSIGNMENT == VERTICALSHOOTING
-    _mg = new VerticalShooting();
-#elif ASSIGNMENT == HORIZONTALSHOOTING
-    _mg = new HorizontalShooting();
-#elif ASSIGNMENT == FINDWRONGPAINT
-	_mg = new FindWrongPaint();
-#elif ASSIGNMENT == ANALOGCLOCK
-    _mg = new AnalogClock();
-#elif ASSIGNMENT == CANNONSHOOT
-    _mg = new CannonShoot();
-#elif ASSIGNMENT == ROTATEFIGURE
-	_mg = new RotateFigure();
-#elif ASSIGNMENT == SLICEGAME
-    _mg = new SliceGame();
-#elif ASSIGNMENT == MINIMAP
-    _mg = new MakeMinimap();
-#elif ASSIGNMENT == EARTHWORMGAME
-	_mg = new EarthWormGame();
-#elif ASSIGNMENT == ZEROCOMBO
-	_mg = new ZeroCombo();
-#elif ASSIGNMENT == FRAMEIMAGE
-	_mg = new FrameImage();
-#endif
 
     _hInstance = hInstance;
 
