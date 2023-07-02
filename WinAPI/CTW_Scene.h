@@ -1,12 +1,12 @@
 #pragma once
 #include "GameNode.h"
 #include "CTW_BackGround.h"
-#include "Penitent.h"
+#include "Player.h"
 class CTW_Scene : public GameNode
 {
 private:
 	CTW_BackGround* _backGround;
-	Penitent* _player;
+	Player* _player;
 
 public:
 	HRESULT init(void);

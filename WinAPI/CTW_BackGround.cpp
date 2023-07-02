@@ -24,11 +24,16 @@ void CTW_BackGround::update(void)
 	
 }
 
-void CTW_BackGround::render(void)
+void CTW_BackGround::render(HDC memDC)
 {
-	_backGround->render(getMemDC());
+	_backGround->render(memDC);
 	for (int i = 0; i < 5; i++)
 	{
-		FillRect(getMemDC(), &_rc[i], (HBRUSH)GetStockObject(BLACK_BRUSH));
+		FillRect(memDC, &_rc[i], (HBRUSH)GetStockObject(BLACK_BRUSH));
 	}
+}
+
+void CTW_BackGround::render(HDC memDC, HDC hdc)
+{
+	StretchBlt(memDC, 0, 0, WINSIZE_X / 8, WINSIZE_Y / 8, memDC, 0, 0, WINSIZE_X, WINSIZE_Y, SRCCOPY);
 }

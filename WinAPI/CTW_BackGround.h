@@ -1,7 +1,6 @@
 #pragma once
-#include "GameNode.h"
 
-class CTW_BackGround : public GameNode
+class CTW_BackGround
 {
 private:
 	GImage* _backGround;
@@ -10,7 +9,8 @@ public:
 	HRESULT init(void);
 	void release(void);
 	void update(void);
-	void render(void);
+	void render(HDC memDC);
+	void render(HDC memDC, HDC hdc);
 
 	RECT* getRect() {return _rc; }
 

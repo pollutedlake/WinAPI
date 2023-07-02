@@ -237,7 +237,7 @@
     <ClCompile Include="HS_Player2.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Penitent.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="RotateFigure.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -404,7 +404,7 @@
     <ClInclude Include="HS_Player2.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Penitent.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="RotateFigure.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>

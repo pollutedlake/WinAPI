@@ -11,7 +11,7 @@ HRESULT MainGame::init(void)
 
 	_alphaA = 255;
 #elif MAIN == ASSIGNMENT
-	_assignment = new CTW_Scene;
+	_assignment = new CTW_Scene;			// Ä³¸¯ÅÍ º®Â¤±â, ¹Ì´Ï¸Ê ¿¬µ¿
 	_assignment->init();
 #endif
 	return S_OK;

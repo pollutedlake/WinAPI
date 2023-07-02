@@ -291,13 +291,13 @@
     <ClCompile Include="ImageManager.cpp">
       <Filter>ManagerClass</Filter>
     </ClCompile>
-    <ClCompile Include="Penitent.cpp">
-      <Filter>과제\캐릭터 벽잡기</Filter>
-    </ClCompile>
     <ClCompile Include="CTW_BackGround.cpp">
       <Filter>과제\캐릭터 벽잡기</Filter>
     </ClCompile>
     <ClCompile Include="CTW_Scene.cpp">
+      <Filter>과제\캐릭터 벽잡기</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
       <Filter>과제\캐릭터 벽잡기</Filter>
     </ClCompile>
   </ItemGroup>
@@ -449,13 +449,13 @@
     <ClInclude Include="ImageManager.h">
       <Filter>ManagerClass</Filter>
     </ClInclude>
-    <ClInclude Include="Penitent.h">
-      <Filter>과제\캐릭터 벽잡기</Filter>
-    </ClInclude>
     <ClInclude Include="CTW_BackGround.h">
       <Filter>과제\캐릭터 벽잡기</Filter>
     </ClInclude>
     <ClInclude Include="CTW_Scene.h">
+      <Filter>과제\캐릭터 벽잡기</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
       <Filter>과제\캐릭터 벽잡기</Filter>
     </ClInclude>
   </ItemGroup>

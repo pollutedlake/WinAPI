@@ -3,7 +3,7 @@
 
 HRESULT CTW_Scene::init()
 {
-	_player = new Penitent;
+	_player = new Player;
 	_player->init();
 	_backGround = new CTW_BackGround;
 	_backGround->init();
@@ -26,18 +26,31 @@ void CTW_Scene::update(void)
 
 void CTW_Scene::render(void)
 {
-	_backGround->render();
-	_player->render();
+	_backGround->render(getMemDC());
+	_player->render(getMemDC());
+	_backGround->render(getMemDC(), getHDC());
 }
 
 void CTW_Scene::collisionCheck(RECT playerRC, RECT* platforms)
 {
 	RECT temp;
+	bool _isCollision = false;
 	for (int i = 0; i < 7; i++)
 	{
 		if (IntersectRect(&temp, &playerRC, &platforms[i]))
 		{
+			if (temp.right - temp.left > temp.bottom - temp.top)
+			{
+				if (playerRC.bottom > temp.top && playerRC.top < temp.top)
+				{
+					_isCollision = true;
+				}
+			}
 			_player->modifyPosition(temp, platforms[i]);
 		}
+	}
+	if (_isCollision == false)
+	{
+		_player->setStateFall();
 	}
 }

@@ -1,5 +1,4 @@
 #pragma once
-#include "GameNode.h"
 
 enum class STATE
 {
@@ -13,7 +12,7 @@ enum class STATE
 	STATENUM
 };
 
-class Penitent : public GameNode
+class Player
 {
 private:
 	GImage* _move;
@@ -32,18 +31,20 @@ private:
 	bool _isLeft;
 	STATE _state;
 	int _gravity;
+	bool _canPhysics;
 
 public:
 	HRESULT init(void);
 	void release(void);
 	void update(void);
-	void render(void);
+	void render(HDC hdc);
 
 	RECT getRect() {return _rc;}
 
 	void modifyPosition(RECT rc, RECT platform);
+	void setStateFall();
 
-	Penitent() {}
-	~Penitent() {}
+	Player() {}
+	~Player() {}
 };
 

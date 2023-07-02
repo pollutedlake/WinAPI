@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "Stdafx.h"
 #include "GImage.h"
 
 #pragma comment (lib, "msimg32.lib")

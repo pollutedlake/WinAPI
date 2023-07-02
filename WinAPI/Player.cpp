@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "Penitent.h"
+#include "Player.h"
 
-HRESULT Penitent::init()
+HRESULT Player::init()
 {
 	_idle = IMAGEMANAGER->addFrameImage("Idle", "Resources/Images/CatchTheWall/Idle.bmp", 172, 96, 4, 2, true, RGB(255, 0, 255));
 	_move = IMAGEMANAGER->addFrameImage("Move", "Resources/Images/CatchTheWall/Move.bmp", 800, 94, 16, 2, true, RGB(255, 0, 255));
@@ -14,33 +14,35 @@ HRESULT Penitent::init()
 	_state = STATE::IDLE;
 	_velocity = { 0, 0 };
 	_gravity = 10;
+	_canPhysics = true;
 	return S_OK;
 }
 
-void Penitent::release(void)
+void Player::release(void)
 {
 
 }
 
-void Penitent::update(void)
+void Player::update(void)
 {
-	_position.x += _velocity.x;
-	_position.y += _velocity.y + _gravity;
-	_rc = RectMakeCenter(_position.x, _position.y - 75, 100, 150);
+	if(_canPhysics == true)
+	{
+		_position.x += _velocity.x;
+		_position.y += _velocity.y + _gravity;
+		_rc = RectMakeCenter(_position.x, _position.y - 75, 100, 150);
+	}
 	switch (_state)
 	{
 	case STATE::IDLE:
 		_frame++;
 		if (_frame % 7 == 0)
 		{
-			if (_isLeft == true)
+			if (_isLeft)
 			{
-				_idle->setFrameY(1);
 				_idle->setFrameX(_idle->getMaxFrameX() - _index % _idle->getMaxFrameX());
 			}
 			else
 			{
-				_idle->setFrameY(0);
 				_idle->setFrameX(_index % _idle->getMaxFrameX());
 			}
 			_index++;
@@ -50,6 +52,7 @@ void Penitent::update(void)
 			_state = STATE::MOVE;
 			_frame = 0;
 			_index = 0;
+			_isLeft = true;
 			break;
 		}
 		if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
@@ -57,13 +60,21 @@ void Penitent::update(void)
 			_state = STATE::MOVE;
 			_frame = 0;
 			_index = 0;
+			_isLeft = false;
 			break;
 		}
 		if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
 		{
 			_state = STATE::JUMPFORWARD;
 			_velocity.y = -40;
-			_jumpForward->setFrameY(_move->getFrameY());
+			if(_isLeft == true)
+			{
+				_jumpForward->setFrameY(1);
+			}
+			else
+			{
+				_jumpForward->setFrameY(0);
+			}
 			_frame = 0;
 			_index = 0;
 			break;
@@ -99,10 +110,22 @@ void Penitent::update(void)
 			}
 			_index++;
 		}
-		if (KEYMANAGER->isOnceKeyUp(VK_RIGHT) || KEYMANAGER->isOnceKeyUp(VK_LEFT))
+		if (KEYMANAGER->isOnceKeyUp(VK_RIGHT) && !KEYMANAGER->isStayKeyDown(VK_LEFT))
 		{
 			_velocity.x = 0;
 			_state = STATE::IDLE;
+			_isLeft = false;
+			_idle->setFrameY(0);
+			_index = 0;
+			_frame = 0;
+			break;
+		}
+		if (KEYMANAGER->isOnceKeyUp(VK_LEFT) && !KEYMANAGER->isStayKeyDown(VK_RIGHT))
+		{
+			_velocity.x = 0;
+			_state = STATE::IDLE;
+			_idle->setFrameY(1);
+			_isLeft = true;
 			_index = 0;
 			_frame = 0;
 			break;
@@ -111,7 +134,14 @@ void Penitent::update(void)
 		{
 			_state = STATE::JUMPFORWARD;
 			_velocity.y = -40;
-			_jumpForward->setFrameY(_move->getFrameY());
+			if(_isLeft == true)
+			{
+				_jumpForward->setFrameY(1);
+			}
+			else
+			{
+				_jumpForward->setFrameY(0);
+			}
 			_frame = 0;
 			_index = 0;
 			break;
@@ -121,7 +151,7 @@ void Penitent::update(void)
 			_velocity.x = 7;
 			_isLeft = false;
 		}
-		if (KEYMANAGER->isStayKeyDown(VK_LEFT) && !KEYMANAGER->isStayKeyDown(VK_RIGHT))
+		else if (KEYMANAGER->isStayKeyDown(VK_LEFT) && !KEYMANAGER->isStayKeyDown(VK_RIGHT))
 		{
 			_velocity.x = -7;
 			_isLeft = true;
@@ -131,7 +161,7 @@ void Penitent::update(void)
 		_frame++;
 		if (_frame % 5 == 0)
 		{
-			_velocity.y += 40 / ((_jumpForward->getMaxFrameX() + 1) / 2);//8;
+			_velocity.y += 40 / ((_jumpForward->getMaxFrameX() + 1) / 2);
 			if(_isLeft == true)
 			{
 				_jumpForward->setFrameX(_jumpForward->getMaxFrameX() - _index);
@@ -151,8 +181,8 @@ void Penitent::update(void)
 		}
 		else
 		{
-			_rc.left += 50;
-			_position.x -= 50;
+			_rc.left += 10;
+			_position.x -= 10;
 		}
 		if (KEYMANAGER->isOnceKeyDown(VK_UP))
 		{
@@ -173,6 +203,7 @@ void Penitent::update(void)
 		if (_rc.top >= _catchPlatform.bottom)
 		{
 			_state = STATE::FALL;
+
 			_velocity.y = 0;
 			_velocity.x = 0;
 		}
@@ -193,20 +224,42 @@ void Penitent::update(void)
 			_state = STATE::GoUp;
 			_frame = 0;
 			_index = 0;
+			_position.y -= 90;
+			if (_catchPlatform.left > _rc.left)
+			{
+				_position.x += 50;
+				_goUp->setFrameY(0);
+			}
+			else
+			{
+				_position.x -= 50;
+				_goUp->setFrameY(1);
+			}
+			_canPhysics = false;
+			break;
 		}
 		break;
 	case STATE::FALL:
 		_frame++;
 		_gravity = 10;
-		if (_frame % 5 == 0)
+		if (_frame % 3 == 0)
 		{
 			if (_isLeft == true)
 			{
-				_jumpForward->setFrameX((_jumpForward->getFrameX() + 1) / 2 - _index);
+				_jumpForward->setFrameY(1);
+				if (_index > (_jumpForward->getFrameX() + 1) / 2)
+				{
+					_jumpForward->setFrameX(0);
+				}
+				else
+				{
+					_jumpForward->setFrameX((_jumpForward->getMaxFrameX() + 1) / 2 - _index);
+				}
 			}
 			else
 			{
-				_jumpForward->setFrameX((_jumpForward->getFrameX() + 1) / 2 + _index);
+				_jumpForward->setFrameY(0);
+				_jumpForward->setFrameX((_jumpForward->getMaxFrameX() + 1) / 2 + _index);
 			}
 			_index++;
 		}
@@ -217,27 +270,32 @@ void Penitent::update(void)
 			_state = STATE::IDLE;
 			_frame = 0;
 			_index = 0;
-			if (_isLeft == true)
+			_velocity.y = 0;
+			_velocity.x = 0;
+			_gravity = 10;
+			_canPhysics = true;
+			if (_catchPlatform.left > _rc.left)
 			{
-				_position.x -= 50;
-				_position.y -= 150;
+				_idle->setFrameY(0);
+				_position.x += 50;
 			}
 			else
 			{
-				_position.x += 50;
-				_position.y -= 150;
+				_idle->setFrameY(1);
+				_position.x -= 50;
 			}
+			break;
 		}
 		_frame++;
-		if (_frame % 5 == 0)
+		if (_frame % 7 == 0)
 		{
-			if (_isLeft == true)
+			if (_goUp->getFrameY())
 			{
 				_goUp->setFrameX(_goUp->getMaxFrameX() - _index);
 			}
 			else
 			{
-				_goUp->setFrameX(_index);
+				_goUp->setFrameX( _index);
 			}
 			_index++;
 		}
@@ -245,36 +303,40 @@ void Penitent::update(void)
 	}
 }
 
-void Penitent::render(void)
+void Player::render(HDC hdc)
 {
 	switch(_state)
 	{
 	case STATE::IDLE:
-		_idle->frameRender(getMemDC(), _position.x - _idle->getFrameWidth() / 2 * 3, _position.y - _idle->getFrameHeight() * 3, _idle->getFrameWidth() * 3, _idle->getFrameHeight() * 3, _idle->getFrameX(), _idle->getFrameY());
+		_idle->frameRender(hdc, _position.x - _idle->getFrameWidth() / 2 * 3, _position.y - _idle->getFrameHeight() * 3, _idle->getFrameWidth() * 3, _idle->getFrameHeight() * 3, _idle->getFrameX(), _idle->getFrameY());
 		break;
 	case STATE::MOVE:
-		_move->frameRender(getMemDC(), _position.x - _move->getFrameWidth() / 2 * 3, _position.y - _move->getFrameHeight() * 3, _move->getFrameWidth() * 3, _move->getFrameHeight() * 3, _move->getFrameX(), _move->getFrameY());
+		_move->frameRender(hdc, _position.x - _move->getFrameWidth() / 2 * 3, _position.y - _move->getFrameHeight() * 3, _move->getFrameWidth() * 3, _move->getFrameHeight() * 3, _move->getFrameX(), _move->getFrameY());
 		break;
 	case STATE::JUMPFORWARD:
-		_jumpForward->frameRender(getMemDC(), _position.x - _jumpForward->getFrameWidth() / 2 * 3, _position.y - _jumpForward->getFrameHeight() * 3, _jumpForward->getFrameWidth() * 3, _jumpForward->getFrameHeight() * 3, _jumpForward->getFrameX(), _jumpForward->getFrameY());
+		_jumpForward->frameRender(hdc, _position.x - _jumpForward->getFrameWidth() / 2 * 3, _position.y - _jumpForward->getFrameHeight() * 3, _jumpForward->getFrameWidth() * 3, _jumpForward->getFrameHeight() * 3, _jumpForward->getFrameX(), _jumpForward->getFrameY());
 		break;
 	case STATE::CLIMB:
-		_climb->frameRender(getMemDC(), _position.x - _climb->getFrameWidth() / 2 * 3, _position.y - _climb->getFrameHeight() * 3, _climb->getFrameWidth() * 3, _climb->getFrameHeight() * 3, _climb->getFrameX(), _climb->getFrameY());
+		_climb->frameRender(hdc, _position.x - _climb->getFrameWidth() / 2 * 3, _position.y - _climb->getFrameHeight() * 3, _climb->getFrameWidth() * 3, _climb->getFrameHeight() * 3, _climb->getFrameX(), _climb->getFrameY());
 		break;
 	case STATE::CATCHCORNER:
-		_climb->frameRender(getMemDC(), _position.x - _climb->getFrameWidth() / 2 * 3, _position.y - _climb->getFrameHeight() * 3, _climb->getFrameWidth() * 3, _climb->getFrameHeight() * 3, _climb->getFrameX(), _climb->getFrameY());
+		_climb->frameRender(hdc, _position.x - _climb->getFrameWidth() / 2 * 3, _position.y - _climb->getFrameHeight() * 3, _climb->getFrameWidth() * 3, _climb->getFrameHeight() * 3, _climb->getFrameX(), _climb->getFrameY());
 		break;
 	case STATE::FALL:
-		_jumpForward->frameRender(getMemDC(), _position.x - _jumpForward->getFrameWidth() / 2 * 3, _position.y - _jumpForward->getFrameHeight() * 3, _jumpForward->getFrameWidth() * 3, _jumpForward->getFrameHeight() * 3, _jumpForward->getFrameX(), _jumpForward->getFrameY());
+		_jumpForward->frameRender(hdc, _position.x - _jumpForward->getFrameWidth() / 2 * 3, _position.y - _jumpForward->getFrameHeight() * 3, _jumpForward->getFrameWidth() * 3, _jumpForward->getFrameHeight() * 3, _jumpForward->getFrameX(), _jumpForward->getFrameY());
 		break;
 	case STATE::GoUp:
-		_goUp->frameRender(getMemDC(), _position.x - _goUp->getFrameWidth() / 2 * 3, _position.y - _goUp->getFrameHeight() * 3, _goUp->getFrameWidth() * 3, _goUp->getFrameHeight() * 3, _goUp->getFrameX(), _goUp->getFrameY());
+		_goUp->frameRender(hdc, _position.x - _goUp->getFrameWidth() / 2 * 3, _position.y - _goUp->getFrameHeight() * 3, _goUp->getFrameWidth() * 3, _goUp->getFrameHeight() * 3, _goUp->getFrameX(), _goUp->getFrameY());
 		break;
 	}
 }
 
-void Penitent::modifyPosition(RECT intersectRC, RECT platform)
+void Player::modifyPosition(RECT intersectRC, RECT platform)
 {
+	if (_canPhysics == false)
+	{
+		return;
+	}
 	if (intersectRC.right - intersectRC.left > intersectRC.bottom - intersectRC.top)
 	{
 		if (_rc.bottom > intersectRC.top && _rc.top < intersectRC.top)
@@ -286,6 +348,16 @@ void Penitent::modifyPosition(RECT intersectRC, RECT platform)
 				_velocity.x = 0;
 				_velocity.y = 0;
 				_gravity = 10;
+				_index = 0;
+				_frame = 0;
+				if (_isLeft == true)
+				{
+					_idle->setFrameY(1);
+				}
+				else
+				{
+					_idle->setFrameY(0);
+				}
 			}
 		}
 		else
@@ -300,7 +372,7 @@ void Penitent::modifyPosition(RECT intersectRC, RECT platform)
 			_position.x -= intersectRC.right - intersectRC.left;
 			_climb->setFrameY(1);
 		}
-		else
+		else if(_rc.left < intersectRC.right && _rc.right > intersectRC.right)
 		{
 			_position.x += intersectRC.right - intersectRC.left;
 			_climb->setFrameY(0);
@@ -315,5 +387,15 @@ void Penitent::modifyPosition(RECT intersectRC, RECT platform)
 			_index = 0;
 			_catchPlatform = platform;
 		}
+	}
+}
+
+void Player::setStateFall()
+{
+	if (_state == STATE::MOVE || _state == STATE::IDLE)
+	{
+		_state = STATE::FALL;
+		_frame = 0;
+		_index = 0;
 	}
 }
