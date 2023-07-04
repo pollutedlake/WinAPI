@@ -238,6 +238,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RacingGame.cpp" />
+    <ClCompile Include="RG_BackGround.cpp" />
+    <ClCompile Include="RG_Enemy.cpp" />
+    <ClCompile Include="RG_Player.cpp" />
     <ClCompile Include="RotateFigure.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -405,6 +409,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Player.h" />
+    <ClInclude Include="RacingGame.h" />
+    <ClInclude Include="RG_BackGround.h" />
+    <ClInclude Include="RG_Enemy.h" />
+    <ClInclude Include="RG_Player.h" />
     <ClInclude Include="RotateFigure.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>

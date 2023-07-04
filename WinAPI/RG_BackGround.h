@@ -17,4 +17,3 @@ public:
 	RG_BackGround() {}
 	virtual ~RG_BackGround() {}
 };
-

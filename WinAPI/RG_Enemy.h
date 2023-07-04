@@ -7,7 +7,7 @@ struct Enemy
 	Enemy()
 	{
 		int _lane = RND->getInt(3);
-		_rc = RectMake(WINSIZE_X / 2 - IMAGEMANAGER->findImage("Enemy")->getWidth() / 2 + (_lane - 1) * IMAGEMANAGER->findImage("RG_BackGround")->getWidth(), - IMAGEMANAGER->findImage("Enemy")->getHeight(), IMAGEMANAGER->findImage("Enemy")->getWidth(), IMAGEMANAGER->findImage("Enemy")->getHeight());
+		_rc = RectMake(WINSIZE_X / 2 - IMAGEMANAGER->findImage("Enemy")->getWidth() / 2 + (_lane - 1) * IMAGEMANAGER->findImage("RG_BackGround")->getWidth(), -IMAGEMANAGER->findImage("Enemy")->getHeight(), IMAGEMANAGER->findImage("Enemy")->getWidth(), IMAGEMANAGER->findImage("Enemy")->getHeight());
 	};
 };
 
@@ -29,4 +29,3 @@ public:
 	RG_Enemy() {}
 	~RG_Enemy() {}
 };
-

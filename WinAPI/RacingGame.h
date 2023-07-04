@@ -20,4 +20,3 @@ public:
 	RacingGame() {}
 	virtual ~RacingGame() {}
 };
-

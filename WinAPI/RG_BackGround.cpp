@@ -22,7 +22,7 @@ void RG_BackGround::render(HDC hdc)
 {
     for (int i = 0; i < 3; i++)
     {
-        _backGround->loopRender(hdc, &RectMake(WINSIZE_X / 2 - _backGround->getWidth() / 2 + _backGround->getWidth() * (i - 1), 0, _backGround->getWidth(), _backGround->getHeight()), 0, _bgSpeedY);
+        //_backGround->loopRender(hdc, &RectMake(WINSIZE_X / 2 - _backGround->getWidth() / 2 + _backGround->getWidth() * (i - 1), 0, _backGround->getWidth(), _backGround->getHeight()), 0, _bgSpeedY);
     }
     char str[128];
     wsprintf(str, "Score : %d", _score);

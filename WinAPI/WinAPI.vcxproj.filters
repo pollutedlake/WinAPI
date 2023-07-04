@@ -103,6 +103,9 @@
     <Filter Include="과제\캐릭터 벽잡기">
       <UniqueIdentifier>{f1ded792-482c-4a14-a514-45db856eabff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="과제\레이싱게임">
+      <UniqueIdentifier>{5651a385-adc2-4b43-bd91-5d3062bdb57a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -300,6 +303,18 @@
     <ClCompile Include="Player.cpp">
       <Filter>과제\캐릭터 벽잡기</Filter>
     </ClCompile>
+    <ClCompile Include="RacingGame.cpp">
+      <Filter>과제\레이싱게임</Filter>
+    </ClCompile>
+    <ClCompile Include="RG_Player.cpp">
+      <Filter>과제\레이싱게임</Filter>
+    </ClCompile>
+    <ClCompile Include="RG_Enemy.cpp">
+      <Filter>과제\레이싱게임</Filter>
+    </ClCompile>
+    <ClCompile Include="RG_BackGround.cpp">
+      <Filter>과제\레이싱게임</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -457,6 +472,18 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>과제\캐릭터 벽잡기</Filter>
+    </ClInclude>
+    <ClInclude Include="RacingGame.h">
+      <Filter>과제\레이싱게임</Filter>
+    </ClInclude>
+    <ClInclude Include="RG_Player.h">
+      <Filter>과제\레이싱게임</Filter>
+    </ClInclude>
+    <ClInclude Include="RG_Enemy.h">
+      <Filter>과제\레이싱게임</Filter>
+    </ClInclude>
+    <ClInclude Include="RG_BackGround.h">
+      <Filter>과제\레이싱게임</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

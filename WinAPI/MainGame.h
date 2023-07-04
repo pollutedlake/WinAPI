@@ -3,11 +3,12 @@
 
 #define CLASS			0
 #define ASSIGNMENT		1
-#define MAIN		ASSIGNMENT
+#define MAIN		CLASS
 
 #if MAIN == CLASS
 #elif MAIN == ASSIGNMENT
-#include "CTW_Scene.h"
+//#include "CTW_Scene.h"
+#include "RacingGame.h"
 #endif
 
 // 0. 상속을 받은 클래스

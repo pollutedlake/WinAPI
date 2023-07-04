@@ -24,4 +24,3 @@ public:
 	RG_Player() {}
 	virtual ~RG_Player() {}
 };
-
