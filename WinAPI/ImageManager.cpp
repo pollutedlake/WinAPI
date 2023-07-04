@@ -209,3 +209,7 @@ void ImageManager::alphaFrameRender(string strKey, HDC hdc, int destX, int destY
 	GImage* img = findImage(strKey);
 	if (img) img->alphaFrameRender(hdc, destX, destY, currentFrameX, currentFrameY, alpha);
 }
+
+void ImageManager::loopRender(string strKey, HDC hdc, int offsetX, int offsetY)
+{
+}

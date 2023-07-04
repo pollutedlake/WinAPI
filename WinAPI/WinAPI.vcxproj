@@ -156,6 +156,9 @@
     <ClCompile Include="AvoidPoop.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="BH_BlackHole.cpp" />
+    <ClCompile Include="BH_Object.cpp" />
+    <ClCompile Include="BlackHole.cpp" />
     <ClCompile Include="C3DMatrix.cpp" />
     <ClCompile Include="C3DVector.cpp" />
     <ClCompile Include="CannonShoot.cpp">
@@ -329,6 +332,9 @@
     <ClInclude Include="AvoidPoop.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="BH_BlackHole.h" />
+    <ClInclude Include="BH_Object.h" />
+    <ClInclude Include="BlackHole.h" />
     <ClInclude Include="C3DMatrix.h" />
     <ClInclude Include="C3DVector.h" />
     <ClInclude Include="CannonShoot.h">

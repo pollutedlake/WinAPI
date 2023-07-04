@@ -101,6 +101,9 @@ public:
 	void frameRender(HDC hdc, int destX, int destY, int currentFrameX, int currentFrameY);
 	void frameRender(HDC hdc, int destX, int destY, int destWidth, int destHeight, int currentFrameX, int currentFrameY);
 
+	void loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY);
+	void loopAlphaRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY, BYTE alpha);
+
 	LPIMAGE_INFO getImageInfo() { return _imageInfo; }
 
 	// = 인라인 함수 =

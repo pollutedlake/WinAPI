@@ -801,3 +801,81 @@ void GImage::frameRender(HDC hdc, int destX, int destY, int destWidth, int destH
 		);
 	}
 }
+
+void GImage::loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY)
+{
+	if (offsetX < 0) // offset값이 음수인 경우 보정 (나갔단소리니까 다시그려)
+	{
+		offsetX = _imageInfo->width + (offsetX % _imageInfo->width);
+	}
+
+	if (offsetY < 0)
+	{
+		offsetY = _imageInfo->height + (offsetY % _imageInfo->height);
+	}
+
+	//그려지는 영역 세팅
+	RECT rcSour;
+	int sourWidth;
+	int sourHeight;
+
+	// 그려지는 dc영역(화면 크기)
+	RECT rcDest;
+
+	// 그려야할 전체 영역
+	int drawAreaX = drawArea->left; //스타트 x y잡고 중점잡기
+	int drawAreaY = drawArea->top;
+	int drawAreaW = drawArea->right - drawArea->left;
+	int drawAreaH = drawArea->bottom - drawArea->top;
+
+	//세로 루프
+	for (int y = 0; y < drawAreaH; y += sourHeight)
+	{
+		//  소스 영역의 높이를 계산
+		rcSour.top = (y + offsetY) % _imageInfo->height;
+		rcSour.bottom = _imageInfo->height;
+		sourHeight = rcSour.bottom - rcSour.top;
+
+		//소스의 영역이 그리는 화면을 넘어갔다면? (화면밖으로 나갔다?)
+		if (y + sourHeight > drawAreaH)
+		{
+			//넘어간 그림의 값만큼 바텀값을 올려준다.
+			rcSour.bottom -= (y + sourHeight) - drawAreaH;
+			sourHeight = rcSour.bottom - rcSour.top;
+		}
+
+		//그려지는 영역
+		rcDest.top = y + drawAreaY;
+		rcDest.bottom = rcDest.top + sourHeight;
+
+
+		//가로 루프
+		for (int x = 0; x < drawAreaW; x += sourWidth)
+		{
+			//  소스 영역의 넓이를 계산
+			rcSour.left = (x + offsetX) % _imageInfo->width;
+			rcSour.right = _imageInfo->width;
+			sourWidth = rcSour.right - rcSour.left;
+
+			//소스의 영역이 그리는 화면을 넘어갔다면? (화면밖으로 나갔다?)
+			if (x + sourWidth > drawAreaW)
+			{
+				//넘어간 그림의 값만큼 오른쪽값을 밀어준다
+				rcSour.right -= (x + sourWidth) - drawAreaW;
+				sourWidth = rcSour.right - rcSour.left;
+			}
+
+			//그려지는 영역
+			rcDest.left = x + drawAreaX;
+			rcDest.right = rcDest.left + sourWidth;
+
+			render(hdc, rcDest.left, rcDest.top,
+				rcSour.left, rcSour.top,
+				sourWidth, sourHeight);
+		}
+	}
+}
+
+void GImage::loopAlphaRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY, BYTE alpha)
+{
+}

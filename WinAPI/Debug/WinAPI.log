@@ -1,42 +1,6 @@
-﻿  Stdafx.cpp
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(133,14): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(133,14): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(134,14): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(134,14): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(135,18): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(135,18): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(136,18): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(136,18): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(146,14): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(146,14): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(147,14): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(147,14): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(148,18): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(148,18): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(149,18): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\GImage.h(149,18): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  0615.cpp
-  C3DMatrix.cpp
-  C3DVector.cpp
-  CTW_BackGround.cpp
-  CTW_Scene.cpp
-  Example_Mole.cpp
-  Example_MoleMainGame.cpp
-  GameNode.cpp
-  GImage.cpp
-  ImageManager.cpp
-  IWindowsMessageHandler.cpp
-  KeyManager.cpp
-  MainGame.cpp
-  Player.cpp
-  RacingGame.cpp
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\RacingGame.cpp(28,39): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\RacingGame.cpp(29,34): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  RG_BackGround.cpp
-  RG_Enemy.cpp
-  RG_Player.cpp
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\RG_Player.cpp(86,231): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\RG_Player.cpp(86,120): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  코드를 생성하고 있습니다...
-  LINK : C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\Debug\WinAPI.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+﻿  BH_Object.cpp
+C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\BH_Object.cpp(36,48): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\BH_Object.cpp(36,39): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\BH_Object.cpp(36,32): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\WinAPI\BH_Object.cpp(36,25): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   WinAPI.vcxproj -> C:\Users\언리얼\Desktop\박상현\WinAPI\새 폴더\WinAPI\Debug\WinAPI.exe
