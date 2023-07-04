@@ -6,7 +6,7 @@ HRESULT BH_Object::init(pair<float, float> blackHolePos)
 	_posX = RND->getFloat(WINSIZE_X);
 	_posY = RND->getFloat(WINSIZE_Y);
 	this->setVector(blackHolePos);
-	_radius = 10.0f;
+	_radius = 30.0f;
 	_active = true;
 	return S_OK;
 }
@@ -18,6 +18,7 @@ void BH_Object::release(void)
 
 void BH_Object::update(pair<float, float> blackHolePos)
 {
+	_radius = 10.0f;
 	if (_posX - _radius / 2 < 0 || _posX + _radius / 2 > WINSIZE_X)
 	{
 		this->init(blackHolePos);
