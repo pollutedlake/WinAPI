@@ -210,6 +210,8 @@ void ImageManager::alphaFrameRender(string strKey, HDC hdc, int destX, int destY
 	if (img) img->alphaFrameRender(hdc, destX, destY, currentFrameX, currentFrameY, alpha);
 }
 
-void ImageManager::loopRender(string strKey, HDC hdc, int offsetX, int offsetY)
+void ImageManager::loopRender(string strKey, HDC hdc, const LPRECT drawArea, int offsetX, int offsetY)
 {
+	GImage* img = findImage(strKey);
+	if (img) img->loopRender(hdc, drawArea, offsetX, offsetY);
 }

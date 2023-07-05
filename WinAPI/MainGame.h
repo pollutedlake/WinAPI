@@ -3,9 +3,12 @@
 
 #define CLASS			0
 #define ASSIGNMENT		1
-#define MAIN		ASSIGNMENT
+#define MAIN		CLASS
 
 #if MAIN == CLASS
+#include "StartScene.h"
+#include "SecondScene.h"
+
 #elif MAIN == ASSIGNMENT
 //#include "CTW_Scene.h"
 //#include "RacingGame.h"
@@ -23,9 +26,9 @@ class MainGame : public GameNode
 private:
 	GameNode* _assignment;
 #if MAIN == CLASS
-	GImage* _bgImage;
-
-	int _alphaA;
+	StartScene* _start;
+	SecondScene* _second;
+	GameNode* _currentScene;
 #endif
 public:
 	virtual HRESULT init(void);

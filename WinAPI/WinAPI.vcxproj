@@ -201,6 +201,7 @@
     <ClCompile Include="FindWrongPaint.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="FrameImage.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -242,6 +243,7 @@
     </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RacingGame.cpp" />
+    <ClCompile Include="ResourcesClass.cpp" />
     <ClCompile Include="RG_BackGround.cpp" />
     <ClCompile Include="RG_Enemy.cpp" />
     <ClCompile Include="RG_Player.cpp" />
@@ -254,6 +256,8 @@
     <ClCompile Include="SB_Player.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SecondScene.cpp" />
     <ClCompile Include="SG_Tile.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -263,6 +267,7 @@
     <ClCompile Include="SliceGame.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="StartScene.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
@@ -378,6 +383,7 @@
     <ClInclude Include="FindWrongPaint.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="FontManager.h" />
     <ClInclude Include="FrameImage.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -416,6 +422,7 @@
     </ClInclude>
     <ClInclude Include="Player.h" />
     <ClInclude Include="RacingGame.h" />
+    <ClInclude Include="ResourcesClass.h" />
     <ClInclude Include="RG_BackGround.h" />
     <ClInclude Include="RG_Enemy.h" />
     <ClInclude Include="RG_Player.h" />
@@ -430,6 +437,8 @@
     </ClInclude>
     <ClInclude Include="RandomFunction.h" />
     <ClInclude Include="resource1.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SecondScene.h" />
     <ClInclude Include="SG_Tile.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -440,6 +449,7 @@
     <ClInclude Include="SliceGame.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="StartScene.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="VerticalShooting.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

@@ -1,15 +1,51 @@
 #include "Stdafx.h"
 #include "MainGame.h"
-#define _USE_MATH_DEFINES
-#include<math.h>
-
+#include "ResourcesClass.h"
 HRESULT MainGame::init(void)
 {
 	GameNode::init(true);
 #if MAIN == CLASS
-	IMAGEMANAGER->addImage("DeadSpace", "Resources/Images/BackGround/DeadSpace.bmp", WINSIZE_X, WINSIZE_Y);
+	_start = new StartScene;
+	_start->init();
 
-	_alphaA = 255;
+	_second = new SecondScene;
+	_second->init();
+
+	//_currentScene -> 시동이 안되면 그냥 실행 자체가 안된다 -> 굳이 돌려볼 필요가 없다
+	_currentScene = _start;
+
+	//assert: 프로그램을 종료시킴
+	//C
+	assert(_currentScene != nullptr, "MainGame 초기화 부분에서 노드 파트 오류 발생");
+	//C++
+	//static_assert(): 
+
+
+	/*
+	▶assert
+
+	안정성을 위해 사용
+
+	디버깅 모드에서 동작하는 오류 검출용 함수
+	ㄴ릴리즈 모드에서는 동작하지 않는다.
+
+	-assert 함수에 걸리게 되면 버그 발생 위치 / 콜 스택등 여러 정보를 알 수 있다.
+	   ㄴExpression -> false -> assert error
+
+	대부분의 문법이 true일때만 동작하지만 assert는 false일때 동작한다.
+	ㄴ그렇기 떄문에 일어나면 안되는 조건이 아니라 꼭 일어나야 하는 조건을 명시해야 한다.
+
+	Ex) assert(A != NULL);
+	   ㄴA가 NULL이 아니면 true 가 나오게 되므로 패스
+	   ㄴA가 NULL이 나오면 false 가 나오게 되므로 assert error
+
+	assert(): "C" -> 컴파일 타임을 지나 프로그램을 실행 시키고 문제를 파악하겠다.
+	static_assert(): "C++" -> 컴파일 중에 문제를 파악
+
+	컴파일 중에 문제를 확인하기 위해선 상수값을 넣어줘야 한다.
+
+	*/
+
 #elif MAIN == ASSIGNMENT
 	//_assignment = new CTW_Scene;			// 캐릭터 벽짚기, 미니맵 연동
 	//_assignment = new RacingGame;			// 레이싱게임
@@ -23,6 +59,9 @@ void MainGame::release(void)
 {
 	GameNode::release();
 #if MAIN == CLASS
+	SAFE_DELETE(_start);
+	SAFE_DELETE(_second);
+
 #elif MAIN == ASSIGNMENT
 	_assignment->release();
 	SAFE_DELETE(_assignment);
@@ -33,13 +72,11 @@ void MainGame::update(void)
 {
 	GameNode::update();
 #if MAIN == CLASS
-	if (KEYMANAGER->isOnceKeyDown('Q'))
-	{
-		if (MessageBox(_hWnd, "게임을 종료하시겠습니까?", "종료확인", MB_OKCANCEL) == IDOK)
-		{
-			PostQuitMessage(0);
-		}
-	}
+	_currentScene->update();
+
+	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))_currentScene = _second;
+	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))_currentScene = _start;
+
 #elif MAIN == ASSIGNMENT
 	_assignment ->update();
 #endif	
@@ -52,7 +89,12 @@ void MainGame::render(void)
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 	// ========================================================
 #if MAIN == CLASS
-	IMAGEMANAGER->findImage("DeadSpace")->alphaRender(getMemDC(), _alphaA);
+	_currentScene->render();
+	char* fontName = "휴먼굴림";
+	FONTMANAGER->drawText(getMemDC(), WINSIZE_X / 2, WINSIZE_Y / 2, fontName, 100, 600, "테스트", strlen("테스트"), RGB(255, 0, 0));
+	LPCWSTR test2 = L"테스트2";
+	FONTMANAGER->drawText(getMemDC(), WINSIZE_X / 2, WINSIZE_Y / 2, fontName, 200, 500, test2, lstrlenW(test2), RGB(0, 0, 255));
+
 #elif MAIN == ASSIGNMENT
 	_assignment->render();
 #endif
@@ -93,21 +135,21 @@ void MainGame::render(void)
 비주얼 스튜디오 버전 포토샵버전 영상편집프로그램
 15장~20장
 
-과제1. 포트폴리오 PPT 작성
+과제1. 캐릭터 공격 및 방어
 
-- 발표일은 아직 미정
+- 필수 : 이미지 -> 배경 / 체력바 / 플레이어 (대기, 공격, 방어), 적(대기, 공격, 피격)
 
-- 디테일하게 + 깔끔하게
+- 기본 형식은 대전게임처럼 좌 / 우로 배치
+ㄴ + 체력바
 
-과제 2. 블랙홀
+- 플레이어는 공격 및 방어를 할 수 있고 적은 공격 및 피격 모션이 존재한다.
+ㄴ 적 : 허수아비
 
-- 무작위로 생성되는 오브젝트 객체
+- 플레이어는 상시 조종 < - > 적은 공격 On / Off 기능만 (이동 X)
 
-- 그리고 주변 오브젝트를 빨아들이는 블랙홀을 만든다
-ㄴ 블랙홀은 조작을 통해서 움직일 수 있다.
+- 공격, 방어, 피격 등이 발생하면 상황에 맞는 결과를 화면에 렌더링 한다.
+ㄴ 막기, 빗나감, 치명타 등
 
-- 오브젝트가 생성되는 위치를 알기 위해 표시를 한다.
-ㄴ EX : 색 / 이미지 / 크기
-
-- 필수 : STL -> vetor or list를 반드시 써서 진행
+- 데미지도 표기한다.
+ㄴ컨버팅 할 수 있으면 해본다.
 */

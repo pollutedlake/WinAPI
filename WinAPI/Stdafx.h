@@ -136,11 +136,13 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 #include "RandomFunction.h"
 #include "KeyManager.h"
 #include "ImageManager.h"
+#include "FontManager.h"
 
 // # 싱글톤 #
 #define RND RandomFunction::getSingleton()
 #define KEYMANAGER KeyManager::getSingleton()
 #define IMAGEMANAGER ImageManager::getSingleton()
+#define FONTMANAGER FontManager::getSingleton()
 
 // # 매크로 # (윈도우창 초기화)
 #define WINNAME					(LPTSTR)(TEXT("WindowsAPI"))

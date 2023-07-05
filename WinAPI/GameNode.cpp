@@ -19,6 +19,9 @@ HRESULT GameNode::init(bool managerInit)
 
     if (managerInit)
     {
+        // 로케일 설정
+        // ㄴ 프로그램의 명령어가 여러가지 언어로 주어져 있는 경우 이중에 어떤 언어의 것을 출력할 것인지에 대한 설정
+        setlocale(LC_ALL, "korean");
         SetTimer(_hWnd, 1, 10, NULL);
 
         KEYMANAGER->init();
