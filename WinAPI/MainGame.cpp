@@ -90,10 +90,11 @@ void MainGame::render(void)
 	// ========================================================
 #if MAIN == CLASS
 	_currentScene->render();
-	char* fontName = "ÈŞ¸Õ±¼¸²";
-	FONTMANAGER->drawText(getMemDC(), WINSIZE_X / 2, WINSIZE_Y / 2, fontName, 100, 600, "Å×½ºÆ®", strlen("Å×½ºÆ®"), RGB(255, 0, 0));
-	LPCWSTR test2 = L"Å×½ºÆ®2";
-	FONTMANAGER->drawText(getMemDC(), WINSIZE_X / 2, WINSIZE_Y / 2, fontName, 200, 500, test2, lstrlenW(test2), RGB(0, 0, 255));
+	TCHAR* fontName = TEXT("ÈŞ¸Õ±¼¸²");
+	LPCWSTR test[] = {L"¾È\n³ç,", L"³ª´Â\n", L"¹Ú»óÇöÀÌ¾é\n¤¾¤¾¤¾"};
+	LPCWSTR test2 = L"¾È\n³ç";
+	char* test3 = "¾È\n³ç";
+	FONTMANAGER->drawText(getMemDC(), WINSIZE_X / 2, WINSIZE_Y / 2, fontName, 25, 500, test, sizeof(test) / sizeof(*test), NULL, RGB(0, 0, 255));
 
 #elif MAIN == ASSIGNMENT
 	_assignment->render();
