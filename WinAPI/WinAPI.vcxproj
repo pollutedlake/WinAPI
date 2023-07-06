@@ -271,6 +271,8 @@
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TempSoundManager.cpp" />
+    <ClCompile Include="TempSoundScene.cpp" />
     <ClCompile Include="VerticalShooting.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -451,6 +453,8 @@
     </ClInclude>
     <ClInclude Include="StartScene.h" />
     <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="TempSoundManager.h" />
+    <ClInclude Include="TempSoundScene.h" />
     <ClInclude Include="VerticalShooting.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>

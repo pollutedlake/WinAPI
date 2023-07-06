@@ -4,16 +4,20 @@
 HRESULT SecondScene::init(void)
 {
 	IMAGEMANAGER->addImage("배경루프", "Resources/Images/BackGround/Repeating_BackGround.bmp", WINSIZE_X, WINSIZE_Y);
+	_tempSound = new TempSoundScene;
+	_tempSound->init();
 	return S_OK;
 }
 
 void SecondScene::release(void)
 {
-
+	_tempSound->release();
+	SAFE_DELETE(_tempSound);
 }
 
 void SecondScene::update(void)
 {
+	_tempSound->update();
 	_bgSpeed += 3;
 }
 
