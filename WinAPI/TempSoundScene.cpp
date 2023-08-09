@@ -15,6 +15,6 @@ void TempSoundScene::update(void)
 	}
 	if (KEYMANAGER->isOnceKeyDown('A'))
 	{
-		TEMPSOUNDMANAGER->playEffentSoundWave("Resources/Sounds/sound.wav");
+		TEMPSOUNDMANAGER->playEffectSoundWave("Resources/Sounds/sound.wav");
 	}
 }

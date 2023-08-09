@@ -32,7 +32,7 @@ void TempSoundManager::addWaveFileWithKey(string key, string fileName)
     mciSendString(str, NULL, 0, NULL);
 }
 
-void TempSoundManager::playEffentSoundWave(char* fileName)
+void TempSoundManager::playEffectSoundWave(char* fileName)
 {
     /*
     // PlaySound() : TEXT("파일 이름.wav"), 
