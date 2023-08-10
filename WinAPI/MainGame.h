@@ -3,7 +3,7 @@
 
 #define CLASS			0
 #define ASSIGNMENT		1
-#define MAIN		CLASS
+#define MAIN		ASSIGNMENT
 
 #if MAIN == CLASS
 #include "StartScene.h"
@@ -12,7 +12,8 @@
 #elif MAIN == ASSIGNMENT
 //#include "CTW_Scene.h"
 //#include "RacingGame.h"
-#include "BlackHole.h"
+//#include "BlackHole.h"
+#include "Rocket.h"
 #endif
 
 // 0. 상속을 받은 클래스

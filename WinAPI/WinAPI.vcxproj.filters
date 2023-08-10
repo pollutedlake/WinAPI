@@ -109,6 +109,12 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="과제\3D Cube">
+      <UniqueIdentifier>{3b079144-50a2-476a-9a40-4900a09bba37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShootingGame">
+      <UniqueIdentifier>{7b9c5d22-eab4-4f06-a7c0-d615d6260120}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -348,6 +354,18 @@
     <ClCompile Include="TempSoundScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>과제\3D Cube</Filter>
+    </ClCompile>
+    <ClCompile Include="Flame.cpp">
+      <Filter>ShootingGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Rocket.cpp">
+      <Filter>ShootingGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>ShootingGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -547,6 +565,18 @@
     </ClInclude>
     <ClInclude Include="TempSoundScene.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>과제\3D Cube</Filter>
+    </ClInclude>
+    <ClInclude Include="Flame.h">
+      <Filter>ShootingGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Rocket.h">
+      <Filter>ShootingGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>ShootingGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

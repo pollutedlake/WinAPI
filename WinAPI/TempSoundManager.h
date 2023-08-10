@@ -18,7 +18,7 @@ public:
 	// WAV
 	void addWaveFileWithKey(string key, string fileName);
 	// 효과음
-	void playEffentSoundWave(char* fileName);
+	void playEffectSoundWave(char* fileName);
 	// MP3 재생
 	void playSoundWithKey(string key);
 	// 정지
