@@ -50,8 +50,9 @@ HRESULT MainGame::init(void)
 	//_assignment = new CTW_Scene;			// Ä³¸¯ÅÍ º®Â¤±â, ¹Ì´Ï¸Ê ¿¬µ¿
 	//_assignment = new RacingGame;			// ·¹ÀÌ½Ì°ÔÀÓ
 	//_assignment = new BlackHole;			// ºí·¢È¦
-	IMAGEMANAGER->addImage("½´ÆÃ ¸Ê", "Resources/Images/ShootingGame/ShootingBG.bmp", WINSIZE_X, WINSIZE_Y);
-	_assignment = new Rocket;
+	_assignment = new Cube;
+	/*IMAGEMANAGER->addImage("½´ÆÃ ¸Ê", "Resources/Images/ShootingGame/ShootingBG.bmp", WINSIZE_X, WINSIZE_Y);
+	_assignment = new Rocket;*/
 	_assignment->init();
 #endif
 	return S_OK;
@@ -99,7 +100,7 @@ void MainGame::render(void)
 	FONTMANAGER->drawText(getMemDC(), WINSIZE_X / 2, WINSIZE_Y / 2, fontName, 25, 500, test, sizeof(test) / sizeof(*test), NULL, RGB(0, 0, 255));
 
 #elif MAIN == ASSIGNMENT
-	IMAGEMANAGER->findImage("½´ÆÃ ¸Ê")->render(getMemDC());
+	//IMAGEMANAGER->findImage("½´ÆÃ ¸Ê")->render(getMemDC());
 	_assignment->render();
 #endif
 	// ========================================================

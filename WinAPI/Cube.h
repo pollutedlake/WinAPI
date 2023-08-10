@@ -30,6 +30,8 @@ struct Matrix4x4 {
 struct Camera
 {
 	Vector3D position;
+	float pan;
+	float tilt;
 	float FOV;
 	float distance;
 };
@@ -38,7 +40,12 @@ class Cube : public GameNode
 {
 private:
 	Vector3D _points[8];
+	Vector3D _grid[100];
+	POINT _projectedGrid[100];
+	Vector3D _worldToCamera[8];
+	Vector3D _worldToCameraGrid[100];
 	Camera _camera;
+	POINT _projectedPoints[8];
 
 public:
 	HRESULT init(void);

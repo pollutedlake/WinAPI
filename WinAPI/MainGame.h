@@ -13,7 +13,8 @@
 //#include "CTW_Scene.h"
 //#include "RacingGame.h"
 //#include "BlackHole.h"
-#include "Rocket.h"
+//#include "Rocket.h"
+#include "Cube.h"
 #endif
 
 // 0. 상속을 받은 클래스

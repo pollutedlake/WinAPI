@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-﻿  0615.cpp
-  Flame.cpp
-  MainGame.cpp
-  Rocket.cpp
-C:\Users\psh95\Desktop\상현\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\Rocket.cpp(13,27): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\psh95\Desktop\상현\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\Rocket.cpp(13,23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\psh95\Desktop\상현\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\Rocket.cpp(45,27): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\psh95\Desktop\상현\GameAcademy\GameAcademy\WinAPI\WinAPI\WinAPI\Rocket.cpp(45,23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  코드를 생성하고 있습니다...
-  WinAPI.vcxproj -> C:\Users\psh95\Desktop\상현\GameAcademy\GameAcademy\WinAPI\WinAPI\Debug\WinAPI.exe
-=======
-﻿  WinAPI.vcxproj -> C:\Users\psh95\OneDrive\바탕 화면\상현\공부\GameAcademy\GameAcademy\WinAPI\WinAPI\Debug\WinAPI.exe
->>>>>>> f57df202db2a580137248e990e3ed4e3e3e14359
+﻿  Cube.cpp
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Cube.cpp(6,25): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Cube.cpp(8,24): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Cube.cpp(73,98): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Cube.cpp(74,98): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  WinAPI.vcxproj -> C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\Debug\WinAPI.exe
