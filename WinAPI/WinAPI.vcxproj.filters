@@ -115,6 +115,9 @@
     <Filter Include="ShootingGame">
       <UniqueIdentifier>{7b9c5d22-eab4-4f06-a7c0-d615d6260120}</UniqueIdentifier>
     </Filter>
+    <Filter Include="과제\TileMap">
+      <UniqueIdentifier>{125a7036-8772-45c7-925e-775f218c394c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -366,6 +369,12 @@
     <ClCompile Include="Utils.cpp">
       <Filter>ShootingGame</Filter>
     </ClCompile>
+    <ClCompile Include="Bullets.cpp">
+      <Filter>ShootingGame</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>과제\TileMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -577,6 +586,12 @@
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>ShootingGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullets.h">
+      <Filter>ShootingGame</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>과제\TileMap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -50,10 +50,16 @@ HRESULT MainGame::init(void)
 	//_assignment = new CTW_Scene;			// Ä³¸¯ÅÍ º®Â¤±â, ¹Ì´Ï¸Ê ¿¬µ¿
 	//_assignment = new RacingGame;			// ·¹ÀÌ½Ì°ÔÀÓ
 	//_assignment = new BlackHole;			// ºí·¢È¦
-	_assignment = new Cube;
-	/*IMAGEMANAGER->addImage("½´ÆÃ ¸Ê", "Resources/Images/ShootingGame/ShootingBG.bmp", WINSIZE_X, WINSIZE_Y);
-	_assignment = new Rocket;*/
+	//_assignment = new Cube;
+	//IMAGEMANAGER->addImage("½´ÆÃ ¸Ê", "Resources/Images/ShootingGame/ShootingBG.bmp", WINSIZE_X, WINSIZE_Y);
+	//_assignment = new Rocket;
+	_assignment = new TileMap;
 	_assignment->init();
+
+	/*std::shared_ptr<Rocket> PlayerA = std::make_shared<Rocket>();
+	std::shared_ptr<Rocket> PlayerB = PlayerA->get_shared_ptr();*/
+
+	//PlayerA.use_count();
 #endif
 	return S_OK;
 }

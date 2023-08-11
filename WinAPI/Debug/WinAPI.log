@@ -1,6 +1,5 @@
-﻿  Cube.cpp
-C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Cube.cpp(6,25): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
-C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Cube.cpp(8,24): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
-C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Cube.cpp(73,98): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Cube.cpp(74,98): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  0615.cpp
+  MainGame.cpp
+  TileMap.cpp
+  코드를 생성하고 있습니다...
   WinAPI.vcxproj -> C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\Debug\WinAPI.exe

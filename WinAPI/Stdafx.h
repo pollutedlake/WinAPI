@@ -87,6 +87,7 @@ WBCS(와이드 바이트 캐릭터 셋)
 */
 #include <chrono>
 #include <random>
+#include <memory>
 #include <vector>
 #include<map>
 #include<string.h>
@@ -138,6 +139,7 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 #include "ImageManager.h"
 #include "FontManager.h"
 #include "TempSoundManager.h"
+#include"Utils.h"
 
 // # 싱글톤 #
 #define RND RandomFunction::getSingleton()

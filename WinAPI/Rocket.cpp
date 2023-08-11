@@ -5,12 +5,18 @@ HRESULT Rocket::init(void)
 {
 	_image = IMAGEMANAGER->addImage("로켓", "Resources/Images/ShootingGame/Rocket.bmp", 52, 64, true, RGB(255, 0, 255));
 	_flame = new Flame;
-	_flame->init();
+	_flame->init("Flame.bmp", &_x, &_y, 180);
+	_missile = new Missile;
+	_missileM1 = new MissileM1;
+	_missile->init(MAX_BULLET, WINSIZE_Y);
+	_missileM1->init(MAX_BULLET, WINSIZE_Y);
 
 	_x = WINSIZE_X / 2;
 	_y = WINSIZE_Y / 2;
 
 	_rc = RectMakeCenter(_x, _y, _image->getWidth(), _image->getHeight());
+
+	//spRocket.push_back(std::shared_ptr<Rocket>(new Rocket));
 
 	return S_OK;
 }
@@ -46,14 +52,22 @@ void Rocket::update(void)
 
 	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
 	{
-
+		_missile->fire(_x, _y);
+	}
+	if (KEYMANAGER->isOnceKeyDown('A'))
+	{
+		_missileM1->fire(_x, _y);
 	}
 
-	_flame->update(_rc);
+	_flame->update();
+	_missile->update();
+	_missileM1->update();
 }
 
 void Rocket::render(void)
 {
 	_image->render(getMemDC(), _rc.left, _rc.top);
 	_flame->render();
+	_missile->render();
+	_missileM1->render();
 }

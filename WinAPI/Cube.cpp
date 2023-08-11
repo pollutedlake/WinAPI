@@ -7,14 +7,14 @@ HRESULT Cube::init(void)
 	_camera.distance = (WINSIZE_Y / 2) / tan(_camera.FOV / 2.0f);
 	_camera.pan = PI / 2.f;
 	_camera.tilt = 0.f;
-	_points[0] = Vector3D(0, 0, 0);
+	/*_points[0] = Vector3D(0, 0, 0);
 	_points[1] = Vector3D(0, 0, 40);
 	_points[2] = Vector3D(00, 40, 00);
 	_points[3] = Vector3D(00, 40, 40);
 	_points[4] = Vector3D(40, 00, 00);
 	_points[5] = Vector3D(40, 00, 40);
 	_points[6] = Vector3D(40, 40, 40);
-	_points[7] = Vector3D(40, 40, 00);
+	_points[7] = Vector3D(40, 40, 00);*/
 	/*for (int i = 0; i < 50; i++)
 	{
 		_grid[i]._z = 0;
@@ -27,7 +27,15 @@ HRESULT Cube::init(void)
 		_grid[i]._x = 400;
 		_grid[i]._y = -400 + 40 * i;
 	}*/
-	_camera.position = Vector3D(20, -100, 20);
+	_points[0] = Vector3D(-20, -20, -20);
+	_points[1] = Vector3D(-20, -20, 20);
+	_points[2] = Vector3D(-20, 20, -20);
+	_points[3] = Vector3D(-20, 20, 20);
+	_points[4] = Vector3D(20, 20, 20);
+	_points[5] = Vector3D(20, 20, -20);
+	_points[6] = Vector3D(20, -20, 20);
+	_points[7] = Vector3D(20, -20, -20);
+	_camera.position = Vector3D(0, -70, 0);
 	return S_OK;
 }
 
@@ -37,7 +45,7 @@ void Cube::release(void)
 
 void Cube::update(void)
 {
-	if (KEYMANAGER->isStayKeyDown('W'))
+	/*if (KEYMANAGER->isStayKeyDown('W'))
 	{
 		_camera.tilt -= 0.1f;
 		_camera.position._z = 120 * sin(-_camera.tilt);
@@ -72,7 +80,7 @@ void Cube::update(void)
     {
         _projectedPoints[i].x = _camera.distance * (_worldToCamera[i]._x / _worldToCamera[i]._z) + WINSIZE_X / 2;
         _projectedPoints[i].y = _camera.distance * (_worldToCamera[i]._y / _worldToCamera[i]._z) + WINSIZE_Y / 2;
-    }
+    }*/
 	//for (int i = 0; i < 100; i++)
 	//{
 	//	_worldToCameraGrid[i]._x = cos(_camera.pan) * (_grid[i]._x - _camera.position._x) + sin(_camera.pan) * (_grid[i]._y - _camera.position._y);
@@ -85,6 +93,11 @@ void Cube::update(void)
 	//	_projectedGrid[i].x = _camera.distance * (_worldToCameraGrid[i]._x / _worldToCameraGrid[i]._z) + WINSIZE_X / 2;
 	//	_projectedGrid[i].y = _camera.distance * (_worldToCameraGrid[i]._y / _worldToCameraGrid[i]._z) + WINSIZE_Y / 2;
 	//}
+	for (int i = 0; i < 8; i++)
+	{
+		_projectedPoints[i].x = _points[i]._x - (_points[i]._x - _camera.position._x) * (_points[i]._y - (-30)) / (_points[i]._y - _camera.position._y) + WINSIZE_X / 2;
+		_projectedPoints[i].y = _points[i]._z - (_points[i]._z - _camera.position._z) * (_points[i]._y - (-30)) / (_points[i]._y - _camera.position._y) + WINSIZE_Y / 2;
+	}
 }
 
 void Cube::render(void)
