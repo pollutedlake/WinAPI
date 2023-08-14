@@ -200,6 +200,8 @@
     <ClCompile Include="EarthWormGame.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="SG_Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="EWG_EarthWorm.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -270,6 +272,9 @@
     </ClCompile>
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SecondScene.cpp" />
+    <ClCompile Include="SG_Minion.cpp" />
+    <ClCompile Include="SG_Minion2.cpp" />
+    <ClCompile Include="SG_Minion3.cpp" />
     <ClCompile Include="SG_Tile.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -398,6 +403,8 @@
     <ClInclude Include="EarthWormGame.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="SG_Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EWG_EarthWorm.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -467,6 +474,9 @@
     <ClInclude Include="resource1.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SecondScene.h" />
+    <ClInclude Include="SG_Minion.h" />
+    <ClInclude Include="SG_Minion2.h" />
+    <ClInclude Include="SG_Minion3.h" />
     <ClInclude Include="SG_Tile.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>

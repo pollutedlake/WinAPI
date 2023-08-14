@@ -14,7 +14,7 @@ namespace MY_UTIL
 	float MY_UTIL::getAngle(float startX, float startY, float endX, float endY)
 	{
 		float x = endX - startX;
-		float y = endY = startY;
+		float y = endY - startY;
 		float d = sqrt(x * x + y * y);
 
 		float angle = acos(x / d);

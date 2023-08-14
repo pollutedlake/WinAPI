@@ -118,6 +118,12 @@
     <Filter Include="과제\TileMap">
       <UniqueIdentifier>{125a7036-8772-45c7-925e-775f218c394c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShootingGame\Enemy">
+      <UniqueIdentifier>{7bd4f362-f479-4ae2-8f42-57465703f815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShootingGame\Bullets">
+      <UniqueIdentifier>{8c8e97f0-19c1-4116-b14c-a401db66a08b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -369,11 +375,26 @@
     <ClCompile Include="Utils.cpp">
       <Filter>ShootingGame</Filter>
     </ClCompile>
-    <ClCompile Include="Bullets.cpp">
-      <Filter>ShootingGame</Filter>
-    </ClCompile>
     <ClCompile Include="TileMap.cpp">
       <Filter>과제\TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="SG_Enemy.cpp">
+      <Filter>ShootingGame\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SG_Minion.cpp">
+      <Filter>ShootingGame\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>ShootingGame\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullets.cpp">
+      <Filter>ShootingGame\Bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="SG_Minion2.cpp">
+      <Filter>ShootingGame\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SG_Minion3.cpp">
+      <Filter>ShootingGame\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -587,11 +608,26 @@
     <ClInclude Include="Utils.h">
       <Filter>ShootingGame</Filter>
     </ClInclude>
-    <ClInclude Include="Bullets.h">
-      <Filter>ShootingGame</Filter>
-    </ClInclude>
     <ClInclude Include="TileMap.h">
       <Filter>과제\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="SG_Enemy.h">
+      <Filter>ShootingGame\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SG_Minion.h">
+      <Filter>ShootingGame\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>ShootingGame\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullets.h">
+      <Filter>ShootingGame\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="SG_Minion2.h">
+      <Filter>ShootingGame\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SG_Minion3.h">
+      <Filter>ShootingGame\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

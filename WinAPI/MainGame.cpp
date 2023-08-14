@@ -51,15 +51,18 @@ HRESULT MainGame::init(void)
 	//_assignment = new RacingGame;			// ·¹ÀÌ½Ì°ÔÀÓ
 	//_assignment = new BlackHole;			// ºí·¢È¦
 	//_assignment = new Cube;
-	//IMAGEMANAGER->addImage("½´ÆÃ ¸Ê", "Resources/Images/ShootingGame/ShootingBG.bmp", WINSIZE_X, WINSIZE_Y);
-	//_assignment = new Rocket;
-	_assignment = new TileMap;
-	_assignment->init();
+	//_assignment = new TileMap;
 
 	/*std::shared_ptr<Rocket> PlayerA = std::make_shared<Rocket>();
 	std::shared_ptr<Rocket> PlayerB = PlayerA->get_shared_ptr();*/
 
 	//PlayerA.use_count();
+#elif MAIN == SHOOTINGGAME
+	IMAGEMANAGER->addImage("½´ÆÃ ¸Ê", "Resources/Images/ShootingGame/ShootingBG.bmp", WINSIZE_X, WINSIZE_Y);
+	_assignment = new Rocket;
+	_em = new EnemyManager;
+	_em->init();
+	_assignment->init();
 #endif
 	return S_OK;
 }
@@ -73,6 +76,10 @@ void MainGame::release(void)
 
 #elif MAIN == ASSIGNMENT
 	_assignment->release();
+	SAFE_DELETE(_assignment);
+#elif MAIN == SHOOTINGGAME
+	_assignment->release();
+	_em->release();
 	SAFE_DELETE(_assignment);
 #endif
 }
@@ -88,6 +95,9 @@ void MainGame::update(void)
 
 #elif MAIN == ASSIGNMENT
 	_assignment ->update();
+#elif MAIN == SHOOTINGGAME
+	_assignment->update();
+	_em->update();
 #endif	
 
 }
@@ -106,8 +116,11 @@ void MainGame::render(void)
 	FONTMANAGER->drawText(getMemDC(), WINSIZE_X / 2, WINSIZE_Y / 2, fontName, 25, 500, test, sizeof(test) / sizeof(*test), NULL, RGB(0, 0, 255));
 
 #elif MAIN == ASSIGNMENT
-	//IMAGEMANAGER->findImage("½´ÆÃ ¸Ê")->render(getMemDC());
 	_assignment->render();
+#elif MAIN == SHOOTINGGAME
+	IMAGEMANAGER->findImage("½´ÆÃ ¸Ê")->render(getMemDC());
+	_assignment->render();
+	_em->render();
 #endif
 	// ========================================================
 	this->getBackBuffer()->render(getHDC());

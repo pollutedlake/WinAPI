@@ -61,7 +61,19 @@ void Missile::draw(void)
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end(); ++_viBullet)
 	{
 		if (!_viBullet->fire) continue;
-		_viBullet->img->frameRender(getMemDC(), _viBullet->rc.left, _viBullet->rc.top, (_viBullet->count) % (_viBullet->img->getMaxFrameX() + 1), _viBullet->img->getFrameY());
+		_viBullet->img->frameRender(getMemDC(), _viBullet->rc.left, _viBullet->rc.top);
+		
+		_viBullet->count++;
+
+		if(_viBullet->count % 5 == 0)
+		{
+			_viBullet->img->setFrameX(_viBullet->img->getFrameX() + 1);
+			if (_viBullet->img->getFrameX() >= _viBullet->img->getMaxFrameX())
+			{
+				_viBullet->img->setFrameX(0);
+			}
+			_viBullet->count = 0;
+		}
 	}
 }
 
@@ -71,14 +83,12 @@ void Missile::move(void)
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end(); ++_viBullet)
 	{
 		if (!_viBullet->fire) continue;
+		_viBullet->y -= _viBullet->speed;
+		_viBullet->rc = RectMakeCenter(_viBullet->x, _viBullet->y, _viBullet->img->getFrameWidth(), _viBullet->img->getFrameHeight());
 		if (MY_UTIL::getDistance(_viBullet->fireX, _viBullet->fireY, _viBullet->x, _viBullet->y) > _range)
 		{
 			_viBullet->fire = false;
-			continue;
 		}
-		_viBullet->y -= _viBullet->speed;
-		_viBullet->count++;
-		_viBullet->rc = RectMakeCenter(_viBullet->x, _viBullet->y, _viBullet->img->getFrameWidth(), _viBullet->img->getFrameHeight());
 	}
 }
 
@@ -132,7 +142,19 @@ void MissileM1::draw(void)
 {
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end(); ++_viBullet)
 	{
-		_viBullet->img->frameRender(getMemDC(), _viBullet->rc.left, _viBullet->rc.top, (_viBullet->count) % (_viBullet->img->getMaxFrameX() + 1), _viBullet->img->getFrameY());
+		_viBullet->img->frameRender(getMemDC(), _viBullet->rc.left, _viBullet->rc.top);
+
+		_viBullet->count++;
+
+		if (_viBullet->count % 5 == 0)
+		{
+			_viBullet->img->setFrameX(_viBullet->img->getFrameX() + 1);
+			if (_viBullet->img->getFrameX() >= _viBullet->img->getMaxFrameX())
+			{
+				_viBullet->img->setFrameX(0);
+			}
+			_viBullet->count = 0;
+		}
 	}
 }
 
@@ -140,18 +162,39 @@ void MissileM1::move(void)
 {
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end();)
 	{
+		_viBullet->y -= _viBullet->speed;
+		_viBullet->rc = RectMakeCenter(_viBullet->x, _viBullet->y, _viBullet->img->getFrameWidth(), _viBullet->img->getFrameHeight());
 		if (MY_UTIL::getDistance(_viBullet->fireX, _viBullet->fireY, _viBullet->x, _viBullet->y) > _range)
 		{
 			SAFE_DELETE(_viBullet->img);
 			_viBullet = _vBullet.erase(_viBullet);
-			continue;
 		}
 		else
 		{
-			_viBullet->y -= _viBullet->speed;
-			_viBullet->count++;
-			_viBullet->rc = RectMakeCenter(_viBullet->x, _viBullet->y, _viBullet->img->getFrameWidth(), _viBullet->img->getFrameHeight());
 			++_viBullet;
 		}
 	}
 }
+/*
+과제 1. 움직이는 적 패턴 추가
+- 움직임을 서로 다르게 해온다.
+ㄴ 패턴은 총 3가지를 만들면 OK
+
+과제 2. 로켓 무장 변경 추가
+
+- F1: 일반 미사일
+
+- F2: 산탄
+
+- F3 : 미니 로켓 생성
+
+- F4 : 실드
+
+_ F5 : 유도 미사일
+
+_ F6 : 레이저
+
+_ F7 : 블랙홀
+ㄴ 영향을 맏는 적과 아닌 적으로 구분
+ㄴ 블랙홀에 가까운 적일수록 스킬이 끝나면 팅겨 나가는 관성이 강해진다.
+*/

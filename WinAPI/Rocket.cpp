@@ -24,6 +24,8 @@ HRESULT Rocket::init(void)
 void Rocket::release(void)
 {
 	SAFE_DELETE(_flame);
+	SAFE_DELETE(_missile);
+	SAFE_DELETE(_missileM1);
 }
 
 void Rocket::update(void)
@@ -52,13 +54,13 @@ void Rocket::update(void)
 
 	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
 	{
-		_missile->fire(_x, _y);
+		_missile->fire(_x, _y - 60);
 	}
 	if (KEYMANAGER->isOnceKeyDown('A'))
 	{
-		_missileM1->fire(_x, _y);
+		_missileM1->fire(_x, _y - 60);
 	}
-
+	
 	_flame->update();
 	_missile->update();
 	_missileM1->update();

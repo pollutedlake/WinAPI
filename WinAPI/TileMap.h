@@ -8,9 +8,14 @@ private:
 	vector<bitset<100>> _tileMap;
 	GImage* _image;
 	int _tileSize;
-	int _tileWidth;
-	int _tileHeight;
-	int _selectImage;
+	char _tileSizeChar[20];
+	int _index;
+	float _tileWidth;
+	float _tileHeight;
+	//int _selectImage;
+	POINT _offset;
+	bool _input;
+	bool _click;
 
 public:
 	HRESULT init(void);

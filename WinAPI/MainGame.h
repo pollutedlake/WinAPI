@@ -3,7 +3,8 @@
 
 #define CLASS			0
 #define ASSIGNMENT		1
-#define MAIN		ASSIGNMENT
+#define SHOOTINGGAME	2
+#define MAIN		SHOOTINGGAME
 
 #if MAIN == CLASS
 #include "StartScene.h"
@@ -13,9 +14,11 @@
 //#include "CTW_Scene.h"
 //#include "RacingGame.h"
 //#include "BlackHole.h"
-//#include "Rocket.h"
 //#include "Cube.h"
-#include "TileMap.h"
+//#include "TileMap.h"
+#elif MAIN == SHOOTINGGAME
+#include "Rocket.h"
+#include "EnemyManager.h"
 #endif
 
 // 0. 상속을 받은 클래스
@@ -32,6 +35,8 @@ private:
 	StartScene* _start;
 	SecondScene* _second;
 	GameNode* _currentScene;
+#elif MAIN == SHOOTINGGAME
+	EnemyManager* _em;
 #endif
 public:
 	virtual HRESULT init(void);
