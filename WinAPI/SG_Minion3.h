@@ -8,11 +8,11 @@ private:
 	int _rndSpeed;
 
 public:
+	virtual HRESULT init(const char* imageName, POINT position, int rndSpeed);
 
 	void move(void);
 
 	SG_Minion3();
-	SG_Minion3(int rndSpeed);
 	~SG_Minion3();
 };
 

@@ -36,11 +36,6 @@ SG_Minion2::SG_Minion2()
 
 }
 
-SG_Minion2::SG_Minion2(float angle, int maxRadius, int radiusSpeed) : _angle(angle), _maxRadius(maxRadius), _count(0)//, _gather(true), _radiusSpeed(radiusSpeed)
-{
-	_radius = _maxRadius;
-}
-
 SG_Minion2::~SG_Minion2()
 {
 }

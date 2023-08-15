@@ -23,6 +23,18 @@ HRESULT SG_Enemy::init(const char* imageName, POINT position)
     return S_OK;
 }
 
+HRESULT SG_Enemy::init(const char* imageName, POINT center, int radius, float angle)
+{
+    // DO NOTHING
+    return S_OK;
+}
+
+HRESULT SG_Enemy::init(const char* imageName, POINT position, int rndSpeed)
+{
+	// DO NOTHING
+	return S_OK;
+}
+
 void SG_Enemy::release(void)
 {
 }

@@ -18,7 +18,9 @@ protected:
 public:
 	HRESULT init(void);
 	HRESULT init(const char* imageName, POINT position);
-	HRESULT init(const char* imageName, int radius);
+	virtual HRESULT init(const char* imageName, POINT center, int radius, float angle);
+	virtual HRESULT init(const char* imageName, POINT position, int rndSpeed);
+
 	void release(void);
 	void update(void);
 	void render(void);

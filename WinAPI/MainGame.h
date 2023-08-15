@@ -4,7 +4,7 @@
 #define CLASS			0
 #define ASSIGNMENT		1
 #define SHOOTINGGAME	2
-#define MAIN		SHOOTINGGAME
+#define MAIN		ASSIGNMENT
 
 #if MAIN == CLASS
 #include "StartScene.h"
@@ -14,7 +14,7 @@
 //#include "CTW_Scene.h"
 //#include "RacingGame.h"
 //#include "BlackHole.h"
-//#include "Cube.h"
+#include "Cube.h"
 //#include "TileMap.h"
 #elif MAIN == SHOOTINGGAME
 #include "Rocket.h"

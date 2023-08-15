@@ -15,7 +15,6 @@ public:
 	void move(void);
 
 	SG_Minion2();
-	SG_Minion2(float angle, int radius, int radiusSpeed);
 	~SG_Minion2();
 };
 

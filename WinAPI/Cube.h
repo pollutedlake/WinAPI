@@ -40,12 +40,12 @@ class Cube : public GameNode
 {
 private:
 	Vector3D _points[8];
-	Vector3D _grid[100];
-	POINT _projectedGrid[100];
+	Vector3D _grid[80];
+	Vector3D _projectedGrid[80];
 	Vector3D _worldToCamera[8];
-	Vector3D _worldToCameraGrid[100];
+	Vector3D _worldToCameraGrid[80];
 	Camera _camera;
-	POINT _projectedPoints[8];
+	Vector3D _projectedPoints[8];
 
 public:
 	HRESULT init(void);
@@ -54,6 +54,9 @@ public:
 	void render(void);
 
 	void rotate();
+
+	Vector3D worldToCamera(Vector3D worldPoint);
+	Vector3D projectionTransform(Vector3D cameraPoint);
 
 	Matrix4x4 getProjectionMatrix();
 

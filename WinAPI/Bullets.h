@@ -17,7 +17,6 @@ struct tagBullet
 	bool fire;
 };
 
-// 발사가 될때마다 만들고 삭제
 class Missile : public GameNode
 {
 private:
@@ -40,6 +39,7 @@ public:
 	~Missile() {}
 };
 
+// 발사가 될때마다 만들고 삭제
 class MissileM1 : public GameNode
 {
 private:

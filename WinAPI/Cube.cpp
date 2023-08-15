@@ -3,100 +3,85 @@
 
 HRESULT Cube::init(void)
 {
-	_camera.FOV = PI / 1.2f;
-	_camera.distance = (WINSIZE_Y / 2) / tan(_camera.FOV / 2.0f);
-	_camera.pan = PI / 2.f;
+	_camera.FOV = PI / 3.f;
+	_camera.distance =  1.f / tan(_camera.FOV / 2);
+	_camera.pan = 0.f;
 	_camera.tilt = 0.f;
-	/*_points[0] = Vector3D(0, 0, 0);
-	_points[1] = Vector3D(0, 0, 40);
-	_points[2] = Vector3D(00, 40, 00);
-	_points[3] = Vector3D(00, 40, 40);
-	_points[4] = Vector3D(40, 00, 00);
-	_points[5] = Vector3D(40, 00, 40);
-	_points[6] = Vector3D(40, 40, 40);
-	_points[7] = Vector3D(40, 40, 00);*/
-	/*for (int i = 0; i < 50; i++)
+
+	_points[0] = Vector3D(-1, -1, -1);
+	_points[1] = Vector3D(-1, -1, 1);
+	_points[2] = Vector3D(-1, 1, -1);
+	_points[3] = Vector3D(-1, 1, 1);
+	_points[4] = Vector3D(1, 1, 1);
+	_points[5] = Vector3D(1, 1, -1);
+	_points[6] = Vector3D(1, -1, 1);
+	_points[7] = Vector3D(1, -1, -1);
+	_camera.position = Vector3D(0, -20, 0);
+	for (int i = 0; i < 20; i++)
 	{
-		_grid[i]._z = 0;
-		_grid[i]._x = -400;
-		_grid[i]._y = -400 + 40 * i;
+		_grid[i] = Vector3D(-20, -20 + 2 *i, -1);
+		_grid[i + 20] = Vector3D(20, -20 + 2 * i, -1);
+		_grid[i + 40] = Vector3D(-20 + 2 * i, -20, -1);
+		_grid[i + 60] = Vector3D(-20 + 2 * i, 20, -1);
 	}
-	for (int i = 50; i < 100; i++)
-	{
-		_grid[i]._z = 0;
-		_grid[i]._x = 400;
-		_grid[i]._y = -400 + 40 * i;
-	}*/
-	_points[0] = Vector3D(-20, -20, -20);
-	_points[1] = Vector3D(-20, -20, 20);
-	_points[2] = Vector3D(-20, 20, -20);
-	_points[3] = Vector3D(-20, 20, 20);
-	_points[4] = Vector3D(20, 20, 20);
-	_points[5] = Vector3D(20, 20, -20);
-	_points[6] = Vector3D(20, -20, 20);
-	_points[7] = Vector3D(20, -20, -20);
-	_camera.position = Vector3D(0, -70, 0);
 	return S_OK;
 }
 
 void Cube::release(void)
 {
-}
+} 
 
 void Cube::update(void)
 {
-	/*if (KEYMANAGER->isStayKeyDown('W'))
-	{
-		_camera.tilt -= 0.1f;
-		_camera.position._z = 120 * sin(-_camera.tilt);
-		_camera.position._y = 120 * cos(-_camera.tilt);
-	}
-	if (KEYMANAGER->isStayKeyDown('S'))
-	{
-		_camera.tilt += 0.1f;
-		_camera.position._z = 120 * sin(-_camera.tilt);
-		_camera.position._y = 120 * cos(-_camera.tilt);
-	}
 	if (KEYMANAGER->isStayKeyDown('A'))
 	{
-		_camera.pan -= 0.1f;
-		_camera.position._y = 120 * sin(-_camera.tilt);
-		_camera.position._x = 120 * cos(-_camera.tilt);
+		_camera.pan -= 0.01f;
 	}
 	if (KEYMANAGER->isStayKeyDown('D'))
 	{
-		_camera.pan += 0.1f;
-		_camera.position._y = 120 * sin(-_camera.tilt);
-		_camera.position._x = 120 * cos(-_camera.tilt);
+		_camera.pan += 0.01f;
+	}
+	if (KEYMANAGER->isStayKeyDown('W'))
+	{
+		_camera.tilt -= 0.01f;
+	}
+	if (KEYMANAGER->isStayKeyDown('S'))
+	{
+		_camera.tilt += 0.01f;
+	}
+	float _ry = cos(_camera.tilt) * -20;
+	_camera.position._z = sin(_camera.tilt) * -20;
+	_camera.position._y = _ry;
+	float _rx = cos(_camera.pan) * _camera.position._x + (-sin(_camera.pan) * _camera.position._y);
+	_camera.position._y = sin(_camera.pan) * _rx + cos(_camera.pan) * _camera.position._y;
+	/*float _rx = -sin(_camera.pan) * -20;
+	_camera.position._y = cos(_camera.pan) * -20;
+	_camera.position._x = _rx;*/
+	if (KEYMANAGER->isStayKeyDown(VK_UP))
+	{
+		_camera.FOV -= 0.01f;
+		_camera.distance = 1.f / tan(_camera.FOV / 2);
+	}
+	if (KEYMANAGER->isStayKeyDown(VK_DOWN))
+	{
+		_camera.FOV += 0.01f;
+		_camera.distance = 1.f / tan(_camera.FOV / 2);
 	}
 	for (int i = 0; i < 8; i++)
 	{
-		_worldToCamera[i]._x = cos(_camera.pan)*(_points[i]._x - _camera.position._x) + sin(_camera.pan) * (_points[i]._y - _camera.position._y);
-		_worldToCamera[i]._y = -sin(_camera.pan) * sin(_camera.tilt) * (_points[i]._x - _camera.position._x) + cos(_camera.pan) * sin(_camera.tilt) * (_points[i]._y - _camera.position._y)
-		 + (-cos(_camera.tilt)) * (_points[i]._z - _camera.position._z);
-		_worldToCamera[i]._z = -sin(_camera.pan) * cos(_camera.tilt) + cos(_camera.pan) * cos(_camera.tilt) * (_points[i]._y - _camera.position._y) + sin(_camera.tilt) * (_points[i]._z - _camera.position._z);
+		_worldToCamera[i] = worldToCamera(_points[i]);
 	}
-    for (int i = 0; i < 8; i++)
-    {
-        _projectedPoints[i].x = _camera.distance * (_worldToCamera[i]._x / _worldToCamera[i]._z) + WINSIZE_X / 2;
-        _projectedPoints[i].y = _camera.distance * (_worldToCamera[i]._y / _worldToCamera[i]._z) + WINSIZE_Y / 2;
-    }*/
-	//for (int i = 0; i < 100; i++)
-	//{
-	//	_worldToCameraGrid[i]._x = cos(_camera.pan) * (_grid[i]._x - _camera.position._x) + sin(_camera.pan) * (_grid[i]._y - _camera.position._y);
-	//	_worldToCameraGrid[i]._y = -sin(_camera.pan) * sin(_camera.tilt) * (_grid[i]._x - _camera.position._x) + cos(_camera.pan) * sin(_camera.tilt) * (_grid[i]._y - _camera.position._y)
-	//		+ (-cos(_camera.tilt)) * (_grid[i]._z - _camera.position._z);
-	//	_worldToCameraGrid[i]._z = -sin(_camera.pan) * cos(_camera.tilt) + cos(_camera.pan) * cos(_camera.tilt) * (_grid[i]._y - _camera.position._y) + sin(_camera.tilt) * (_grid[i]._z - _camera.position._z);
-	//}
-	//for (int i = 0; i < 100; i++)
-	//{
-	//	_projectedGrid[i].x = _camera.distance * (_worldToCameraGrid[i]._x / _worldToCameraGrid[i]._z) + WINSIZE_X / 2;
-	//	_projectedGrid[i].y = _camera.distance * (_worldToCameraGrid[i]._y / _worldToCameraGrid[i]._z) + WINSIZE_Y / 2;
-	//}
 	for (int i = 0; i < 8; i++)
 	{
-		_projectedPoints[i].x = _points[i]._x - (_points[i]._x - _camera.position._x) * (_points[i]._y - (-30)) / (_points[i]._y - _camera.position._y) + WINSIZE_X / 2;
-		_projectedPoints[i].y = _points[i]._z - (_points[i]._z - _camera.position._z) * (_points[i]._y - (-30)) / (_points[i]._y - _camera.position._y) + WINSIZE_Y / 2;
+		_projectedPoints[i] = projectionTransform(_worldToCamera[i]);
+	}
+	for (int i = 0; i < 80; i++)
+	{
+		_worldToCameraGrid[i] = worldToCamera(_grid[i]);
+	}
+	for (int i = 0; i < 80; i++)
+	{
+		_projectedGrid[i] = projectionTransform(_worldToCameraGrid[i]);
 	}
 }
 
@@ -104,30 +89,53 @@ void Cube::render(void)
 {
 	HPEN myPen = CreatePen(CW_DEFAULT, 1, RGB(255, 255, 255));
 	HPEN gridPen = CreatePen(CW_DEFAULT, 1, RGB(0, 255, 0));
-	HPEN oldPen = (HPEN)SelectObject(getMemDC(), myPen);
-	LineMake(getMemDC(), _projectedPoints[0].x, _projectedPoints[0].y, _projectedPoints[1].x, _projectedPoints[1].y);
-	LineMake(getMemDC(), _projectedPoints[0].x, _projectedPoints[0].y, _projectedPoints[2].x, _projectedPoints[2].y);
-	LineMake(getMemDC(), _projectedPoints[0].x, _projectedPoints[0].y, _projectedPoints[4].x, _projectedPoints[4].y);
-	LineMake(getMemDC(), _projectedPoints[1].x, _projectedPoints[1].y, _projectedPoints[3].x, _projectedPoints[3].y);
-	LineMake(getMemDC(), _projectedPoints[1].x, _projectedPoints[1].y, _projectedPoints[5].x, _projectedPoints[5].y);
-	LineMake(getMemDC(), _projectedPoints[2].x, _projectedPoints[2].y, _projectedPoints[3].x, _projectedPoints[3].y);
-	LineMake(getMemDC(), _projectedPoints[2].x, _projectedPoints[2].y, _projectedPoints[7].x, _projectedPoints[7].y);
-	LineMake(getMemDC(), _projectedPoints[3].x, _projectedPoints[3].y, _projectedPoints[6].x, _projectedPoints[6].y);
-	LineMake(getMemDC(), _projectedPoints[4].x, _projectedPoints[4].y, _projectedPoints[5].x, _projectedPoints[5].y);
-	LineMake(getMemDC(), _projectedPoints[4].x, _projectedPoints[4].y, _projectedPoints[7].x, _projectedPoints[7].y);
-	LineMake(getMemDC(), _projectedPoints[5].x, _projectedPoints[5].y, _projectedPoints[6].x, _projectedPoints[6].y);
-	LineMake(getMemDC(), _projectedPoints[6].x, _projectedPoints[6].y, _projectedPoints[7].x, _projectedPoints[7].y);
-	SelectObject(getMemDC(), gridPen);
-	/*for (int i = 0; i < 50; i++)
+	HPEN oldPen = (HPEN)SelectObject(getMemDC(), gridPen);
+	for (int i = 0; i < 20; i++)
 	{
-		LineMake(getMemDC(), _projectedGrid[i].x, _projectedGrid[i].y, _projectedGrid[50 + i].x, _projectedGrid[50 + i].y);
-	}*/
+		LineMake(getMemDC(), WINSIZE_X / 2 + _projectedGrid[i]._x * 300, WINSIZE_Y / 2 + _projectedGrid[i]._y * 300, WINSIZE_X / 2 + _projectedGrid[i + 20]._x * 300, WINSIZE_Y / 2 + _projectedGrid[i + 20]._y * 300);
+		LineMake(getMemDC(), WINSIZE_X / 2 + _projectedGrid[i + 40]._x * 300, WINSIZE_Y / 2 + _projectedGrid[i + 40]._y * 300, WINSIZE_X / 2 + _projectedGrid[i + 60]._x * 300, WINSIZE_Y / 2 + _projectedGrid[i + 60]._y * 300);
+	}
+	SelectObject(getMemDC(), myPen);
+	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[0]._x * 300, WINSIZE_Y / 2 + _projectedPoints[0]._y * 300, WINSIZE_X / 2 + _projectedPoints[1]._x * 300, WINSIZE_Y / 2 + _projectedPoints[1]._y * 300);
+  	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[0]._x * 300, WINSIZE_Y / 2 + _projectedPoints[0]._y * 300, WINSIZE_X / 2 + _projectedPoints[2]._x * 300, WINSIZE_Y / 2 + _projectedPoints[2]._y * 300);
+	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[0]._x * 300, WINSIZE_Y / 2 + _projectedPoints[0]._y * 300, WINSIZE_X / 2 + _projectedPoints[7]._x * 300, WINSIZE_Y / 2 + _projectedPoints[7]._y * 300);
+	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[1]._x * 300, WINSIZE_Y / 2 + _projectedPoints[1]._y * 300, WINSIZE_X / 2 + _projectedPoints[3]._x * 300, WINSIZE_Y / 2 + _projectedPoints[3]._y * 300);
+	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[1]._x * 300, WINSIZE_Y / 2 + _projectedPoints[1]._y * 300, WINSIZE_X / 2 + _projectedPoints[6]._x * 300, WINSIZE_Y / 2 + _projectedPoints[6]._y * 300);
+	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[2]._x * 300, WINSIZE_Y / 2 + _projectedPoints[2]._y * 300, WINSIZE_X / 2 + _projectedPoints[3]._x * 300, WINSIZE_Y / 2 + _projectedPoints[3]._y * 300);
+	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[2]._x * 300, WINSIZE_Y / 2 + _projectedPoints[2]._y * 300, WINSIZE_X / 2 + _projectedPoints[5]._x * 300, WINSIZE_Y / 2 + _projectedPoints[5]._y * 300);
+	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[3]._x * 300, WINSIZE_Y / 2 + _projectedPoints[3]._y * 300, WINSIZE_X / 2 + _projectedPoints[4]._x * 300, WINSIZE_Y / 2 + _projectedPoints[4]._y * 300);
+	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[4]._x * 300, WINSIZE_Y / 2 + _projectedPoints[4]._y * 300, WINSIZE_X / 2 + _projectedPoints[5]._x * 300, WINSIZE_Y / 2 + _projectedPoints[5]._y * 300);
+	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[4]._x * 300, WINSIZE_Y / 2 + _projectedPoints[4]._y * 300, WINSIZE_X / 2 + _projectedPoints[6]._x * 300, WINSIZE_Y / 2 + _projectedPoints[6]._y * 300);
+	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[5]._x * 300, WINSIZE_Y / 2 + _projectedPoints[5]._y * 300, WINSIZE_X / 2 + _projectedPoints[7]._x * 300, WINSIZE_Y / 2 + _projectedPoints[7]._y * 300);
+	LineMake(getMemDC(), WINSIZE_X / 2 + _projectedPoints[6]._x * 300, WINSIZE_Y / 2 + _projectedPoints[6]._y * 300, WINSIZE_X / 2 + _projectedPoints[7]._x * 300, WINSIZE_Y / 2 + _projectedPoints[7]._y * 300);
 	SelectObject(getMemDC(), oldPen);
 	DeleteObject(myPen);
 }
 
 void Cube::rotate()
 {
+}
+
+Vector3D Cube::worldToCamera(Vector3D worldPoint)
+{
+	Vector3D cameraPoint;
+	cameraPoint._x = cos(_camera.pan) * (worldPoint._x - _camera.position._x) + sin(_camera.pan) * (worldPoint._y - _camera.position._y);
+	cameraPoint._y = -sin(_camera.pan) * sin(_camera.tilt) * (worldPoint._x - _camera.position._x) + 
+					cos(_camera.pan) * sin(_camera.tilt) * (worldPoint._y - _camera.position._y) + 
+					(-cos(_camera.tilt) * (worldPoint._z - _camera.position._z));
+	cameraPoint._z = -sin(_camera.pan) * cos(_camera.tilt) * (worldPoint._x - _camera.position._x) +
+		cos(_camera.pan) * cos(_camera.tilt) * (worldPoint._y - _camera.position._y) +
+		sin(_camera.tilt) * (worldPoint._z - _camera.position._z);
+	return cameraPoint;
+}
+
+Vector3D Cube::projectionTransform(Vector3D cameraPoint)
+{
+	Vector3D projectedPoint;
+	projectedPoint._x = _camera.distance * cameraPoint._x/(cameraPoint._z + _camera.distance);
+	projectedPoint._y = _camera.distance * cameraPoint._y/(cameraPoint._z + _camera.distance);
+	projectedPoint._z = 1;
+	return projectedPoint;
 }
 
 //투영행렬

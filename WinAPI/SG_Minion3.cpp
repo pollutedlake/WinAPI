@@ -1,6 +1,19 @@
 #include "stdafx.h"
 #include "SG_Minion3.h"
 
+HRESULT SG_Minion3::init(const char* imageName, POINT position, int rndSpeed)
+{
+	_worldTimeCount = GetTickCount();
+	_rndTimeCount = RND->getFromFloatTo(50, 150);
+	_x = position.x;
+	_y = position.y;
+	_image = IMAGEMANAGER->findImage(imageName);
+	_rc = RectMakeCenter(_x, _y,
+		_image->getFrameWidth(), _image->getFrameHeight());
+	_rndSpeed = rndSpeed;
+	return S_OK;
+}
+
 void SG_Minion3::move(void)
 {
 	_count++;
@@ -28,11 +41,7 @@ void SG_Minion3::move(void)
 
 SG_Minion3::SG_Minion3()
 {
-}
 
-SG_Minion3::SG_Minion3(int rndSpeed) : _rndSpeed(rndSpeed)
-{
-	
 }
 
 SG_Minion3::~SG_Minion3()

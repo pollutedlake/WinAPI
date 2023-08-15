@@ -44,23 +44,23 @@ void EnemyManager::setMinion(void)
 		for (int j = 0; j < 5; j++)
 		{
 			SG_Enemy* jellyFish;
-			jellyFish = new SG_Minion(0, 50);
-			jellyFish->init("해파리", PointMake(250 + j * 200, 100 + i * 100));
+			jellyFish = new SG_Minion;
+			jellyFish->init("해파리", PointMake(250 + j * 200, 100 + i * 100), 50, 0);
 			_vMinion.push_back(jellyFish);
 		}
 	}
 	for (int i = 0; i < 20; i++)
 	{
 		SG_Enemy* jellyFish;
-		jellyFish = new SG_Minion2(18 * i , 200, 2);
-		jellyFish->init("해파리", PointMake(WINSIZE_X / 2, WINSIZE_Y / 2 - 100));
+		jellyFish = new SG_Minion;
+		jellyFish->init("해파리", PointMake(WINSIZE_X / 2, WINSIZE_Y / 2 - 100), 200, 2 * PI / 20.f * i);
 		_vMinion.push_back(jellyFish);
 	}
 	for (int i = 0; i < 20; i++)
 	{
 		SG_Enemy* jellyFish;
-		jellyFish = new SG_Minion3(5);
-		jellyFish->init("해파리", PointMake(RND->getFromIntTo(50, WINSIZE_X - 50), RND->getFromIntTo(50, WINSIZE_Y - 50)));
+		jellyFish = new SG_Minion3;
+		jellyFish->init("해파리", PointMake(RND->getFromIntTo(50, WINSIZE_X - 50), RND->getFromIntTo(50, WINSIZE_Y - 50)), 5);
 		_vMinion.push_back(jellyFish);
 	}
 }

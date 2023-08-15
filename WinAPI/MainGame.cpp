@@ -50,7 +50,8 @@ HRESULT MainGame::init(void)
 	//_assignment = new CTW_Scene;			// Ä³¸¯ÅÍ º®Â¤±â, ¹Ì´Ï¸Ê ¿¬µ¿
 	//_assignment = new RacingGame;			// ·¹ÀÌ½Ì°ÔÀÓ
 	//_assignment = new BlackHole;			// ºí·¢È¦
-	//_assignment = new Cube;
+	_assignment = new Cube;
+	_assignment->init();
 	//_assignment = new TileMap;
 
 	/*std::shared_ptr<Rocket> PlayerA = std::make_shared<Rocket>();

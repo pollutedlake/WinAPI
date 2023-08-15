@@ -10,7 +10,7 @@ private:
 	int _radius;
 
 public:
-
+	HRESULT init(const char* imageName, POINT center, int radius, float angle);
 	void move(void);
 
 
