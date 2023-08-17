@@ -91,6 +91,12 @@ WBCS(와이드 바이트 캐릭터 셋)
 #include <vector>
 #include<map>
 #include<string.h>
+// 람다 친구들
+#include <algorithm>
+// 함수 포인터를 변수처럼 추고 받을 수 있다.
+// ㄴ bind : 특정 인자에 대해서만 함수를 실행시키고 싶을 때 / 특정 인자와 특정 함수를 묶어 버릴 때
+// ㄴ 함수 포인터 -> 이벤트 -> 델리게이트 -> 액션 트리거 / 관찰자 패턴(윈도우 프로시저)
+#include <functional>
 // unordered_map : Hash 자료구조
 // ㄴ 일반적 상황에서 map보다 검색속도가 더 빠르다.
 // ㄴ 검색 속도가 빠른 이유는 중복된 데이터를 허용하지 않기 때문에

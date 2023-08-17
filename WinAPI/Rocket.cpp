@@ -6,10 +6,12 @@ HRESULT Rocket::init(void)
 	_image = IMAGEMANAGER->addImage("로켓", "Resources/Images/ShootingGame/Rocket.bmp", 52, 64, true, RGB(255, 0, 255));
 	_flame = new Flame;
 	_flame->init("Flame.bmp", &_x, &_y, 180);
-	_missile = new Missile;
 	_missileM1 = new MissileM1;
-	_missile->init(MAX_BULLET, WINSIZE_Y);
 	_missileM1->init(MAX_BULLET, WINSIZE_Y);
+
+	_beam = new Beam;
+	_beam->init(1, 0.5);
+	_beamIrradiation = false;
 
 	_x = WINSIZE_X / 2;
 	_y = WINSIZE_Y / 2;
@@ -23,19 +25,24 @@ HRESULT Rocket::init(void)
 
 void Rocket::release(void)
 {
+	_flame->release();
 	SAFE_DELETE(_flame);
-	SAFE_DELETE(_missile);
+
+	_missileM1->release();
 	SAFE_DELETE(_missileM1);
+
+	_beam->release();
+	SAFE_DELETE(_beam);
 }
 
 void Rocket::update(void)
 {
-	if (KEYMANAGER->isStayKeyDown(VK_RIGHT) && _rc.right < WINSIZE_X)
+	if (KEYMANAGER->isStayKeyDown(VK_RIGHT) && _rc.right < WINSIZE_X && _beamIrradiation == false)
 	{
 		_x += ROCKET_SPEED;
 	}
 
-	if (KEYMANAGER->isStayKeyDown(VK_LEFT) && _rc.left > 0)
+	if (KEYMANAGER->isStayKeyDown(VK_LEFT) && _rc.left > 0 && _beamIrradiation == false)
 	{
 		_x -= ROCKET_SPEED;
 	}
@@ -50,19 +57,37 @@ void Rocket::update(void)
 		_y += ROCKET_SPEED;
 	}
 
+	if (KEYMANAGER->isOnceKeyDown(VK_F1))
+	{
+		_setWeapon = MISSILE;
+	}
+
+	if (KEYMANAGER->isOnceKeyDown(VK_F2))
+	{
+		_setWeapon = BEAM;
+	}
+
 	_rc = RectMakeCenter(_x, _y, _image->getWidth(), _image->getHeight());
 
-	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
+	switch (_setWeapon)
 	{
-		_missile->fire(_x, _y - 60);
-	}
-	if (KEYMANAGER->isOnceKeyDown('A'))
-	{
-		_missileM1->fire(_x, _y - 60);
+		case MISSILE:
+			if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
+			{
+				_missileM1->fire(_x, _y - 60);
+			}
+		break;
+		case BEAM:
+			if (KEYMANAGER->isStayKeyDown(VK_SPACE))
+			{
+				_beam->fire(_x, _y - 430);
+				_beamIrradiation = true;
+			}
+		break;
 	}
 	
 	_flame->update();
-	_missile->update();
+	_beam->update();
 	_missileM1->update();
 }
 
@@ -70,6 +95,6 @@ void Rocket::render(void)
 {
 	_image->render(getMemDC(), _rc.left, _rc.top);
 	_flame->render();
-	_missile->render();
+	_beam->render();
 	_missileM1->render();
 }

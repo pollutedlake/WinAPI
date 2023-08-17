@@ -396,6 +396,12 @@
     <ClCompile Include="SG_Minion3.cpp">
       <Filter>ShootingGame\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>ManagerClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -628,6 +634,12 @@
     </ClInclude>
     <ClInclude Include="SG_Minion3.h">
       <Filter>ShootingGame\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>ManagerClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

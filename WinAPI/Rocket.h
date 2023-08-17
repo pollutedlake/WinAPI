@@ -37,6 +37,11 @@
 */
 #pragma endregion
 
+enum EWeapon
+{
+	MISSILE, BEAM
+};
+
 // enable_shared_from_this : 객체의 생성 및 소멸에 의한 참조 문제를 해결한다.
 // ㄴ 각각의 객체에게 소유권을 부여한다.
 class Rocket : public GameNode, public std::enable_shared_from_this<Rocket>
@@ -45,13 +50,16 @@ private:
 
 	GImage* _image;
 	Flame* _flame;
-	Missile* _missile;
 	MissileM1* _missileM1;
+	Beam* _beam;
+	EWeapon _setWeapon;
+
 
 	//GImage* objectData;
 
 	RECT _rc;
 	float _x, _y;
+	bool _beamIrradiation;
 
 	//vector<std::shared_ptr<Rocket>> spRocket;
 public:
