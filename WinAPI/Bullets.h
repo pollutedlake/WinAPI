@@ -1,10 +1,11 @@
 #pragma once
 #include "GameNode.h"
+#include "EventListener.h"
 
 #define MAX_BULLET 50
 
 // 기능 -> 묶었다.
-struct tagBullet
+struct tagBullet : public EventListener
 {
 	GImage* img;
 	RECT rc;
@@ -15,6 +16,7 @@ struct tagBullet
 	float angle;
 	float speed;
 	bool fire;
+	void collision() {cout << "미사일" << endl; }
 };
 
 class Missile : public GameNode

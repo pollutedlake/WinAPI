@@ -40,9 +40,8 @@ void GameNode::release(void)
 	    KillTimer(_hWnd, 1);
         RND->releaseSingleton();
         KEYMANAGER->releaseSingleton();
-        IMAGEMANAGER->release();
-        IMAGEMANAGER->release();
-        TEMPSOUNDMANAGER->releaseSingleton();
+        IMAGEMANAGER->releaseSingleton();
+        EVENTMANAGER->releaseSingleton();
         TEMPSOUNDMANAGER->releaseSingleton();
     }
     ReleaseDC(_hWnd, _hdc);

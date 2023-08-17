@@ -99,6 +99,7 @@ void MainGame::update(void)
 #elif MAIN == SHOOTINGGAME
 	_assignment->update();
 	_em->update();
+	EVENTMANAGER->update();
 #endif	
 
 }

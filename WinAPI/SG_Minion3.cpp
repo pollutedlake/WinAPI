@@ -11,6 +11,8 @@ HRESULT SG_Minion3::init(const char* imageName, POINT position, int rndSpeed)
 	_rc = RectMakeCenter(_x, _y,
 		_image->getFrameWidth(), _image->getFrameHeight());
 	_rndSpeed = rndSpeed;
+	_colliderRC =&_rc;
+	EVENTMANAGER->addEnemy(this);
 	return S_OK;
 }
 

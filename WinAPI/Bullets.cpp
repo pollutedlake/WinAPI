@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Bullets.h"
+#include "SG_Enemy.h"
 
 HRESULT Missile::init(int bulletMax, float range)
 {
@@ -15,7 +16,6 @@ HRESULT Missile::init(int bulletMax, float range)
 		bullet.img->init("Resources/Images/ShootingGame/Missile.bmp", 0.f, 0.f, 416, 64, 13, 1, true, RGB(255, 0, 255));
 		bullet.fire = false;
 		bullet.speed = 5.0f;
-
 		_vBullet.push_back(bullet);
 	}
 	return S_OK;
@@ -97,7 +97,6 @@ HRESULT MissileM1::init(int bulletMax, float range)
 	_range = range;
 	_bulletMax = bulletMax;
 
-
 	return S_OK;
 }
 
@@ -124,7 +123,7 @@ void MissileM1::render(void)
 void MissileM1::fire(float x, float y)
 {
 	if(_bulletMax <= _vBullet.size()) return;
-	tagBullet bullet;
+	tagBullet bullet; 
 	// ZeroMemory(Zero) vs memset(nonZero) ZeroMemory 안에 memset동작함
 	ZeroMemory(&bullet, sizeof(tagBullet));
 
@@ -134,8 +133,14 @@ void MissileM1::fire(float x, float y)
 	bullet.x = bullet.fireX = x;
 	bullet.y = bullet.fireY = y;
 	bullet.rc = RectMakeCenter(bullet.x, bullet.y, bullet.img->getFrameWidth(), bullet.img->getFrameHeight());
-
+	vector<EventListener*> temp = EVENTMANAGER->getBullet();
+ 	for (auto iter = temp.begin(); iter != temp.end(); ++iter)
+	{
+		cout << (*iter)->getRect()->left << endl;
+	}
 	_vBullet.push_back(bullet);
+	_vBullet.back().setRect(&_vBullet.back().rc);
+	EVENTMANAGER->addBullet(&_vBullet.back());
 }
 
 void MissileM1::draw(void)

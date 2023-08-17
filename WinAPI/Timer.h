@@ -55,7 +55,7 @@ private:
 	__int64 _periodFrequency;
 
 	unsigned long _frameRate;
-	unsigned long _FPSframeCount;
+	unsigned long _FPSFrameCount;
 	float _FPSTimeElapsed;
 	float _worldTime;
 

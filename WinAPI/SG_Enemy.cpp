@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "SG_Enemy.h"
+#include "Bullets.h"
 
 SG_Enemy::SG_Enemy(void) : _rc(RectMake(0, 0, 0, 0)), _currentFrameX(0), _currentFrameY(0), _x(0.0f), _y(0.0f), _worldTimeCount(0.0f), _rndTimeCount(0.0f)
 {
@@ -20,6 +21,9 @@ HRESULT SG_Enemy::init(const char* imageName, POINT position)
     _image = IMAGEMANAGER->findImage(imageName);
     _rc = RectMakeCenter(position.x, position.y,
         _image->getFrameWidth(), _image->getFrameHeight());
+    _colliderRC = &_rc;
+    _collisionPtr = &EventListener::collision;
+    EVENTMANAGER->addEnemy(this);
     return S_OK;
 }
 
@@ -72,4 +76,14 @@ void SG_Enemy::animation(void)
             _currentFrameX = 0;
         }
     }
+}
+
+void SG_Enemy::getDamaged(void)
+{
+    
+}
+
+void SG_Enemy::collision()
+{
+    cout << "Enemy" << endl;
 }

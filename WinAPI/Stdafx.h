@@ -145,6 +145,7 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 #include "ImageManager.h"
 #include "FontManager.h"
 #include "TempSoundManager.h"
+#include "EventManager.h"
 #include"Utils.h"
 
 // # 싱글톤 #
@@ -153,6 +154,7 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 #define IMAGEMANAGER ImageManager::getSingleton()
 #define FONTMANAGER FontManager::getSingleton()
 #define TEMPSOUNDMANAGER TempSoundManager::getSingleton()
+#define EVENTMANAGER EventManager::getSingleton()
 
 // # 매크로 # (윈도우창 초기화)
 #define WINNAME					(LPTSTR)(TEXT("WindowsAPI"))

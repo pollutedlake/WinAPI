@@ -12,6 +12,8 @@ HRESULT SG_Minion::init(const char* imageName, POINT center, int radius, float a
 	_image = IMAGEMANAGER->findImage(imageName);
 	_rc = RectMakeCenter(center.x, center.y,
 		_image->getFrameWidth(), _image->getFrameHeight());
+	_colliderRC = &_rc;
+	EVENTMANAGER->addEnemy(this);
 	return S_OK;
 }
 
