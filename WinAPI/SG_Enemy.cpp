@@ -21,9 +21,9 @@ HRESULT SG_Enemy::init(const char* imageName, POINT position)
     _image = IMAGEMANAGER->findImage(imageName);
     _rc = RectMakeCenter(position.x, position.y,
         _image->getFrameWidth(), _image->getFrameHeight());
-    _colliderRC = &_rc;
-    _collisionPtr = &EventListener::collision;
-    EVENTMANAGER->addEnemy(this);
+   //_colliderRC = &_rc;
+   //_collisionPtr = &EventListener::collision;
+   //EVENTMANAGER->addEnemy(this);
     return S_OK;
 }
 
@@ -83,7 +83,7 @@ void SG_Enemy::getDamaged(void)
     
 }
 
-void SG_Enemy::collision()
-{
-    cout << "Enemy" << endl;
-}
+//void SG_Enemy::collision()
+//{
+//    cout << "Enemy" << endl;
+//}

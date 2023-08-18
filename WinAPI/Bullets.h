@@ -5,7 +5,7 @@
 #define MAX_BULLET 50
 
 // 기능 -> 묶었다.
-struct tagBullet : public EventListener
+struct tagBullet// : public EventListener
 {
 	GImage* img;
 	RECT rc;
@@ -16,7 +16,15 @@ struct tagBullet : public EventListener
 	float angle;
 	float speed;
 	bool fire;
-	void collision() {cout << "미사일" << endl; }
+	//void collision() {cout << "미사일" << endl; }
+};
+
+struct tagEffect
+{
+	GImage* img;
+	RECT rc;
+	float x, y;
+	int count;
 };
 
 class Missile : public GameNode
@@ -47,6 +55,8 @@ class MissileM1 : public GameNode
 private:
 	vector<tagBullet> _vBullet;
 	vector<tagBullet>::iterator _viBullet;
+	vector<tagEffect> _vEffect;
+	vector<tagEffect>::iterator _viEffect;
 
 	float _range;
 	int _bulletMax;
@@ -60,6 +70,10 @@ public:
 	void fire(float x, float y);
 	void draw(void);
 	void move(void);
+
+	vector<tagBullet> getBullet(void) {return _vBullet;}
+
+	void removeBullet(int arrNum);
 
 	MissileM1() {}
 	~MissileM1() {}
@@ -85,6 +99,8 @@ public:
 	void fire(float x, float y);
 	void draw(void);
 	void move(void);
+
+	vector<tagBullet> getBullet(void) { return _vBullet; }
 
 	Beam() {}
 	~Beam() {}

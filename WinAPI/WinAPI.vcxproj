@@ -175,6 +175,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CS_Shell.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -276,6 +277,7 @@
     </ClCompile>
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SecondScene.cpp" />
+    <ClCompile Include="SG_MainGame.cpp" />
     <ClCompile Include="SG_Minion.cpp" />
     <ClCompile Include="SG_Minion2.cpp" />
     <ClCompile Include="SG_Minion3.cpp" />
@@ -383,6 +385,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Collider.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="CS_Shell.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -484,6 +487,7 @@
     <ClInclude Include="resource1.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SecondScene.h" />
+    <ClInclude Include="SG_MainGame.h" />
     <ClInclude Include="SG_Minion.h" />
     <ClInclude Include="SG_Minion2.h" />
     <ClInclude Include="SG_Minion3.h" />

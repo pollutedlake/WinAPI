@@ -124,6 +124,9 @@
     <Filter Include="ShootingGame\Bullets">
       <UniqueIdentifier>{8c8e97f0-19c1-4116-b14c-a401db66a08b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="2D FrameWork\Timer">
+      <UniqueIdentifier>{1b2b439a-6282-41bf-a4e7-1831b39699fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -399,9 +402,6 @@
     <ClCompile Include="TimeManager.cpp">
       <Filter>ManagerClass</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Observer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -412,6 +412,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Collider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>2D FrameWork\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="SG_MainGame.cpp">
+      <Filter>ShootingGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -650,9 +659,6 @@
     <ClInclude Include="TimeManager.h">
       <Filter>ManagerClass</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Observer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -663,6 +669,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Collider.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>2D FrameWork\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="SG_MainGame.h">
+      <Filter>ShootingGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

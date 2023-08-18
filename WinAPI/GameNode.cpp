@@ -24,8 +24,9 @@ HRESULT GameNode::init(bool managerInit)
         setlocale(LC_ALL, "korean");
         SetTimer(_hWnd, 1, 10, NULL);
 
-        KEYMANAGER->init();
         RND->init();
+        KEYMANAGER->init();
+        TIMEMANAGER->init();
         IMAGEMANAGER->init();
         TEMPSOUNDMANAGER->init();
     }
@@ -42,6 +43,7 @@ void GameNode::release(void)
         KEYMANAGER->releaseSingleton();
         IMAGEMANAGER->releaseSingleton();
         EVENTMANAGER->releaseSingleton();
+        TIMEMANAGER->releaseSingleton();
         TEMPSOUNDMANAGER->releaseSingleton();
     }
     ReleaseDC(_hWnd, _hdc);
@@ -49,7 +51,7 @@ void GameNode::release(void)
 
 void GameNode::update(void)
 {
-	InvalidateRect(_hWnd, NULL, false);
+	//InvalidateRect(_hWnd, NULL, false);
 }
 
 void GameNode::render()

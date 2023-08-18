@@ -17,8 +17,9 @@
 #include "Cube.h"
 //#include "TileMap.h"
 #elif MAIN == SHOOTINGGAME
-#include "Rocket.h"
-#include "EnemyManager.h"
+//#include "Rocket.h"
+//#include "EnemyManager.h"
+#include "SG_MainGame.h"
 #endif
 
 // 0. 상속을 받은 클래스
@@ -36,13 +37,17 @@ private:
 	SecondScene* _second;
 	GameNode* _currentScene;
 #elif MAIN == SHOOTINGGAME
-	EnemyManager* _em;
+	//EnemyManager* _em;
 #endif
 public:
 	virtual HRESULT init(void);
 	virtual void release(void);
 	virtual void update(void);
 	virtual void render(void);
+
+#if MAIN == SHOOTINGGAME
+	void collision(void);
+#endif
 
 	MainGame() {}
 	virtual ~MainGame() {}

@@ -68,6 +68,11 @@ public:
 	void update(void);
 	void render(void);
 
+	void removeMissile(int arrNum);
+
+	MissileM1* getMissile(void) {return _missileM1;}
+	Beam* getBeam(void) {return _beam;}
+
 	/*std::shared_ptr<Rocket> get_shared_ptr()
 	{
 		return shared_from_this();

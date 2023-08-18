@@ -11,4 +11,3 @@ public:
 	void setRect(RECT* rc) {_colliderRC = rc;}
 	RECT* getRect() {return _colliderRC;}
 };
-

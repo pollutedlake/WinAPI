@@ -83,6 +83,10 @@ void Rocket::update(void)
 				_beam->fire(_x, _y - 430);
 				_beamIrradiation = true;
 			}
+			else
+			{
+				_beamIrradiation = false;
+			}
 		break;
 	}
 	
@@ -97,6 +101,11 @@ void Rocket::render(void)
 	_flame->render();
 	_beam->render();
 	_missileM1->render();
+}
+
+void Rocket::removeMissile(int arrNum)
+{
+	_missileM1->removeBullet(arrNum);
 }
 
 /*

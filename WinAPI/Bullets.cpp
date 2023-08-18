@@ -133,14 +133,14 @@ void MissileM1::fire(float x, float y)
 	bullet.x = bullet.fireX = x;
 	bullet.y = bullet.fireY = y;
 	bullet.rc = RectMakeCenter(bullet.x, bullet.y, bullet.img->getFrameWidth(), bullet.img->getFrameHeight());
-	vector<EventListener*> temp = EVENTMANAGER->getBullet();
- 	for (auto iter = temp.begin(); iter != temp.end(); ++iter)
+	//vector<EventListener*> temp = EVENTMANAGER->getBullet();
+ 	/*for (auto iter = temp.begin(); iter != temp.end(); ++iter)
 	{
 		cout << (*iter)->getRect()->left << endl;
-	}
+	}*/
 	_vBullet.push_back(bullet);
-	_vBullet.back().setRect(&_vBullet.back().rc);
-	EVENTMANAGER->addBullet(&_vBullet.back());
+	//_vBullet.back().setRect(&_vBullet.back().rc);
+	//EVENTMANAGER->addBullet(&_vBullet.back());
 }
 
 void MissileM1::draw(void)
@@ -161,6 +161,28 @@ void MissileM1::draw(void)
 			_viBullet->count = 0;
 		}
 	}
+	for (_viEffect = _vEffect.begin(); _viEffect != _vEffect.end();)
+	{
+		_viEffect->img->frameRender(getMemDC(), _viEffect->rc.left, _viEffect->rc.top);
+		_viEffect->count++;
+		if (_viEffect->count % 5 == 0)
+		{
+			_viEffect->img->setFrameX(_viEffect->img->getFrameX() + 1);
+			if (_viEffect->img->getFrameX() >= _viEffect->img->getMaxFrameX())
+			{
+				SAFE_DELETE(_viEffect->img);
+				_viEffect = _vEffect.erase(_viEffect);
+			}
+			else
+			{
+				++_viEffect;
+			}
+		}
+		else
+		{
+			++_viEffect;
+		}
+	}
 }
 
 void MissileM1::move(void)
@@ -179,6 +201,19 @@ void MissileM1::move(void)
 			++_viBullet;
 		}
 	}
+}
+void MissileM1::removeBullet(int arrNum)
+{
+	tagEffect effect;
+	effect.img = new GImage;
+	effect.img->init("Resources/Images/ShootingGame/Explosion.bmp", 0.f, 0.f, 1426, 77, 18, 1, true, RGB(255, 0, 255));
+	effect.x = (_vBullet.begin() + arrNum)->x;
+	effect.y = (_vBullet.begin() + arrNum)->y;
+	effect.rc = RectMakeCenter(effect.x, effect.y, effect.img->getFrameWidth(), effect.img->getFrameHeight());
+	_vEffect.push_back(effect);
+	SAFE_DELETE(_vBullet[arrNum].img);
+
+	_vBullet.erase(_vBullet.begin() + arrNum);
 }
 /*
 과제 1. 움직이는 적 패턴 추가
@@ -313,7 +348,7 @@ void Beam::fire(float x, float y)
 	tagBullet bullet;
 	// ZeroMemory(Zero) vs memset(nonZero) ZeroMemory 안에 memset동작함
 	ZeroMemory(&bullet, sizeof(tagBullet));
-
+	bullet.speed = 0.05f;
 	bullet.img = new GImage;
 	bullet.img->init("Resources/Images/ShootingGame/Beam.bmp", 0.f, 0.f, 412, 801, 4, 1, true, RGB(255, 0, 255));
 	bullet.x = bullet.fireX = x;

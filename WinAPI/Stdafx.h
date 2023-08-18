@@ -145,6 +145,7 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 #include "ImageManager.h"
 #include "FontManager.h"
 #include "TempSoundManager.h"
+#include "TimeManager.h"
 #include "EventManager.h"
 #include"Utils.h"
 
@@ -154,6 +155,7 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 #define IMAGEMANAGER ImageManager::getSingleton()
 #define FONTMANAGER FontManager::getSingleton()
 #define TEMPSOUNDMANAGER TempSoundManager::getSingleton()
+#define TIMEMANAGER TimeManager::getSingleton()
 #define EVENTMANAGER EventManager::getSingleton()
 
 // # 매크로 # (윈도우창 초기화)

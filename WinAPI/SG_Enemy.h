@@ -3,7 +3,7 @@
 #include "EventListener.h"
 
 // Enemy (부모) : 적은 이 클래스를 기반으로 일반 몬스터, 보스 등을 만들 수 있다.
-class SG_Enemy : public GameNode, public EventListener
+class SG_Enemy : public GameNode//, public EventListener
 {
 protected:
 	GImage* _image;
@@ -31,9 +31,11 @@ public:
 	void draw(void);
 	void animation(void);
 
+	RECT getRect(void) {return _rc;}
+
 	void getDamaged(void);
 
-	void collision();
+	//void collision();
 
 	SG_Enemy(void);
 	~SG_Enemy(void) {}

@@ -11,14 +11,22 @@ void EventManager::update(void)
 		}
 		else
 		{
-			for (auto iter2 = _eventMap.second.begin(); iter2 != _eventMap.second.end(); ++iter2)
+			for (auto iter2 = _eventMap.second.begin(); iter2 != _eventMap.second.end();)
 			{
-				RECT temp;
-				if (IntersectRect(&temp, ((*iter)->getRect()), ((*iter2)->getRect())))
+				if (*iter2 == nullptr)
 				{
-					(*iter)->collision();
-					(*iter2)->collision();
-					break;
+					iter2 = _eventMap.second.erase(iter2);
+				}
+				else
+				{
+					RECT temp;
+					if (IntersectRect(&temp, ((*iter)->getRect()), ((*iter2)->getRect())))
+					{
+						(*iter)->collision();
+						(*iter2)->collision();
+						break;
+					}
+					++iter2;
 				}
 			}
 			++iter;

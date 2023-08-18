@@ -45,7 +45,14 @@ inline void EllipseMakeCenter(HDC hdc, int x, int y, int width, int height)
 	Ellipse(hdc, x - width / 2, y - height / 2, x + width / 2, y + height / 2);
 }
 
-inline void MyTextOut(HDC hdc, int x, int y, LPCTSTR Text)
+inline RECT CollisionAreaResizing(RECT rcDest, int width, int height)
 {
-	TextOut(hdc, x, y, Text, lstrlen(Text));
+	RECT rc = 
+	{
+		rcDest.left + width / 2,
+		rcDest.top + height / 2,
+		rcDest.right - width / 2,
+		rcDest.bottom - height / 2
+	};
+	return rc;
 }

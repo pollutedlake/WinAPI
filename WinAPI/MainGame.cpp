@@ -59,10 +59,8 @@ HRESULT MainGame::init(void)
 
 	//PlayerA.use_count();
 #elif MAIN == SHOOTINGGAME
-	IMAGEMANAGER->addImage("½´ÆÃ ¸Ê", "Resources/Images/ShootingGame/ShootingBG.bmp", WINSIZE_X, WINSIZE_Y);
-	_assignment = new Rocket;
-	_em = new EnemyManager;
-	_em->init();
+	//IMAGEMANAGER->addImage("½´ÆÃ ¸Ê", "Resources/Images/ShootingGame/ShootingBG.bmp", WINSIZE_X, WINSIZE_Y);
+	_assignment = new SG_MainGame;
 	_assignment->init();
 #endif
 	return S_OK;
@@ -80,7 +78,7 @@ void MainGame::release(void)
 	SAFE_DELETE(_assignment);
 #elif MAIN == SHOOTINGGAME
 	_assignment->release();
-	_em->release();
+	//_em->release();
 	SAFE_DELETE(_assignment);
 #endif
 }
@@ -97,9 +95,9 @@ void MainGame::update(void)
 #elif MAIN == ASSIGNMENT
 	_assignment ->update();
 #elif MAIN == SHOOTINGGAME
+	/*_em->update();
+	EVENTMANAGER->update();*/
 	_assignment->update();
-	_em->update();
-	EVENTMANAGER->update();
 #endif	
 
 }
@@ -120,9 +118,10 @@ void MainGame::render(void)
 #elif MAIN == ASSIGNMENT
 	_assignment->render();
 #elif MAIN == SHOOTINGGAME
-	IMAGEMANAGER->findImage("½´ÆÃ ¸Ê")->render(getMemDC());
-	_assignment->render();
+	/*IMAGEMANAGER->findImage("½´ÆÃ ¸Ê")->render(getMemDC());
 	_em->render();
+	TIMEMANAGER->render(getMemDC());*/
+	_assignment->render();
 #endif
 	// ========================================================
 	this->getBackBuffer()->render(getHDC());
