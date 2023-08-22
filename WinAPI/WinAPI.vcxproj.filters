@@ -127,6 +127,9 @@
     <Filter Include="2D FrameWork\Timer">
       <UniqueIdentifier>{1b2b439a-6282-41bf-a4e7-1831b39699fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShootingGame\ProgressBar">
+      <UniqueIdentifier>{50ec0e93-0c84-4334-9bee-01064f7e95b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -423,6 +426,15 @@
     <ClCompile Include="Collision.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressBar.cpp">
+      <Filter>ShootingGame\ProgressBar</Filter>
+    </ClCompile>
+    <ClCompile Include="AniScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -678,6 +690,15 @@
       <Filter>ShootingGame</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressBar.h">
+      <Filter>ShootingGame\ProgressBar</Filter>
+    </ClInclude>
+    <ClInclude Include="AniScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,23 @@
 #pragma once
+// 전처리기 단계가 길어지면서 메모리 사용량 + 컴파일 시간
+// #include "Animation"
+
+class Animation;
+
+/*
+- 클래스 전방선언 + 전처리기문 -> #include
+
+is a 관계 : 제네시스는 차다. - include
+
+has a 관계 : 제네시스는 바퀴를 가지고 있다. - 전방선언
+
+- 이를 해결하기 위해 전방 선언으로 풀어줄 수 있다.
+ㄴ 1. 클래스의 포인터 / 참조 형식으로 이름만 참조할 경우
+ㄴ 2. 매개 변수나 리턴 타입을 위한 이름만 참조한 경우
+
+cpp에 include해줘야한다.
+*/
+
 class GImage
 {
 public:
@@ -103,6 +122,8 @@ public:
 
 	void loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY);
 	void loopAlphaRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY, BYTE alpha);
+
+	void aniRender(HDC hdc, int destX, int destY, Animation* ani);
 
 	LPIMAGE_INFO getImageInfo() { return _imageInfo; }
 

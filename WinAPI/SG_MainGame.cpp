@@ -4,11 +4,14 @@
 
 HRESULT SG_MainGame::init(void)
 {
-	IMAGEMANAGER->addImage("½´ÆÃ ¸Ê", "Resources/Images/ShootingGame/ShootingBG.bmp", WINSIZE_X, WINSIZE_Y);
+	IMAGEMANAGER->addImage("ÀüÀå", "Resources/Images/Background/BattleField.bmp", WINSIZE_X, WINSIZE_Y);
 	_rocket = new Rocket;
 	_em = new EnemyManager;
 	_em->init();
 	_rocket->init();
+	_as = new AniScene;
+	_as->init();
+	_x = _y = 0;
     return S_OK;
 }
 
@@ -16,6 +19,8 @@ void SG_MainGame::release(void)
 {
 	_rocket->release();
 	_em->release();
+	_as->release();
+	SAFE_DELETE(_as);
 }
 
 void SG_MainGame::update(void)
@@ -24,12 +29,17 @@ void SG_MainGame::update(void)
 	_em->update();
 	//EVENTMANAGER->update();
 	collision();
+	_as->update();
+	_y -=2.0;
 	//EVENTMANAGER->update();
 }
 
 void SG_MainGame::render(void)
 {
-	IMAGEMANAGER->findImage("½´ÆÃ ¸Ê")->render(getMemDC());
+	RECT _rc;
+	_rc = {0, 0, WINSIZE_X, WINSIZE_Y};
+	IMAGEMANAGER->findImage("ÀüÀå")->loopRender(getMemDC(), &_rc, _x, _y);
 	_rocket->render();
 	_em->render();
+	_as->render();
 }

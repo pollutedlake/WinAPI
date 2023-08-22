@@ -13,11 +13,17 @@ HRESULT Rocket::init(void)
 	_beam->init(1, 0.5);
 	_beamIrradiation = false;
 
+	_currentHp = 10;
+	_maxHp = 10;
+
+	_hpBar = new ProgressBar;
+
 	_x = WINSIZE_X / 2;
 	_y = WINSIZE_Y / 2;
 
 	_rc = RectMakeCenter(_x, _y, _image->getWidth(), _image->getHeight());
 
+	_hpBar->init(_x, _y, 52, 4);
 	//spRocket.push_back(std::shared_ptr<Rocket>(new Rocket));
 
 	return S_OK;
@@ -33,10 +39,16 @@ void Rocket::release(void)
 
 	_beam->release();
 	SAFE_DELETE(_beam);
+
+	_hpBar->release();
+	SAFE_DELETE(_hpBar);
 }
 
 void Rocket::update(void)
 {
+	if(KEYMANAGER->isOnceKeyDown('1')) hitDamage(1.0f);
+	if(KEYMANAGER->isOnceKeyDown('1')) hitDamage(1.0f);
+
 	if (KEYMANAGER->isStayKeyDown(VK_RIGHT) && _rc.right < WINSIZE_X && _beamIrradiation == false)
 	{
 		_x += ROCKET_SPEED;
@@ -93,6 +105,11 @@ void Rocket::update(void)
 	_flame->update();
 	_beam->update();
 	_missileM1->update();
+
+	_hpBar->setX(_x - (_rc.right - _rc.left) / 2);
+	_hpBar->setY(_y - 10 - (_rc.bottom - _rc.top) / 2);
+	_hpBar->update();
+	_hpBar->setGauge(_currentHp, _maxHp);
 }
 
 void Rocket::render(void)
@@ -101,6 +118,7 @@ void Rocket::render(void)
 	_flame->render();
 	_beam->render();
 	_missileM1->render();
+	_hpBar->render();
 }
 
 void Rocket::removeMissile(int arrNum)

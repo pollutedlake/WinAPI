@@ -75,13 +75,6 @@ int APIENTRY WinMain(HINSTANCE hInstance,
         }
     }
 
-    /*while (GetMessage(&message, 0, 0, 0))
-    {
-
-        TranslateMessage(&message);
-        DispatchMessage(&message);
-    }*/
-
     _mg->release();
     UnregisterClass(WINNAME, hInstance);
 

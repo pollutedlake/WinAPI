@@ -2,20 +2,20 @@
 #include "GameNode.h"
 #include "SG_Enemy.h"
 
-struct tagEffect
-{
-	GImage* img;
-	RECT rc;
-	float x, y;
-	int count;
-};
+//struct tagEffect
+//{
+//	GImage* img;
+//	RECT rc;
+//	float x, y;
+//	int count;
+//};
 
 class EnemyManager : public GameNode
 {
 private:
 	typedef vector<SG_Enemy*> vEnemy;
 	typedef vector<SG_Enemy*>::iterator viEnemy;
-	typedef vector<tagEffect>
+	//typedef vector<tagEffect>
 
 private:
 	vEnemy _vMinion;

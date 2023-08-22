@@ -2,6 +2,7 @@
 #include "GameNode.h"
 #include "Flame.h"
 #include "Bullets.h"
+#include "ProgressBar.h"
 // 설계와의 싸움
 
 #define ROCKET_SPEED 3.0f
@@ -53,12 +54,15 @@ private:
 	MissileM1* _missileM1;
 	Beam* _beam;
 	EWeapon _setWeapon;
+	ProgressBar* _hpBar;
 
 
 	//GImage* objectData;
 
 	RECT _rc;
 	float _x, _y;
+	float _currentHp;
+	float _maxHp;
 	bool _beamIrradiation;
 
 	//vector<std::shared_ptr<Rocket>> spRocket;
@@ -72,6 +76,19 @@ public:
 
 	MissileM1* getMissile(void) {return _missileM1;}
 	Beam* getBeam(void) {return _beam;}
+
+	RECT getRect(void) {return _rc;}
+
+	inline void hitDamage(float damage)
+	{
+		if (_currentHp <= 0)
+		{
+			_currentHp = 0;
+			return;
+		}
+
+		_currentHp -= damage;
+	}
 
 	/*std::shared_ptr<Rocket> get_shared_ptr()
 	{

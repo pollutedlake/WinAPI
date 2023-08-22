@@ -147,6 +147,8 @@
     <ClCompile Include="AnalogClock.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AniScene.cpp" />
     <ClCompile Include="AP_Player.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -205,6 +207,7 @@
     <ClCompile Include="EventListener.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Observer.cpp" />
+    <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="SG_Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="EWG_EarthWorm.cpp">
@@ -357,6 +360,8 @@
     <ClInclude Include="AnalogClock.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AniScene.h" />
     <ClInclude Include="AP_Player.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -416,6 +421,7 @@
     <ClInclude Include="EventListener.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Observer.h" />
+    <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="SG_Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EWG_EarthWorm.h">

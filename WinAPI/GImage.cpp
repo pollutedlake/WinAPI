@@ -1,5 +1,6 @@
 #include "Stdafx.h"
 #include "GImage.h"
+#include "Animation.h"
 
 #pragma comment (lib, "msimg32.lib")
 
@@ -878,4 +879,9 @@ void GImage::loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY
 
 void GImage::loopAlphaRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY, BYTE alpha)
 {
+}
+
+void GImage::aniRender(HDC hdc, int destX, int destY, Animation* ani)
+{
+	render(hdc, destX, destY, ani->getFramePos().x, ani->getFramePos().y, ani->getFrameWidth(), ani->getFrameHeight());
 }
