@@ -1,2 +1,23 @@
-﻿  AniScene.cpp
+﻿  Bullets.cpp
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(31,17): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(41,45): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(41,35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(67,57): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(67,43): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(133,57): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(133,43): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(167,57): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(167,43): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(205,16): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(215,45): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(215,35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(273,57): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(273,43): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(292,45): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(292,35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(427,17): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(436,45): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(436,35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(466,57): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Bullets.cpp(466,43): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   WinAPI.vcxproj -> C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\Debug\WinAPI.exe

@@ -2,7 +2,9 @@
 #include "SG_Enemy.h"
 #include "Bullets.h"
 
-SG_Enemy::SG_Enemy(void) : _rc(RectMake(0, 0, 0, 0)), _currentFrameX(0), _currentFrameY(0), _x(0.0f), _y(0.0f), _worldTimeCount(0.0f), _rndTimeCount(0.0f)
+SG_Enemy::SG_Enemy(void) : _rc(RectMake(0, 0, 0, 0)), _currentFrameX(0), _currentFrameY(0), _x(0.0f), _y(0.0f), _worldTimeCount(0.0f), _rndTimeCount(0.0f),
+                           _rndFireCount(0.0f),
+                           _bulletFireCount(0.0f)
 {
 
 }
@@ -16,6 +18,10 @@ HRESULT SG_Enemy::init(const char* imageName, POINT position)
 {
     _worldTimeCount = GetTickCount();
     _rndTimeCount = RND->getFromFloatTo(50, 150);
+
+    _bulletFireCount = TIMEMANAGER->getWorldTime();
+    _rndFireCount = RND->getFromFloatTo(2.0f, 6.0f);
+
     _x = position.x;
     _y = position.y;
     _image = IMAGEMANAGER->findImage(imageName);
@@ -81,6 +87,17 @@ void SG_Enemy::animation(void)
 void SG_Enemy::getDamaged(void)
 {
     
+}
+
+bool SG_Enemy::bulletCountFire(void)
+{
+    if (_rndFireCount + _bulletFireCount <= TIMEMANAGER->getWorldTime())
+    {
+        _bulletFireCount = TIMEMANAGER->getWorldTime();
+        _rndFireCount = RND->getFromFloatTo(2.0f, 6.0f);
+        return true;
+    }
+    return false;
 }
 
 //void SG_Enemy::collision()

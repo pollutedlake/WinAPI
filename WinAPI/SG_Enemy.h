@@ -17,6 +17,9 @@ protected:
 	float _rndTimeCount;
 	float _worldTimeCount;
 
+	float _rndFireCount;
+	float _bulletFireCount;
+
 public:
 	HRESULT init(void);
 	HRESULT init(const char* imageName, POINT position);
@@ -34,6 +37,8 @@ public:
 	RECT getRect(void) {return _rc;}
 
 	void getDamaged(void);
+
+	bool bulletCountFire(void);
 
 	//void collision();
 

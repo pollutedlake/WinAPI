@@ -1,14 +1,9 @@
 #pragma once
 #include "GameNode.h"
 #include "SG_Enemy.h"
+#include "Bullets.h"
 
-//struct tagEffect
-//{
-//	GImage* img;
-//	RECT rc;
-//	float x, y;
-//	int count;
-//};
+class Rocket;
 
 class EnemyManager : public GameNode
 {
@@ -20,6 +15,8 @@ private:
 private:
 	vEnemy _vMinion;
 	viEnemy _viMinion;
+	Bullet* _bullet;
+	Rocket* _rocket;
 
 public:
 	HRESULT init(void);
@@ -30,7 +27,12 @@ public:
 	void setMinion(void);
 	void removeMinion(int arrNum);
 
+	void minionBulletFire(void);
+	void collision(void);
+
 	vector<SG_Enemy*> getMinions(void) {return _vMinion;}
+	Bullet* getBullet(void) {return _bullet;}
+	void setRocketMemoryAddress(Rocket* rk) {_rocket = rk;}
 
 	EnemyManager();
 	~EnemyManager();

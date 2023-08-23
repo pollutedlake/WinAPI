@@ -148,6 +148,7 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 #include "TimeManager.h"
 #include "EventManager.h"
 #include"Utils.h"
+using namespace MY_UTIL;
 
 // # ΩÃ±€≈Ê #
 #define RND RandomFunction::getSingleton()

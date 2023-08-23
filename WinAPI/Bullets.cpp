@@ -2,6 +2,86 @@
 #include "Bullets.h"
 #include "SG_Enemy.h"
 
+HRESULT Bullet::init(const char* imageName, int bulletMax, float range)
+{
+	_imageName = imageName;
+	_range = range;
+	_bulletMax = bulletMax;
+
+	return S_OK;
+}
+
+void Bullet::release(void)
+{
+	_vBullet.clear();
+}
+
+void Bullet::update(void)
+{
+	move();
+}
+
+void Bullet::render(void)
+{
+	draw();
+}
+
+void Bullet::fire(float x, float y, float angle, float speed)
+{
+	if (_bulletMax <= _vBullet.size()) return;
+	tagBullet bullet;
+	// ZeroMemory(Zero) vs memset(nonZero) ZeroMemory 안에 memset동작함
+	ZeroMemory(&bullet, sizeof(tagBullet));
+
+	bullet.img = IMAGEMANAGER->findImage(_imageName);
+	bullet.speed = speed;
+	bullet.angle = angle;
+	bullet.x = bullet.fireX = x;
+	bullet.y = bullet.fireY = y;
+	bullet.rc = RectMakeCenter(bullet.x, bullet.y, 
+		bullet.img->getWidth(), bullet.img->getHeight());
+	//vector<EventListener*> temp = EVENTMANAGER->getBullet();
+	/*for (auto iter = temp.begin(); iter != temp.end(); ++iter)
+	{
+		cout << (*iter)->getRect()->left << endl;
+	}*/
+	_vBullet.push_back(bullet);
+	//_vBullet.back().setRect(&_vBullet.back().rc);
+	//EVENTMANAGER->addBullet(&_vBullet.back());
+}
+
+void Bullet::draw(void)
+{
+	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end(); ++_viBullet)
+	{
+		_viBullet->img->render(getMemDC(), _viBullet->rc.left, _viBullet->rc.top);
+	}
+}
+
+void Bullet::move(void)
+{
+	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end();)
+	{
+		_viBullet->x += cosf(_viBullet->angle) * _viBullet->speed;
+		_viBullet->y += -sinf(_viBullet->angle) * _viBullet->speed;
+		_viBullet->rc = RectMakeCenter(_viBullet->x, _viBullet->y, _viBullet->img->getWidth(), _viBullet->img->getHeight());
+		if (MY_UTIL::getDistance(_viBullet->fireX, _viBullet->fireY, _viBullet->x, _viBullet->y) > _range)
+		{
+			//SAFE_DELETE(_viBullet->img);
+			_viBullet = _vBullet.erase(_viBullet);
+		}
+		else
+		{
+			++_viBullet;
+		}
+	}
+}
+
+void Bullet::removeBullet(int arrNum)
+{
+	_vBullet.erase(_vBullet.begin() + arrNum);
+}
+
 HRESULT Missile::init(int bulletMax, float range)
 {
 	_range = range;
@@ -395,3 +475,4 @@ void Beam::move(void)
 		}
 	}
 }
+

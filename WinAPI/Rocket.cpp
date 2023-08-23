@@ -1,5 +1,6 @@
 ﻿#include "Stdafx.h"
 #include "Rocket.h"
+#include "EnemyManager.h"
 
 HRESULT Rocket::init(void)
 {
@@ -105,6 +106,7 @@ void Rocket::update(void)
 	_flame->update();
 	_beam->update();
 	_missileM1->update();
+	collision();
 
 	_hpBar->setX(_x - (_rc.right - _rc.left) / 2);
 	_hpBar->setY(_y - 10 - (_rc.bottom - _rc.top) / 2);
@@ -119,6 +121,37 @@ void Rocket::render(void)
 	_beam->render();
 	_missileM1->render();
 	_hpBar->render();
+}
+
+void Rocket::collision(void)
+{
+	for (int i = 0; i < _missileM1->getBullet().size(); i++)
+	{
+		for (int j = 0; j < _em->getMinions().size(); j++)
+		{
+			RECT rc;
+			if (IntersectRect(&rc, &_missileM1->getBullet()[i].rc, &CollisionAreaResizing(_em->getMinions()[j]->getRect(), 40, 30)))
+			{
+				_missileM1->removeBullet(i);
+				_em->removeMinion(j);
+				break;
+			}
+		}
+	}
+
+	// 빔
+	for (int i = 0; i < _beam->getBullet().size(); i++)
+	{
+		for (int j = 0; j < _em->getMinions().size(); j++)
+		{
+			RECT rc;
+			if (IntersectRect(&rc, &_beam->getBullet()[i].rc, &CollisionAreaResizing(_em->getMinions()[j]->getRect(), 40, 30)))
+			{
+				_em->removeMinion(j);
+				break;
+			}
+		}
+	}
 }
 
 void Rocket::removeMissile(int arrNum)

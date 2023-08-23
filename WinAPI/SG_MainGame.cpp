@@ -6,9 +6,13 @@ HRESULT SG_MainGame::init(void)
 {
 	IMAGEMANAGER->addImage("ÀüÀå", "Resources/Images/Background/BattleField.bmp", WINSIZE_X, WINSIZE_Y);
 	_rocket = new Rocket;
+	_rocket->init();
 	_em = new EnemyManager;
 	_em->init();
-	_rocket->init();
+
+	_em->setRocketMemoryAddress(_rocket);
+	_rocket->setEnemyMemoryAddress(_em);
+
 	_as = new AniScene;
 	_as->init();
 	_x = _y = 0;

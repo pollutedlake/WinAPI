@@ -43,6 +43,8 @@ enum EWeapon
 	MISSILE, BEAM
 };
 
+class EnemyManager;
+
 // enable_shared_from_this : 객체의 생성 및 소멸에 의한 참조 문제를 해결한다.
 // ㄴ 각각의 객체에게 소유권을 부여한다.
 class Rocket : public GameNode, public std::enable_shared_from_this<Rocket>
@@ -55,7 +57,7 @@ private:
 	Beam* _beam;
 	EWeapon _setWeapon;
 	ProgressBar* _hpBar;
-
+	EnemyManager* _em;
 
 	//GImage* objectData;
 
@@ -72,12 +74,16 @@ public:
 	void update(void);
 	void render(void);
 
+	void collision(void);
+	void setEnemyMemoryAddress(EnemyManager* em) { _em = em; }
 	void removeMissile(int arrNum);
 
 	MissileM1* getMissile(void) {return _missileM1;}
 	Beam* getBeam(void) {return _beam;}
 
+	POINT getPosition(void) {return PointMake(_x, _y); }
 	RECT getRect(void) {return _rc;}
+
 
 	inline void hitDamage(float damage)
 	{
