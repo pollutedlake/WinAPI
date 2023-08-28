@@ -130,6 +130,9 @@
     <Filter Include="ShootingGame\ProgressBar">
       <UniqueIdentifier>{50ec0e93-0c84-4334-9bee-01064f7e95b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShootingGame\Scene">
+      <UniqueIdentifier>{5c9595e5-0188-4f98-96a3-c2e2185b42bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -423,9 +426,6 @@
     <ClCompile Include="SG_MainGame.cpp">
       <Filter>ShootingGame</Filter>
     </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -434,6 +434,15 @@
     </ClCompile>
     <ClCompile Include="AniScene.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ShootingScene.cpp">
+      <Filter>ShootingGame\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>ShootingGame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -700,6 +709,12 @@
     </ClInclude>
     <ClInclude Include="AniScene.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ShootingScene.h">
+      <Filter>ShootingGame\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

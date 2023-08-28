@@ -86,7 +86,7 @@ void HorizontalShooting::update(void)
 
 void HorizontalShooting::render(HDC hdc)
 {
-	GameNode::render(hdc);
+	//GameNode::render(hdc);
 	player1->render(hdc);
 	player2->render(hdc);
 	for (int i = 0; i < BULLET_MAX; i++)

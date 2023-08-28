@@ -5,6 +5,8 @@ class StartScene : public GameNode
 private:
 	float _alpha;
 	float _bgAlpha;
+	char _text[64];
+
 public:
 	HRESULT init(void);
 	void release(void);

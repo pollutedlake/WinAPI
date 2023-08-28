@@ -146,6 +146,7 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 #include "FontManager.h"
 #include "TempSoundManager.h"
 #include "TimeManager.h"
+#include "SceneManager.h"
 #include "EventManager.h"
 #include"Utils.h"
 using namespace MY_UTIL;
@@ -157,6 +158,7 @@ using namespace MY_UTIL;
 #define FONTMANAGER FontManager::getSingleton()
 #define TEMPSOUNDMANAGER TempSoundManager::getSingleton()
 #define TIMEMANAGER TimeManager::getSingleton()
+#define SCENEMANAGER SceneManager::getSingleton()
 #define EVENTMANAGER EventManager::getSingleton()
 
 // # 매크로 # (윈도우창 초기화)
@@ -175,6 +177,7 @@ using namespace MY_UTIL;
 #define SAFE_DELETE(p)			{if(p) {delete (p); (p) = nullptr;}}
 #define SAFE_DELETE_ARRAY(p)	{if(p) {delete[] (p); (p) = nullptr;}}
 #define SAFE_RELEASE(p)			{if(p) {(p)->release(); (p) = nullptr;}}
+#define SAFE_DELETE_SCENE(p)	{if(p) {(p)->release(); (p) = nullptr;}}
 
 // # 전역 변수 #
 // extern 키워드는 다른 헤더 / cpp에서 변수를 공유해서 쓰기 위해 사용한다.

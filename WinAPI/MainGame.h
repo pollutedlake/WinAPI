@@ -4,7 +4,7 @@
 #define CLASS			0
 #define ASSIGNMENT		1
 #define SHOOTINGGAME	2
-#define MAIN		SHOOTINGGAME
+#define MAIN		CLASS
 
 #if MAIN == CLASS
 #include "StartScene.h"

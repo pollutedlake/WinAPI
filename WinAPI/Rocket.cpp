@@ -48,7 +48,6 @@ void Rocket::release(void)
 void Rocket::update(void)
 {
 	if(KEYMANAGER->isOnceKeyDown('1')) hitDamage(1.0f);
-	if(KEYMANAGER->isOnceKeyDown('1')) hitDamage(1.0f);
 
 	if (KEYMANAGER->isStayKeyDown(VK_RIGHT) && _rc.right < WINSIZE_X && _beamIrradiation == false)
 	{

@@ -1,22 +1,24 @@
 #include "Stdafx.h"
 #include "MainGame.h"
-#include "ResourcesClass.h"
+//#include "ResourcesClass.h"
+#include "StartScene.h"
+#include "ShootingScene.h"
 HRESULT MainGame::init(void)
 {
 	GameNode::init(true);
 #if MAIN == CLASS
-	_start = new StartScene;
-	_start->init();
+	//_start = new StartScene;
+	//_start->init();
 
-	_second = new SecondScene;
-	_second->init();
+	//_second = new SecondScene;
+	//_second->init();
 
-	//_currentScene -> 시동이 안되면 그냥 실행 자체가 안된다 -> 굳이 돌려볼 필요가 없다
-	_currentScene = _start;
+	////_currentScene -> 시동이 안되면 그냥 실행 자체가 안된다 -> 굳이 돌려볼 필요가 없다
+	//_currentScene = _start;
 
-	//assert: 프로그램을 종료시킴
-	//C
-	assert(_currentScene != nullptr, "MainGame 초기화 부분에서 노드 파트 오류 발생");
+	////assert: 프로그램을 종료시킴
+	////C
+	//assert(_currentScene != nullptr, "MainGame 초기화 부분에서 노드 파트 오류 발생");
 	//C++
 	//static_assert(): 
 
@@ -45,7 +47,11 @@ HRESULT MainGame::init(void)
 	컴파일 중에 문제를 확인하기 위해선 상수값을 넣어줘야 한다.
 
 	*/
+	SCENEMANAGER->addScene("슈팅", new ShootingScene);
+	SCENEMANAGER->addScene("시작", new StartScene);
+	// ================================================================
 
+	SCENEMANAGER->changeScene("시작");
 #elif MAIN == ASSIGNMENT
 	//_assignment = new CTW_Scene;			// 캐릭터 벽짚기, 미니맵 연동
 	//_assignment = new RacingGame;			// 레이싱게임
@@ -70,9 +76,8 @@ void MainGame::release(void)
 {
 	GameNode::release();
 #if MAIN == CLASS
-	SAFE_DELETE(_start);
-	SAFE_DELETE(_second);
-
+	/*SAFE_DELETE(_start);
+	SAFE_DELETE(_second);*/
 #elif MAIN == ASSIGNMENT
 	_assignment->release();
 	SAFE_DELETE(_assignment);
@@ -87,11 +92,11 @@ void MainGame::update(void)
 {
 	GameNode::update();
 #if MAIN == CLASS
-	_currentScene->update();
+	//_currentScene->update();
 
-	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))_currentScene = _second;
-	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))_currentScene = _start;
-
+	//if (KEYMANAGER->isOnceKeyDown(VK_RETURN))_currentScene = _second;
+	//if (KEYMANAGER->isOnceKeyDown(VK_RETURN))_currentScene = _start;
+	SCENEMANAGER->update();
 #elif MAIN == ASSIGNMENT
 	_assignment ->update();
 #elif MAIN == SHOOTINGGAME
@@ -108,13 +113,13 @@ void MainGame::render(void)
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 	// ========================================================
 #if MAIN == CLASS
-	_currentScene->render();
-	TCHAR* fontName = TEXT("휴먼굴림");
-	LPCWSTR test[] = {L"안\n녕,", L"나는\n", L"박상현이얗\nㅎㅎㅎ"};
-	LPCWSTR test2 = L"안\n녕";
-	char* test3 = "안\n녕";
-	FONTMANAGER->drawText(getMemDC(), WINSIZE_X / 2, WINSIZE_Y / 2, fontName, 25, 500, test, sizeof(test) / sizeof(*test), NULL, RGB(0, 0, 255));
-
+	//_currentScene->render();
+	//TCHAR* fontName = TEXT("휴먼굴림");
+	//LPCWSTR test[] = {L"안\n녕,", L"나는\n", L"박상현이얗\nㅎㅎㅎ"};
+	//LPCWSTR test2 = L"안\n녕";
+	//char* test3 = "안\n녕";
+	//FONTMANAGER->drawText(getMemDC(), WINSIZE_X / 2, WINSIZE_Y / 2, fontName, 25, 500, test, sizeof(test) / sizeof(*test), NULL, RGB(0, 0, 255));
+	SCENEMANAGER->render();
 #elif MAIN == ASSIGNMENT
 	_assignment->render();
 #elif MAIN == SHOOTINGGAME

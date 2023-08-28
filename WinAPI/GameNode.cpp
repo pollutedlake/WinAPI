@@ -29,6 +29,7 @@ HRESULT GameNode::init(bool managerInit)
         TIMEMANAGER->init();
         IMAGEMANAGER->init();
         TEMPSOUNDMANAGER->init();
+        SCENEMANAGER->init();
     }
     return S_OK;
 }
@@ -45,6 +46,7 @@ void GameNode::release(void)
         EVENTMANAGER->releaseSingleton();
         TIMEMANAGER->releaseSingleton();
         TEMPSOUNDMANAGER->releaseSingleton();
+        SCENEMANAGER->releaseSingleton();
     }
     ReleaseDC(_hWnd, _hdc);
 }
