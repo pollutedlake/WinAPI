@@ -1,1 +1,17 @@
-﻿  WinAPI.vcxproj -> C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\Debug\WinAPI.exe
+﻿  Animation.cpp
+  INIData.cpp
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\INIData.cpp(41,23): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  INIDataScene.cpp
+  Example_MoleMainGame.cpp
+  Flame.cpp
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Flame.cpp(11,40): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Flame.cpp(26,30): warning C4244: '=': 'ULONGLONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Flame.cpp(34,32): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\Flame.cpp(34,23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  SG_Minion2.cpp
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\SG_Minion2.cpp(30,59): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\SG_Minion2.cpp(30,26): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Utils.cpp
+  코드를 생성하고 있습니다...
+C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\INIData.cpp(87): warning C4172: 지역 변수 또는 임시: data의 주소를 반환하고 있습니다.
+  WinAPI.vcxproj -> C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\Debug\WinAPI.exe

@@ -18,7 +18,8 @@ class Scene
 
 	- friend는 단방향
 
-	- friend 속성은 상속이 Y / N ?
+	- 
+	속성은 상속이 Y / N ?
 	ㄴ N : friend는 단방향이기 때문에 상속이 안된다. 상속은 양방향
 	*/
 	friend SceneManager;

@@ -229,6 +229,8 @@
     </ClCompile>
     <ClCompile Include="EventListener.cpp" />
     <ClCompile Include="EventManager.cpp" />
+    <ClCompile Include="INIData.cpp" />
+    <ClCompile Include="INIDataScene.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -521,6 +523,8 @@
     </ClInclude>
     <ClInclude Include="EventListener.h" />
     <ClInclude Include="EventManager.h" />
+    <ClInclude Include="INIData.h" />
+    <ClInclude Include="INIDataScene.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="Scene.h" />

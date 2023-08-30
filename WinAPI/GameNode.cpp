@@ -47,6 +47,7 @@ void GameNode::release(void)
         TIMEMANAGER->releaseSingleton();
         TEMPSOUNDMANAGER->releaseSingleton();
         SCENEMANAGER->releaseSingleton();
+        INIDATA->releaseSingleton();
     }
     ReleaseDC(_hWnd, _hdc);
 }

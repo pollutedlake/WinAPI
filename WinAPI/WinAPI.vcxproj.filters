@@ -444,6 +444,12 @@
     <ClCompile Include="Collision.cpp">
       <Filter>ShootingGame</Filter>
     </ClCompile>
+    <ClCompile Include="INIData.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="INIDataScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -715,6 +721,12 @@
     </ClInclude>
     <ClInclude Include="ShootingScene.h">
       <Filter>ShootingGame\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="INIData.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="INIDataScene.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -148,6 +148,7 @@ ID2D1HwndRenderTarget* _ID2DRanderTarget = nullptr;*/
 #include "TimeManager.h"
 #include "SceneManager.h"
 #include "EventManager.h"
+#include "INIData.h"
 #include"Utils.h"
 using namespace MY_UTIL;
 
@@ -160,6 +161,7 @@ using namespace MY_UTIL;
 #define TIMEMANAGER TimeManager::getSingleton()
 #define SCENEMANAGER SceneManager::getSingleton()
 #define EVENTMANAGER EventManager::getSingleton()
+#define INIDATA INIData::getSingleton()
 
 // # 매크로 # (윈도우창 초기화)
 #define WINNAME					(LPTSTR)(TEXT("WindowsAPI"))
