@@ -29,9 +29,13 @@
 
 // 라이브러리 추가
 #pragma comment (lib, "msimg32.lib")
+#pragma comment (lib, "lib/FMOD/fmodex_vc_lib")
 
 // Windows 헤더 파일
 #include <windows.h>
+
+// 외부 헤더파일
+#include "inc/FMOD/fmod.hpp"
 
 // C 런타임 헤더 파일입니다.
 // stdlib: C언어의 표준 라이브러리 함수의 헤더 파일
