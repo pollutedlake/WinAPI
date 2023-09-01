@@ -1,0 +1,14 @@
+{
+  "Skill": 
+  [
+    {
+      "name": "RUN",
+      "type": "NON_ATTACK",
+      "fileLocation": "Resources/Images/Object/Rocket.bmp",
+      "width": 800,
+      "height": 400,
+      "frameX": 0,
+      "frameY": 1
+    }
+  ]
+}

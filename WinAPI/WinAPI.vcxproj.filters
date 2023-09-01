@@ -133,6 +133,12 @@
     <Filter Include="ShootingGame\Scene">
       <UniqueIdentifier>{5c9595e5-0188-4f98-96a3-c2e2185b42bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Json">
+      <UniqueIdentifier>{d0daf558-a558-4b97-918c-edb713c1c077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Schema">
+      <UniqueIdentifier>{1275ad97-aad4-4b17-aefc-60b3bca1f5d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DVector.cpp">
@@ -453,6 +459,9 @@
     <ClCompile Include="SoundManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="JsonSaveLoader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -734,6 +743,9 @@
     <ClInclude Include="SoundManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="JsonSaveLoader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WinAPI1.rc">
@@ -761,5 +773,9 @@
     <Text Include="TrigonoMetric Function\TrigonoMetric Function.txt">
       <Filter>2D FrameWork\TrigonoMetric Function</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Quest.json" />
+    <None Include="Character.json" />
   </ItemGroup>
 </Project>

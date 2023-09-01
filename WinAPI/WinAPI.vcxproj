@@ -72,6 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\jsoncpp\include\json;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\psh95\OneDrive\바탕 화면\상현\공부\게임프로그래밍\WinAPI\WinAPI\WinAPI\jsoncpp\lib_json;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -93,7 +95,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>gdiplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gdiplus.lib;json_vc71_libmtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -231,6 +233,7 @@
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="INIData.cpp" />
     <ClCompile Include="INIDataScene.cpp" />
+    <ClCompile Include="JsonSaveLoader.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -526,6 +529,7 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="INIData.h" />
     <ClInclude Include="INIDataScene.h" />
+    <ClInclude Include="JsonSaveLoader.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="Scene.h" />
@@ -676,6 +680,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="TrigonoMetric Function\TrigonoMetric Function.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Character.json" />
+    <None Include="Quest.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

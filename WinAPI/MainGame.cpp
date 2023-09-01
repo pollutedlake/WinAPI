@@ -54,6 +54,7 @@ HRESULT MainGame::init(void)
 	SCENEMANAGER->addScene("INI", new INIDataScene);
 
 	SCENEMANAGER->changeScene("INI");
+
 #elif MAIN == ASSIGNMENT
 	//_assignment = new CTW_Scene;			// 캐릭터 벽짚기, 미니맵 연동
 	//_assignment = new RacingGame;			// 레이싱게임
