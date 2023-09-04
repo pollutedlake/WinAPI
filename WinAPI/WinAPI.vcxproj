@@ -233,9 +233,12 @@
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="INIData.cpp" />
     <ClCompile Include="INIDataScene.cpp" />
+    <ClCompile Include="JsonDataScene.cpp" />
     <ClCompile Include="JsonSaveLoader.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
+    <ClCompile Include="Quest.cpp" />
+    <ClCompile Include="QuestSample.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SG_Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
@@ -529,9 +532,12 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="INIData.h" />
     <ClInclude Include="INIDataScene.h" />
+    <ClInclude Include="JsonDataScene.h" />
     <ClInclude Include="JsonSaveLoader.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="ProgressBar.h" />
+    <ClInclude Include="Quest.h" />
+    <ClInclude Include="QuestSample.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SG_Enemy.h" />
     <ClInclude Include="EnemyManager.h" />

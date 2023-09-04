@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "Stdafx.h"
 #include "JsonSaveLoader.h"
 
 // UTF-8...
@@ -193,7 +193,15 @@ Json::Value JsonSaveLoader::loadJsonFile(char* fileName)
     // parsing (파싱) : 특정 문서를 읽어 들여서 이를 다른 프로그램이나 서브 루틴이 사용할 수 있는 내부 표현 방식으로 변환해 주는 것
     // parse : 파싱을 하는 프로세서
     bool parsingRet = reader.parse(jsonStr, root);
-    return Json::Value();
+
+    if (!parsingRet)
+    {
+        string errorMsg = reader.getFormatedErrorMessages();
+        MessageBox(_hWnd, errorMsg.c_str(), "오류", MB_OK);
+        PostQuitMessage(0);
+    }
+
+    return root;
 }
 
 JsonSaveLoader::JsonSaveLoader()

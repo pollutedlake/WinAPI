@@ -4,6 +4,7 @@
 #include "StartScene.h"
 #include "ShootingScene.h"
 #include "INIDataScene.h"
+#include "JsonDataScene.h"
 HRESULT MainGame::init(void)
 {
 	GameNode::init(true);
@@ -52,8 +53,9 @@ HRESULT MainGame::init(void)
 	SCENEMANAGER->addScene("시작", new StartScene);
 	// ================================================================
 	SCENEMANAGER->addScene("INI", new INIDataScene);
+	SCENEMANAGER->addScene("Json", new JsonDataScene);
 
-	SCENEMANAGER->changeScene("INI");
+	SCENEMANAGER->changeScene("Json");
 
 #elif MAIN == ASSIGNMENT
 	//_assignment = new CTW_Scene;			// 캐릭터 벽짚기, 미니맵 연동
